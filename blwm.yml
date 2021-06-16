@@ -17,5 +17,6 @@ description: >
 
 
   See also `blwm`.
+state: required
 automatic: true
 done: true
