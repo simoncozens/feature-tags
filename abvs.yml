@@ -7,7 +7,7 @@ script:
   USE:
   mym2:
 description: >
-    This features is intended for substituting base glyphs and above marks
+    This feature is intended for substituting base glyphs and above marks
     with ligature forms, but may be used for any standard typographic
     substitutions; engineers may wish to restrict its use to substitutions
     concerning above-base marks for organisational purposes.
