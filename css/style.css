@@ -37,6 +37,7 @@ details {
 	padding: 10px;
 	border-radius: 10px;
 	background: #000;
+	z-index: 999;
 	color: #fff;
 	text-align: center;
 
