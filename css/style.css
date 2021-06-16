@@ -69,3 +69,7 @@ details {
 .tooltip:hover:after {
 	display: block;
 }
+
+.representative-glyph {
+	font-size: 2em;
+}

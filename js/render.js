@@ -41,6 +41,7 @@ var featureTemplate = Handlebars.compile(`
 		{{/if}}
 
 		{{#if feature.script}}
+			{{{feature.html_scripts}}}
 		{{else}}
 		<div class="tooltip" data-text="This feature applies to all scripts.">
 			<span class="material-icons-outlined">public</span>
@@ -91,6 +92,11 @@ function renderAll() {
 		if (!feat.html_description) {
 			feat.html_description = marked(feat.description);
 		}
+
+		if (!feat.html_scripts) {
+			feat.html_scripts = scriptsFor(feat);
+		}
+
 		var featurediv = $(featureTemplate({ tag: tag, feature: feat }));
 		$("#features").append(featurediv);
 	}
