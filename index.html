@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>OpenType Feature Database</title>
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/skeleton.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="author" href="humans.txt" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<link
+			rel="stylesheet"
+			href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css"
+		/>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<h1>OpenType Feature Database</h1>
+			<form>
+				<div class="row">
+					<div class="four columns">
+						<label for="exampleEmailInput">Filter by tag</label>
+						<input class="u-full-width" placeholder="aalt" id="tag-filter" />
+					</div>
+					<div class="four columns">
+						<label for="exampleEmailInput">Filter by script</label>
+						<select class="u-full-width" id="script-filter"></select>
+					</div>
+					<div class="four columns">
+						<label for="exampleEmailInput">Filter by phase</label>
+						<select class="u-full-width" id="phase-filter"></select>
+					</div>
+				</div>
+			</form>
+			<div id="features"></div>
+		</div>
+		<script src="js/featuredb.js"></script>
+		<script src="js/render.js"></script>
+	</body>
+</html>
