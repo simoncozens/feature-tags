@@ -1,0 +1,20 @@
+title: Above-base Mark Positioning
+registered: Microsoft
+group: Common
+description: >
+  This feature allows for mark positioning, similar to the `mark` feature; it
+  was intended for positioning marks which are placed over a base consonant in
+  a syllabic script, but while the OpenType Specification describes this feature
+  as being used for Indic scripts, Harfbuzz applies the `abvm` feature as
+  part of common feature processing for all scripts.
+
+  The only distinction between this feature and the `mark` feature is a subtle
+  one: in `abvm` processing, any ZWJ characters are skipped when matching input
+  and any ZWNJ characters are skipped when matching context, whereas in `mark`
+  processing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice
+  of `abvm` versus `mark` is a matter of notational convenience for the engineer.
+
+  See also `blwm`.
+automatic: true
+done: true
+state: required

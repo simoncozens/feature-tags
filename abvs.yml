@@ -1,0 +1,27 @@
+title: Above-base Substitutions
+registered: Microsoft
+group: Typographic
+script:
+  INDIC:
+  khmr:
+  USE:
+  mym2:
+description: >
+    This features is intended for substituting base glyphs and above marks
+    with ligature forms, but may be used for any standard typographic
+    substitutions; engineers may wish to restrict its use to substitutions
+    concerning above-base marks for organisational purposes.
+
+    This feature is applied by the shaper as part of the standard typographic
+    presentation phase for Indic scripts, Khmer, Myanmar, and scripts using the
+    Universal Shaping Engine. It is applied with a per-syllable context for
+    Indic scripts, but applied across the whole run in other scripts.
+fea: >
+  feature abvs {
+    sub eCandraMatra-gujarati candraBindu-gujarati by eCandraMatraCandraBindu-gujarati;
+    sub eMatra-gujarati candraBindu-gujarati by eMatraCandraBindu-gujarati;
+    sub aiMatra-gujarati candraBindu-gujarati by aiMatraCandraBindu-gujarati;
+    # ...
+  } abvs;
+done: true
+state: required

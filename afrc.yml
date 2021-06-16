@@ -1,0 +1,15 @@
+title: Alternative Fractions
+registered: Microsoft
+state: discretionary
+description: >
+  This feature is intended to provide alternative forms of a fraction; the
+  feature should match numerals surrounded by a slash, and substitute them
+  with a nut fraction.
+fea: >
+  feature afrc {
+    sub one slash two by onehalf.nut;
+  } afrc;
+ui: >
+  In the OS X typography panel, this feature is accessed via "Contextual
+  Fractional Forms -> Vertical."
+done: true

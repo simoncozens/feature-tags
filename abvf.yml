@@ -1,0 +1,34 @@
+title: Above-base Forms
+registered: Microsoft
+group: Orthographic
+script:
+  INDIC:
+    order: 5
+  khmr:
+    order: 3
+  USE:
+    order: 2
+description: >
+  Replaces above-base forms with special forms. This feature is applied by
+  Indic, Khmer and USE complex shapers as part of the orthographic unit
+  shaping phase. The context of application is restricted to a syllabic cluster.
+
+  This feature was originally intended for a specific use case in Khmer, the
+  OE vowel sign (U+17BE, ◌ើ), which has pre-base and above-base components.
+  The shaping engine [decomposes](https://github.com/n8willis/opentype-shaping-documents/blob/master/opentype-shaping-khmer.md#22-matra-decomposition)
+  U+17BE into a pair of characters, U+17C1 (េ) and U+17BE (again). It then
+  reorders the syllable to put the pre-base vowel part before the base consonant,
+  leaving the U+17BE after the base. The font is responsible for turning the
+  remaining ◌ើ glyph into the above-base part (ី), hence the example
+  implementation below.
+
+  However, more generally, this feature is a good home for above-base
+  substitutions such as choosing alternate widths of an above-base vowel mark.
+
+  See also `abvs` which applies to the whole run, rather than per-cluster.
+fea: >
+  feature abvf {
+    sub uni17BE by uni17B8;
+  } abvf;
+state: required
+done: true

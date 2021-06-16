@@ -1,0 +1,54 @@
+title: Access All Alternates
+registered: Adobe
+done: true
+description: |
+  Allows the end user to access glyphs which are either not available, or not
+  easily available, via other feature applications. The expectation is that this
+  feature will allow substituting a glyph with all possible "alternative" forms
+  of the glyph provided in the font: for example, for the glyph `a`, it will
+  provide a substitution to small capital forms, swash alternates, superior forms,
+  and so on. This is normally achieved through one-from-many (GSUB3) substitutions,
+  but where only a single alternate is provided, the use of a one-to-one (GSUB1)
+  substitution may be appropriate.
+
+
+  A layout application will not apply this feature in the ordinary course of layout,
+  but may use it to implement a "glyph picker" interface allowing the end user
+  to choose the desired substitution, or to cycle through the alternates available
+  for a glyph. Because of way that the layout application will apply this feature,
+  it is undefined what would happen to lookup types other than GSUB1 and GSUB3 if
+  placed inside an `aalt` feature.
+
+
+  *Note*: AFDKO feature syntax offers special handling of the `aalt` feature.
+  Within the context an `aalt` feature block, the `feature` keyword can be used
+  to reference the lookups of other features, arrange any GSUB1 or GSUB3 rules
+  within those lookups by glyph, and combine them into one-from-many rules.
+  This allows the engineer to more easily generate an `aalt` feature by
+  combining the effects of other features.
+
+
+  For example, given a feature `smcp` which contains the rule `sub b by B.sc;` and a
+  feature `salt` which contains the rule `sub b by b.alt;`, the effect of
+
+
+  ```fea
+  feature aalt {
+    feature salt;
+    feature smcp;
+  } aalt;
+  ```
+
+  would be to create the rule `sub b from [b.alt B.sc];`.
+fea: >
+  feature aalt {
+    feature salt;
+    feature smcp;
+    feature swsh;
+    sub quoteleft by quoteleft.fr;
+    sub quoteright by quoteright.fr;
+  } aalt;
+automatic: true
+state: discretionary
+ui: >
+  In the OS X typography panel, this feature is accessed via "Glyph Variants".
