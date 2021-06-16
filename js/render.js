@@ -40,6 +40,14 @@ var featureTemplate = Handlebars.compile(`
 			</div>
 		{{/if}}
 
+		{{#if feature.script}}
+		{{else}}
+		<div class="tooltip" data-text="This feature applies to all scripts.">
+			<span class="material-icons-outlined">public</span>
+			</div>
+		{{/if}}
+
+
 
 		{{{ feature.html_description }}}
 
