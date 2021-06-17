@@ -1,0 +1,22 @@
+title: Contextual Alternates
+registered: Adobe
+state: default
+group: Typographic
+description: >
+  This feature is used to substitute glyphs with alternate forms, generally on
+  a contextual basis. For example, a script font may wish to use joining forms
+  of the letter `o` when followed by another letter starting at the x-height.
+
+  This feature is processed as part of the standard typographic presentation group;
+  in the Indic and Arabic complex shapers, it is processed as part of the language
+  form group.
+fea: >
+  feature calt {
+    sub T' @letter by T.wide;
+    sub o' space by o.swash;
+    sub o' [i k m n o] by o.join;
+    sub [f o t v w] s' by s.noinstroke;
+  } calt;
+example:
+  font: Kristi
+  text: Two hoots!

@@ -3,7 +3,7 @@ registered: Tiro Typeworks / Emigre
 state: discretionary
 description: >
   Substitutes capital characters for petite capitals. See the `pcap` feature
-  for a description of petite capitals.
+  for a description of petite capitals. See also `c2sc`.
 fea: >
   feature c2pc {
     sub A by A.pc;
@@ -13,6 +13,7 @@ fea: >
 ui: >
   In the OS X typography panel, this feature is accessed via "Uppercase ->
   Petite Capitals."
+
 
   In CSS, this feature can be set with `font-variant-caps: all-petite-caps;`
   (although this also turns on `pcap`.)

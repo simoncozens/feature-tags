@@ -32,5 +32,5 @@ fea: >
 done: true
 state: required
 example:
-  font: Hind Regular
+  font: Hind
   text: रृ

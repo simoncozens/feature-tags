@@ -1,0 +1,22 @@
+title: Small Capitals From Capitals
+registered: Adobe
+state: discretionary
+automatic: true
+description: >
+  Substitutes capital characters for small capitals. Small capitals are often
+  used to set acronyms.
+fea: >
+  feature c2sc {
+    sub A by A.sc;
+    sub B by B.sc;
+    # ...
+  } c2sc;
+ui: >
+  In the OS X typography panel, this feature is accessed via "Uppercase ->
+  Small Capitals." In Adobe applications, this feature is accessed via "All
+  Small Caps" in the OpenType panel (although this also turns on `smcp`).
+
+
+  In CSS, this feature can be set with `font-variant-caps: all-small-caps;`
+  (although this also turns on `smcp`).
+done: true
