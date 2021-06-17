@@ -11,10 +11,34 @@ ul {
 	font-size: 1.2em;
 }
 
+.example-off,
+.example-on {
+	font-size: 40px;
+}
+
+.warning {
+	font-style: italic;
+	color: #700;
+	font-size: 1em;
+}
+
 details {
+	border: 1px solid #eee;
+	border-radius: 5px;
+
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+details summary {
+	padding-left: 12px;
+	background-color: #fafaff;
+}
+details pre,
+details div {
+	margin: 20px;
+}
+
 .tooltip {
 	position: relative;
 	display: inline-block;
