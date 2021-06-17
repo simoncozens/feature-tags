@@ -1,0 +1,15 @@
+title: Historical Ligatures
+registered: Microsoft
+state: discretionary
+description: |
+    Substitutes ligature forms which are no longer commonly used, or which
+    give the text a "historical" feel: for example, the "st" ligature. See
+    also the `hist` feature.
+fea: |
+  feature hlig {
+    sub s t by s_t;
+  } hlig;
+example:
+  font: EB Garamond
+  text: aſſiſt
+done: true
