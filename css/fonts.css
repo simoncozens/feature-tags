@@ -1,0 +1,29 @@
+@font-face {
+	font-family: "Hind";
+	src: url(fonts/Hind.ttf);
+}
+
+@font-face {
+	font-family: "Noto Sans Khmer";
+	src: url(fonts/Noto Sans Khmer.ttf);
+}
+
+@font-face {
+	font-family: "EB Garamond";
+	src: url("fonts/EB Garamond.ttf");
+}
+
+@font-face {
+	font-family: "Kristi";
+	src: url(fonts/Kristi.ttf);
+}
+
+@font-face {
+	font-family: "Recursive";
+	src: url(fonts/Recursive.ttf);
+}
+
+@font-face {
+	font-family: "Zilla Slab";
+	src: url("fonts/Zilla Slab.ttf");
+}
