@@ -58,7 +58,7 @@ window.featuredb={
         "automatic": "true",
         "description": "Substitutes capital characters for small capitals. Small capitals are often used to set acronyms.\n",
         "fea": "feature c2sc {\n  sub A by A.sc;\n  sub B by B.sc;\n  # ...\n} c2sc;\n",
-        "ui": "In the OS X typography panel, this feature is accessed via \"Uppercase -> Small Capitals.\" In Adobe applications, this feature is accessed via \"All Small Caps\" in the OpenType panel (although this also turns on `smcp`).\n\nIn CSS, this feature can be set with `font-variant-caps: all-small-caps;` (although this also turns on `smcp`).\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Uppercase ->\nSmall Capitals.\" In Adobe applications, this feature is accessed via \"All\nSmall Caps\" in the OpenType panel (although this also turns on `smcp`).\n\n\nIn CSS, this feature can be set with `font-variant-caps: all-small-caps;`\n(although this also turns on `smcp`).\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -78,7 +78,7 @@ window.featuredb={
                 "order": "0"
             }
         },
-        "description": "Replaces above-base forms with special forms. This feature is applied by Indic, Khmer and USE complex shapers as part of the orthographic unit shaping phase. The context of application is restricted to a syllabic cluster.\n\nThis feature was originally intended for a specific use case in Khmer, the OE vowel sign (U+17BE, \u25cc\u17be), which has pre-base and above-base components. The shaping engine [decomposes](https://github.com/n8willis/opentype-shaping-documents/blob/master/opentype-shaping-khmer.md#22-matra-decomposition) U+17BE into a pair of characters, U+17C1 (\u17c1) and U+17BE (again). It then reorders the syllable to put the pre-base vowel part before the base consonant, leaving the U+17BE after the base. The font is responsible for turning the remaining \u25cc\u17be glyph into the above-base part (\u17b8), hence the example implementation below.\n\nHowever, more generally, this feature is a good home for above-base substitutions such as choosing alternate widths of an above-base vowel mark.\n\nSee also `abvs` which applies to the whole run, rather than per-cluster.\n",
+        "description": "Replaces above-base forms with special forms. This feature is applied by\nIndic, Khmer and USE complex shapers as part of the orthographic unit\nshaping phase. The context of application is restricted to a syllabic cluster.\n\n\nThis feature was originally intended for a specific use case in Khmer, the\nOE vowel sign (U+17BE, \u25cc\u17be), which has pre-base and above-base components.\nThe shaping engine [decomposes](https://github.com/n8willis/opentype-shaping-documents/blob/master/opentype-shaping-khmer.md#22-matra-decomposition)\nU+17BE into a pair of characters, U+17C1 (\u17c1) and U+17BE (again). It then\nreorders the syllable to put the pre-base vowel part before the base consonant,\nleaving the U+17BE after the base. The font is responsible for turning the\nremaining \u25cc\u17be glyph into the above-base part (\u17b8), hence the example\nimplementation below.\n\n\nHowever, more generally, this feature is a good home for above-base\nsubstitutions such as choosing alternate widths of an above-base vowel mark.\n\n\nSee also `abvs` which applies to the whole run, rather than per-cluster.\n",
         "fea": "feature abvf {\n  sub uni17BE by uni17B8;\n} abvf;\n",
         "state": "required",
         "done": "true",
@@ -107,7 +107,7 @@ window.featuredb={
                 "order": "3"
             }
         },
-        "description": "Replaces below-base forms with special forms. This feature is applied by Indic, Khmer, Myanmar and USE complex shapers as part of the orthographic unit shaping phase. The context of application is restricted to a syllabic cluster.\nThis is intended to be used for halant conjuncts, where consonant-virama-consonant sequences cause the second consonant to be displayed below the first.\n",
+        "description": "Replaces below-base forms with special forms. This feature is applied by\nIndic, Khmer, Myanmar and USE complex shapers as part of the orthographic unit\nshaping phase. The context of application is restricted to a syllabic cluster.\n\n\nThis is intended to be used for halant conjuncts, where consonant-virama-consonant\nsequences cause the second consonant to be displayed below the first.\n",
         "fea": "feature blwf {\n  sub virama-myanmar @consonant by @conjunct_consonant;\n} blwf;\n",
         "state": "required",
         "done": "true",
@@ -132,21 +132,49 @@ window.featuredb={
                 "order": "0"
             }
         },
-        "description": "This feature is intended for substituting base glyphs and below marks with ligature forms, but may be used for any standard typographic substitutions; engineers may wish to restrict its use to substitutions concerning below-base marks for organisational purposes. As a typographic substitution, it will be applied after the `blwf` feature.\n\nThis feature is applied by the shaper as part of the standard typographic presentation phase for Indic scripts, Khmer, Myanmar, and scripts using the Universal Shaping Engine. It is applied with a per-syllable context for Indic scripts, but applied across the whole run in other scripts.\n",
-        "fea": "feature blws {\n    sub dvRA dvmU  by dvRA_mU;\n    sub dvRA dvmUU by dvRA_mUU;\n    sub dvHA dvmU  by dvHA_mU;\n    sub dvHA dvmUU by dvHA_mUU;\n\n    sub dvDA  dvmvR by dvDA_mvR;\n    sub dvSHA dvmvR by dvSHA_mvR;\n    sub dvHA  dvmvR by dvHA_mvR;\n} blws;\n",
+        "description": "This feature is intended for substituting base glyphs and below marks\nwith ligature forms, but may be used for any standard typographic\nsubstitutions; engineers may wish to restrict its use to substitutions\nconcerning below-base marks for organisational purposes. As a typographic\nsubstitution, it will be applied after the `blwf` feature.\n\n\nThis feature is applied by the shaper as part of the standard typographic\npresentation phase for Indic scripts, Khmer, Myanmar, and scripts using the\nUniversal Shaping Engine. It is applied with a per-syllable context for\nIndic scripts, but applied across the whole run in other scripts.\n",
+        "fea": "feature blws {\n    sub dvRA dvmU  by dvRA_mU;\n    sub dvRA dvmUU by dvRA_mUU;\n    sub dvHA dvmU  by dvHA_mU;\n    sub dvHA dvmUU by dvHA_mUU;\n    sub dvDA  dvmvR by dvDA_mvR;\n    sub dvSHA dvmvR by dvSHA_mvR;\n    sub dvHA  dvmvR by dvHA_mvR;\n} blws;\n",
         "done": "true",
         "state": "required",
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "ccmp": {
+        "state": "required",
+        "title": "Glyph Composition/Decomposition",
+        "registered": "Microsoft",
+        "group": "Common",
+        "order": "0",
+        "description": "After OpenType normalization but before the processing of other features,\nit may be useful to decompose single glyphs into sequences, or combine\nsequences into a single glyph. For example:\n\n\n* In Arabic fonts, treating the rasm letters and the nukta dots separately\nallows for more flexible positioning and reduces the number of glyphs which\nneed to be drawn. Using rules such as `sub beh-ar by behDotless-ar dotbelow;`\nin the `ccmp` feature decomposes the dots into separate glyphs.\n\n* The i acute character (\u00ed, U+00ED) is normalized to U+0069 U+0301 (i acutecomb).\nHowever, as the acute replaces the tittle on the `i`, it is useful to substitute\nthis for a dotless form: `sub i' acutecomb by idotless;`.\n\n* Conversely, multiple glyphs may be combined into one. In Tibetan, stacked\nletters such as \u0f43 (U+0F43) have their own Unicode codepoints, but can\nalternatively be encoded in documents using the decomposed form U+0F42 (\u0f42)\n\u25cc\u0fb7 (U+0FB7). These two encodings can be unified in the font with a rule such\nas `sub uni0F42 uni0FB7 by uni0F43;`.\n",
+        "fea": "feature ccmp {\n  sub alefHamzaabove-ar by alef-ar hamzaabove-ar;\n  sub alefHamzabelow-ar by alef-ar hamzabelow-ar;\n  sub beh-ar by behDotless-ar dotbelow-ar;\n  sub teh-ar by behDotless-ar twodotsabove-ar;\n  sub theh-ar by behDotless-ar threedotsabove-ar;\n  sub jeem-ar by hah-ar dotbelow-ar;\n  sub khah-ar by hah-ar dotabove-ar;\n  ...\n} ccmp;\n",
+        "done": "true",
+        "popularity": "common",
+        "popularity_ix": 4
+    },
     "blwm": {
         "title": "Below-base Mark Positioning",
         "registered": "Microsoft",
         "group": "Common",
-        "description": "This feature allows for mark positioning, similar to the `mark` feature; it was intended for positioning marks which are placed below a base consonant in a syllabic script, but while the OpenType Specification describes this feature as being used for Indic scripts, Harfbuzz applies the `blwm` feature as part of common feature processing for all scripts.\n\nThe only distinction between this feature and the `mark` feature is a subtle one: in `blwm` processing, any ZWJ characters are skipped when matching input and any ZWNJ characters are skipped when matching context, whereas in `mark` processing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice of `blwm` versus `mark` is a matter of notational convenience for the engineer.\n\nSee also `abvm`.\n",
+        "description": "This feature allows for mark positioning, similar to the `mark` feature; it\nwas intended for positioning marks which are placed below a base consonant in\na syllabic script, but while the OpenType Specification describes this feature\nas being used for Indic scripts, Harfbuzz applies the `blwm` feature as\npart of common feature processing for all scripts.\n\n\nThe only distinction between this feature and the `mark` feature is a subtle\none: in `blwm` processing, any ZWJ characters are skipped when matching input\nand any ZWNJ characters are skipped when matching context, whereas in `mark`\nprocessing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice\nof `blwm` versus `mark` is a matter of notational convenience for the engineer.\n\n\nSee also `abvm`.\n",
         "state": "required",
         "automatic": "true",
         "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "calt": {
+        "title": "Contextual Alternates",
+        "registered": "Adobe",
+        "state": "default",
+        "group": "Typographic",
+        "description": "This feature is used to substitute glyphs with alternate forms, generally on\na contextual basis. For example, a script font may wish to use joining forms\nof the letter `o` when followed by another letter starting at the x-height.\n\n\nThis feature is processed as part of the standard typographic presentation group;\nin the Indic and Arabic complex shapers, it is processed as part of the language\nform group.\n",
+        "fea": "feature calt {\n  sub T' @letter by T.wide;\n  sub o' space by o.swash;\n  sub o' [i k m n o] by o.join;\n  sub [f o t v w] s' by s.noinstroke;\n} calt;\n",
+        "example": {
+            "font": "Kristi",
+            "text": "Two hoots!"
+        },
+        "done": "true",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Contextual Alternates -> Contextual Alternates.\" In Adobe applications, this feature is accessed via \"Contextual Alternates\" in the OpenType panel.\n",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -183,7 +211,7 @@ window.featuredb={
         "state": "discretionary",
         "description": "Substitutes capital characters for petite capitals. See the `pcap` feature for a description of petite capitals. See also `c2sc`.\n",
         "fea": "feature c2pc {\n  sub A by A.pc;\n  sub B by B.pc;\n  # ...\n} c2pc;\n",
-        "ui": "In the OS X typography panel, this feature is accessed via \"Uppercase -> Petite Capitals.\"\n\nIn CSS, this feature can be set with `font-variant-caps: all-petite-caps;` (although this also turns on `pcap`.)\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Uppercase ->\nPetite Capitals.\"\n\n\nIn CSS, this feature can be set with `font-variant-caps: all-petite-caps;`\n(although this also turns on `pcap`.)\n",
         "example": {
             "font": "EB Garamond",
             "text": "NASA and the FBI"
@@ -196,7 +224,7 @@ window.featuredb={
         "title": "Above-base Mark Positioning",
         "registered": "Microsoft",
         "group": "Common",
-        "description": "This feature allows for mark positioning, similar to the `mark` feature; it was intended for positioning marks which are placed over a base consonant in a syllabic script, but while the OpenType Specification describes this feature as being used for Indic scripts, Harfbuzz applies the `abvm` feature as part of common feature processing for all scripts.\n\nThe only distinction between this feature and the `mark` feature is a subtle one: in `abvm` processing, any ZWJ characters are skipped when matching input and any ZWNJ characters are skipped when matching context, whereas in `mark` processing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice of `abvm` versus `mark` is a matter of notational convenience for the engineer.\n\nSee also `blwm`.\n",
+        "description": "This feature allows for mark positioning, similar to the `mark` feature; it\nwas intended for positioning marks which are placed over a base consonant in\na syllabic script, but while the OpenType Specification describes this feature\nas being used for Indic scripts, Harfbuzz applies the `abvm` feature as\npart of common feature processing for all scripts.\n\n\nThe only distinction between this feature and the `mark` feature is a subtle\none: in `abvm` processing, any ZWJ characters are skipped when matching input\nand any ZWNJ characters are skipped when matching context, whereas in `mark`\nprocessing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice\nof `abvm` versus `mark` is a matter of notational convenience for the engineer.\n\n\nSee also `blwm`.\n",
         "automatic": "true",
         "done": "true",
         "state": "required",
@@ -206,5 +234,36 @@ window.featuredb={
         },
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "cfar": {
+        "state": "required",
+        "script": {
+            "khmr": {
+                "order": "5"
+            }
+        },
+        "group": "Orthographic",
+        "title": "Conjunct Form After Ro",
+        "registered": "Microsoft",
+        "description": "This feature is only applied during orthographic unit shaping in the Khmer\ncomplex shaper. In Khmer, the conjunct form of the letter ro (after a\ncoeng) is reordered to the left of the base consonant and displayed as a\ndeep letterform which can interact with below-base glyphs. This feature\nwas intended as offering an opportunity to fix up below-base glyphs to\navoid clashing with the coeng ro.\n\n\nNo examples of the use of this feature have been found. Consider using\n`blws` instead.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
+    "case": {
+        "title": "Case-Sensitive Forms",
+        "state": "discretionary",
+        "group": "typographic",
+        "registered": "Adobe",
+        "description": "This features is intended to reposition glyphs (either by substitution or\npositioning), particularly punctuation glyphs, so that they are better\naligned within all-capital sequences or sequences of lining numerals.\nIt should also change oldstyle numerals to lining numerals.\n\n\nNote that while it was hoped that layout engines would automatically apply\nthis feature within all-capital sequences, this is not currently known to\nbe automatically applied, and must be applied manually by the typesetter.\n",
+        "done": "true",
+        "fea": "feature case {\n  sub [guillemotleft guillemotright hyphen] by [guillemotleft.cap guillemotright.cap hyphen.cap];\n} case;\n",
+        "example": {
+            "font": "Zilla Slab",
+            "text": "\u00abA-Za-z\u00bb"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Case-Sensitive Layout -> Capital Forms.\"\n",
+        "popularity": "normal",
+        "popularity_ix": 3
     }
 }
