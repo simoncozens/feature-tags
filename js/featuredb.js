@@ -139,6 +139,20 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "hlig": {
+        "title": "Historical Ligatures",
+        "registered": "Microsoft",
+        "state": "discretionary",
+        "description": "Substitutes ligature forms which are no longer commonly used, or which\ngive the text a \"historical\" feel: for example, the \"st\" ligature. See\nalso the `hist` feature.\n",
+        "fea": "feature hlig {\n  sub s t by s_t;\n} hlig;\n",
+        "example": {
+            "font": "EB Garamond",
+            "text": "a\u017f\u017fi\u017ft"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "ccmp": {
         "state": "required",
         "title": "Glyph Composition/Decomposition",
@@ -265,5 +279,15 @@ window.featuredb={
         "ui": "In the OS X typography panel, this feature is accessed via \"Case-Sensitive Layout -> Capital Forms.\"\n",
         "popularity": "normal",
         "popularity_ix": 3
+    },
+    "chws": {
+        "state": "discretionary",
+        "title": "Contextual Half-width Spacing",
+        "registered": "Adobe/W3C",
+        "description": "Layout engines which correctly support advanced typographic layout for CJK\n(see [JLREQ](https://www.w3.org/TR/jlreq/), [CLREQ](https://www.w3.org/TR/clreq),\n[KLREQ](https://www.w3.org/TR/klreq/)) will contain code to adjust the spacing\nof glyphs in certain circumstances. For example, punctuation sequences such as\n`\u3002\u300d` should be set with the full-stop taking up a half-em width instead of\na full em.\n\nThis feature is intended to improve the appearance of text set with software\nwhich does *not* implement these spacing adjustments, by moving the spacing\nlogic into the font.\n\nThis feature is relatively new as of 2021, and no implementations have been\nidentified.\n",
+        "fea": "feature chws {\n  pos [comma-han period-han] -500 @closing_bracket;\n  pos @closing_bracket -500 [comma-han period_han];\n  pos [comma-han period-han @closing_bracket] 500 @opening_bracket;\n  pos @opening_bracket <500 0 0 0> @opening_bracket;\n  pos @closing_bracket @closing_bracket <-500 0 0 0>;\n} chws;\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
     }
 }
