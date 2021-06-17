@@ -1,7 +1,7 @@
 title: Above-base Mark Positioning
 registered: Microsoft
 group: Common
-description: >
+description: |
   This feature allows for mark positioning, similar to the `mark` feature; it
   was intended for positioning marks which are placed over a base consonant in
   a syllabic script, but while the OpenType Specification describes this feature

@@ -11,7 +11,7 @@ fea: >
     sub B by B.sc;
     # ...
   } c2sc;
-ui: >
+ui: |
   In the OS X typography panel, this feature is accessed via "Uppercase ->
   Small Capitals." In Adobe applications, this feature is accessed via "All
   Small Caps" in the OpenType panel (although this also turns on `smcp`).

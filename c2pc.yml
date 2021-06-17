@@ -10,7 +10,7 @@ fea: >
     sub B by B.pc;
     # ...
   } c2pc;
-ui: >
+ui: |
   In the OS X typography panel, this feature is accessed via "Uppercase ->
   Petite Capitals."
 

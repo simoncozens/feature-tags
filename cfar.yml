@@ -1,0 +1,19 @@
+state: required
+script:
+  khmr:
+    order: 5
+group: Orthographic
+title: Conjunct Form After Ro
+registered: Microsoft
+description: |
+  This feature is only applied during orthographic unit shaping in the Khmer
+  complex shaper. In Khmer, the conjunct form of the letter ro (after a
+  coeng) is reordered to the left of the base consonant and displayed as a
+  deep letterform which can interact with below-base glyphs. This feature
+  was intended as offering an opportunity to fix up below-base glyphs to
+  avoid clashing with the coeng ro.
+
+
+  No examples of the use of this feature have been found. Consider using
+  `blws` instead.
+done: true

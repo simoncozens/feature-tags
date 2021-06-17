@@ -10,10 +10,11 @@ script:
     order: 0
   mym2:
     order: 3
-description: >
+description: |
   Replaces below-base forms with special forms. This feature is applied by
   Indic, Khmer, Myanmar and USE complex shapers as part of the orthographic unit
   shaping phase. The context of application is restricted to a syllabic cluster.
+
 
   This is intended to be used for halant conjuncts, where consonant-virama-consonant
   sequences cause the second consonant to be displayed below the first.

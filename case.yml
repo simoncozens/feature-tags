@@ -1,0 +1,25 @@
+title: Case-Sensitive Forms
+state: discretionary
+group: typographic
+registered: Adobe
+description: |
+  This features is intended to reposition glyphs (either by substitution or
+  positioning), particularly punctuation glyphs, so that they are better
+  aligned within all-capital sequences or sequences of lining numerals.
+  It should also change oldstyle numerals to lining numerals.
+
+
+  Note that while it was hoped that layout engines would automatically apply
+  this feature within all-capital sequences, this is not currently known to
+  be automatically applied, and must be applied manually by the typesetter.
+done: true
+fea: >
+  feature case {
+    sub [guillemotleft guillemotright hyphen] by [guillemotleft.cap guillemotright.cap hyphen.cap];
+  } case;
+example:
+  font: Zilla Slab
+  text: «A-Za-z»
+ui: >
+  In the OS X typography panel, this feature is accessed via "Case-Sensitive
+  Layout -> Capital Forms."

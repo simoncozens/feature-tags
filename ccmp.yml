@@ -1,0 +1,37 @@
+state: required
+title: Glyph Composition/Decomposition
+registered: Microsoft
+group: Common
+order: 0
+description: |
+  After OpenType normalization but before the processing of other features,
+  it may be useful to decompose single glyphs into sequences, or combine
+  sequences into a single glyph. For example:
+
+
+  * In Arabic fonts, treating the rasm letters and the nukta dots separately
+  allows for more flexible positioning and reduces the number of glyphs which
+  need to be drawn. Using rules such as `sub beh-ar by behDotless-ar dotbelow;`
+  in the `ccmp` feature decomposes the dots into separate glyphs.
+
+  * The i acute character (í, U+00ED) is normalized to U+0069 U+0301 (i acutecomb).
+  However, as the acute replaces the tittle on the `i`, it is useful to substitute
+  this for a dotless form: `sub i' acutecomb by idotless;`.
+
+  * Conversely, multiple glyphs may be combined into one. In Tibetan, stacked
+  letters such as གྷ (U+0F43) have their own Unicode codepoints, but can
+  alternatively be encoded in documents using the decomposed form U+0F42 (ག)
+  ◌ྷ (U+0FB7). These two encodings can be unified in the font with a rule such
+  as `sub uni0F42 uni0FB7 by uni0F43;`.
+fea: >
+  feature ccmp {
+    sub alefHamzaabove-ar by alef-ar hamzaabove-ar;
+    sub alefHamzabelow-ar by alef-ar hamzabelow-ar;
+    sub beh-ar by behDotless-ar dotbelow-ar;
+    sub teh-ar by behDotless-ar twodotsabove-ar;
+    sub theh-ar by behDotless-ar threedotsabove-ar;
+    sub jeem-ar by hah-ar dotbelow-ar;
+    sub khah-ar by hah-ar dotabove-ar;
+    ...
+  } ccmp;
+done: true

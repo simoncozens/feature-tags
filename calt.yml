@@ -2,10 +2,11 @@ title: Contextual Alternates
 registered: Adobe
 state: default
 group: Typographic
-description: >
+description: |
   This feature is used to substitute glyphs with alternate forms, generally on
   a contextual basis. For example, a script font may wish to use joining forms
   of the letter `o` when followed by another letter starting at the x-height.
+
 
   This feature is processed as part of the standard typographic presentation group;
   in the Indic and Arabic complex shapers, it is processed as part of the language
@@ -20,3 +21,8 @@ fea: >
 example:
   font: Kristi
   text: Two hoots!
+done: true
+ui: >
+  In the OS X typography panel, this feature is accessed via "Contextual
+  Alternates -> Contextual Alternates." In Adobe applications, this feature is
+  accessed via "Contextual Alternates" in the OpenType panel.

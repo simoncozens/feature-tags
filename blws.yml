@@ -10,7 +10,7 @@ script:
     order: 0
   mym2:
     order: 0
-description: >
+description: |
     This feature is intended for substituting base glyphs and below marks
     with ligature forms, but may be used for any standard typographic
     substitutions; engineers may wish to restrict its use to substitutions
@@ -22,13 +22,12 @@ description: >
     presentation phase for Indic scripts, Khmer, Myanmar, and scripts using the
     Universal Shaping Engine. It is applied with a per-syllable context for
     Indic scripts, but applied across the whole run in other scripts.
-fea: >
+fea: |
   feature blws {
       sub dvRA dvmU  by dvRA_mU;
       sub dvRA dvmUU by dvRA_mUU;
       sub dvHA dvmU  by dvHA_mU;
       sub dvHA dvmUU by dvHA_mUU;
-
       sub dvDA  dvmvR by dvDA_mvR;
       sub dvSHA dvmvR by dvSHA_mvR;
       sub dvHA  dvmvR by dvHA_mvR;

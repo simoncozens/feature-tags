@@ -8,7 +8,7 @@ script:
     order: 3
   USE:
     order: 0
-description: >
+description: |
   Replaces above-base forms with special forms. This feature is applied by
   Indic, Khmer and USE complex shapers as part of the orthographic unit
   shaping phase. The context of application is restricted to a syllabic cluster.
