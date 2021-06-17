@@ -1,11 +1,19 @@
 import glob
 import json
 import yaml
+import requests
+from fontTools.ttLib import TTFont
+from fontTools.subset import Subsetter,Options
+from io import BytesIO
+
 
 
 popularity = json.load(open("popularity.json"))
+font_db = json.load(open("fonts.json"))["items"]
+font_db = {g["family"]: g for g in font_db}
 
 features = {}
+examples = {}
 
 
 def feature_popularity(tag):
@@ -29,5 +37,32 @@ for file in glob.glob("*.yml"):
 	tag = file[:-4]
 	this_feature["popularity"], this_feature["popularity_ix"] = feature_popularity(tag)
 	features[tag] = this_feature
+	if "example" in this_feature:
+		ex = this_feature["example"]
+		if ex["font"] not in examples:
+			examples[ex["font"]] = ""
+		examples[ex["font"]] += ex["text"]
 
-print("window.featuredb="+json.dumps(features, indent=4))
+with open("featuredb.js", "w") as f:
+	f.write(("window.featuredb="+json.dumps(features, indent=4)))
+
+with open("css/fonts.css", "w") as f:
+	for font, text in examples.items():
+		f.write("""
+			    @font-face {
+		        font-family: "%s";
+		        src: url(fonts/%s.ttf);
+		    }
+		 """ % (font,font))
+		if font not in font_db:
+			print("Couldn't get %s" % font)
+			continue
+		reg = font_db[font]["files"].get("regular")
+		if not reg:
+			reg = list(font_db["font"]["files"].values())[0]
+		fontdata = requests.get(reg)
+		ttfont = TTFont(BytesIO(fontdata.content))
+		ss = Subsetter(Options(layout_scripts=["*"], layout_features=["*"]))
+		ss.populate(text=text)
+		ss.subset(ttfont)
+		ttfont.save("css/fonts/%s.ttf" % font)
