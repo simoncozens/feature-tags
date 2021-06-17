@@ -1,0 +1,25 @@
+title: Below-base Forms
+registered: Microsoft
+group: Orthographic
+script:
+  INDIC:
+    order: 4
+  khmr:
+    order: 2
+  USE:
+    order: 0
+  mym2:
+    order: 3
+description: >
+  Replaces below-base forms with special forms. This feature is applied by
+  Indic, Khmer, Myanmar and USE complex shapers as part of the orthographic unit
+  shaping phase. The context of application is restricted to a syllabic cluster.
+
+  This is intended to be used for halant conjuncts, where consonant-virama-consonant
+  sequences cause the second consonant to be displayed below the first.
+fea: >
+  feature blwf {
+    sub virama-myanmar @consonant by @conjunct_consonant;
+  } blwf;
+state: required
+done: true

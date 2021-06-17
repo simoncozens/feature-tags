@@ -20,3 +20,6 @@ description: >
 automatic: true
 done: true
 state: required
+example:
+  font: Hind Regular
+  text: कंसं

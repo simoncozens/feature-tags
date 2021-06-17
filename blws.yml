@@ -1,4 +1,4 @@
-title: Above-base Substitutions
+title: Below-base Substitutions
 registered: Microsoft
 group: Typographic
 script:
@@ -11,11 +11,11 @@ script:
   mym2:
     order: 0
 description: >
-    This feature is intended for substituting base glyphs and above marks
+    This feature is intended for substituting base glyphs and below marks
     with ligature forms, but may be used for any standard typographic
     substitutions; engineers may wish to restrict its use to substitutions
-    concerning above-base marks for organisational purposes. As a typographic
-    substitution, it will be applied after the `abvf` feature.
+    concerning below-base marks for organisational purposes. As a typographic
+    substitution, it will be applied after the `blwf` feature.
 
 
     This feature is applied by the shaper as part of the standard typographic
@@ -23,14 +23,15 @@ description: >
     Universal Shaping Engine. It is applied with a per-syllable context for
     Indic scripts, but applied across the whole run in other scripts.
 fea: >
-  feature abvs {
-    sub eCandraMatra-gujarati candraBindu-gujarati by eCandraMatraCandraBindu-gujarati;
-    sub eMatra-gujarati candraBindu-gujarati by eMatraCandraBindu-gujarati;
-    sub aiMatra-gujarati candraBindu-gujarati by aiMatraCandraBindu-gujarati;
-    # ...
-  } abvs;
+  feature blws {
+      sub dvRA dvmU  by dvRA_mU;
+      sub dvRA dvmUU by dvRA_mUU;
+      sub dvHA dvmU  by dvHA_mU;
+      sub dvHA dvmUU by dvHA_mUU;
+
+      sub dvDA  dvmvR by dvDA_mvR;
+      sub dvSHA dvmvR by dvSHA_mvR;
+      sub dvHA  dvmvR by dvHA_mvR;
+  } blws;
 done: true
 state: required
-example:
-  font: Hind Regular
-  text: रृ

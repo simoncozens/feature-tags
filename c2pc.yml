@@ -1,0 +1,22 @@
+title: Petite Capitals From Capitals
+registered: Tiro Typeworks / Emigre
+state: discretionary
+description: >
+  Substitutes capital characters for petite capitals. See the `pcap` feature
+  for a description of petite capitals.
+fea: >
+  feature c2pc {
+    sub A by A.pc;
+    sub B by B.pc;
+    # ...
+  } c2pc;
+ui: >
+  In the OS X typography panel, this feature is accessed via "Uppercase ->
+  Petite Capitals."
+
+  In CSS, this feature can be set with `font-variant-caps: all-petite-caps;`
+  (although this also turns on `pcap`.)
+example:
+  font: EB Garamond
+  text: NASA and the FBI
+done: true

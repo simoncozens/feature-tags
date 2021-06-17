@@ -13,3 +13,6 @@ ui: >
   In the OS X typography panel, this feature is accessed via "Contextual
   Fractional Forms -> Vertical."
 done: true
+example:
+  font: Recursive
+  text: 1/2

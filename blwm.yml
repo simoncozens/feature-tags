@@ -16,7 +16,7 @@ description: >
   of `blwm` versus `mark` is a matter of notational convenience for the engineer.
 
 
-  See also `blwm`.
+  See also `abvm`.
 state: required
 automatic: true
 done: true

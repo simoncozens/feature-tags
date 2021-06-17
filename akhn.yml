@@ -1,0 +1,27 @@
+group: Preprocessing
+script:
+  INDIC:
+    order: 2
+  USE:
+    order: 0
+title: Akhand
+registered: Microsoft
+state: required
+description: >
+  This feature is intended to process ligatures of base characters in Indic
+  scripts and scripts using the Universal Shaping Engine. It was designed for
+  the processing of "Akhand" (unbreakable) character sequences in Devanagari,
+  but may also be used for any substitutions which need to be applied early in
+  the shaping process.
+fea: >
+  feature akhn {
+    sub ka-deva halant-deva ssa-deva by kssa-deva;
+    sub ja-deva halant-deva nya-deva by jnya-deva;
+
+    sub ra-deva' halant-deva' zerowidthjoiner by eyelash-deva;
+  } akhn;
+done: true
+example:
+  font: Hind Regular
+  text: क्ष
+
