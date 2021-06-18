@@ -60,6 +60,8 @@ with open("css2/fonts.css", "w") as f:
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosanskhmer/NotoSansKhmer%5Bwdth%2Cwght%5D.ttf"
 		elif font == "Noto Sans Devanagari":
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/NotoSansDevanagari-Regular.ttf"
+		elif font == "Allura":
+			reg = "https://github.com/google/fonts/raw/main/ofl/allura/Allura-Regular.ttf"
 		elif font not in font_db:
 			print("Couldn't get %s" % font)
 			continue
