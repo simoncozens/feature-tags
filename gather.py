@@ -58,6 +58,8 @@ with open("css/fonts.css", "w") as f:
 			reg = "https://github.com/google/fonts/raw/main/ofl/recursive/Recursive%5BCASL%2CCRSV%2CMONO%2Cslnt%2Cwght%5D.ttf"
 		elif font == "Noto Sans Khmer":
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosanskhmer/NotoSansKhmer%5Bwdth%2Cwght%5D.ttf"
+		elif font == "Noto Sans Devanagari":
+			reg = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/NotoSansDevanagari-Regular.ttf"
 		elif font not in font_db:
 			print("Couldn't get %s" % font)
 			continue
