@@ -1,4 +1,19 @@
 window.featuredb={
+    "cswh": {
+        "title": "Contextual Swash",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "description": "This feature is similar to the `swsh` (Swash) feature, but is intended to be\nused for contextual (conditional) swash substitutions. For example, while\nAdobe Garamond Pro Italic uses the `swsh` feature to substitute *all*\ncapitals for swash forms, it uses the `cswh` feature to conditionally change\nonly capitals preceding a lowercase into swash forms.\n",
+        "fea": "feature cswh {\n  sub @capitals' @lowercase by @capitals.swsh;\n} cswh;\n",
+        "example": {
+            "font": "Work Sans",
+            "text": "WOWSERS!"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Contextual Alternates > Contextual Swash Alternates\".",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "akhn": {
         "group": "Preprocessing",
         "script": {
@@ -59,6 +74,21 @@ window.featuredb={
         "description": "Substitutes capital characters for small capitals. Small capitals are often used to set acronyms.\n",
         "fea": "feature c2sc {\n  sub A by A.sc;\n  sub B by B.sc;\n  # ...\n} c2sc;\n",
         "ui": "In the OS X typography panel, this feature is accessed via \"Uppercase ->\nSmall Capitals.\" In Adobe applications, this feature is accessed via \"All\nSmall Caps\" in the OpenType panel (although this also turns on `smcp`).\n\n\nIn CSS, this feature can be set with `font-variant-caps: all-small-caps;`\n(although this also turns on `smcp`).\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "cpsp": {
+        "title": "Capital Spacing",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "description": "This feature inserts a small around of space (order of 5-10 units for a typical\nfont) around capital letters to improve the setting of all-capital runs.\n",
+        "example": {
+            "font": "Grenze",
+            "text": "AAWW"
+        },
+        "fea": "feature cpsp {\n  pos @capitals <5 0 10 0>;\n} cpsp;\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Case-Sensitive\nLayout > Capital Spacing\".\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -192,6 +222,19 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "cpct": {
+        "title": "Centered CJK Punctuation",
+        "description": "This feature is intended to center punctuation (typically the ideographic\ncomma \u3001 and ideographic full stop \u3002) in Chinese fonts. Where presented, it\nis often implemented as GPOS lookup 1 positioning rules to place these\nglyphs within the center of the em square.\n",
+        "example": {
+            "text": "\u6211\u3001\u4f60",
+            "font": "Kaiti"
+        },
+        "registered": "Adobe",
+        "done": "true",
+        "fea": "feature cpct {\n   pos comma-han <328 350 0 0>;\n   pos period-han <359 350 0 0>;\n} cpct;\n",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "aalt": {
         "title": "Access All Alternates",
         "registered": "Adobe",
@@ -203,6 +246,22 @@ window.featuredb={
         "ui": "In the OS X typography panel, this feature is accessed via \"Glyph Variants\".\n",
         "popularity": "common",
         "popularity_ix": 4
+    },
+    "clig": {
+        "title": "Contextual Ligatures",
+        "registered": "Adobe",
+        "group": "typographic",
+        "state": "default",
+        "script": {
+            "khmr": {
+                "order": "5"
+            }
+        },
+        "done": "true",
+        "description": "This feature has two distinct uses.\n\n\nIt was originally intended for ligature forms which are contextual in nature,\nfor example, for Latin script fonts, and typically made up of GSUB lookup 8 rules.\nHowever, these rules may also be placed in other discretionary ligature\nfeatures, such as `rlig` or `liga`, and these should be used instead. As such\nthis use is relatively rare.\n\n\nSeparately, in the Khmer complex shaper, this is a mandatory feature used\nfor \"ligatures that are desired for typographical correctness\". It is\ntherefore used widely in Khmer fonts for general typographic shaping.\n",
+        "fea": "feature clig {\n  sub kho-khmer.conjunct aaSign-khmer by kho-khmer.conjunct.aa;\n  sub kho-khmer.conjunct auSign-khmer by kho-khmer.conjunct.au;\n  # ...\n  sub nyo-khmer' @conjuncts by nyo-khmer.alt;\n  sub nyo-khmer.alt nyo-khmer.conjunct' by nyo-khmer.conjunct.alt;\n  # ...\n}\n",
+        "popularity": "rare",
+        "popularity_ix": 2
     },
     "afrc": {
         "title": "Alternative Fractions",
@@ -263,6 +322,29 @@ window.featuredb={
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
+    },
+    "cjct": {
+        "title": "Conjunct Forms",
+        "script": {
+            "INDIC": {
+                "order": "9"
+            },
+            "USE": {
+                "order": "7"
+            }
+        },
+        "group": "Orthographic",
+        "registered": "Microsoft",
+        "required": "true",
+        "description": "This feature is applied to Indic scripts and scripts using the Universal\nShaping Engine as the final feature in the orthographic unit shaping phase,\nbefore final reordering. It was intended for use in creating consonant\nconjunct groups. (Consonant + Virama + Consonant.)\n\n\nThe difference between this feature and `blwf` is that the `blwf` feature\nis intended for substituting the \"tail\" (virama + consonant) for a below-base\nform, while this feature is intended for substituting the entire sequence\nwith a ligature.\n",
+        "fea": "feature cjct {\n    # Actual implementation will depend on conjunct glyphs provided in your font.\n    sub nga-deva virama-deva ga-deva by ngga-deva;\n    sub nga-deva virama-deva ma-deva by ngma-deva;\n    sub nga-deva virama-deva ya-deva by ngya-deva;\n    sub tta-deva virama-deva tta-deva by tttta-deva;\n    sub tta-deva virama-deva ya-deva by ttya-deva;\n    # ...\n} cjct;\n",
+        "done": "true",
+        "example": {
+            "font": "Noto Sans Devanagari",
+            "text": "\u0919\u094d\u092e"
+        },
+        "popularity": "rare",
+        "popularity_ix": 2
     },
     "case": {
         "title": "Case-Sensitive Forms",

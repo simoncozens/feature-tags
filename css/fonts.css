@@ -1,29 +1,51 @@
-@font-face {
-	font-family: "Hind";
-	src: url(fonts/Hind.ttf);
-}
 
-@font-face {
-	font-family: "Noto Sans Khmer";
-	src: url("fonts/Noto Sans Khmer.ttf");
-}
-
-@font-face {
-	font-family: "EB Garamond";
-	src: url("fonts/EB Garamond.ttf");
-}
-
-@font-face {
-	font-family: "Kristi";
-	src: url(fonts/Kristi.ttf);
-}
-
-@font-face {
-	font-family: "Recursive";
-	src: url(fonts/Recursive.ttf);
-}
-
-@font-face {
-	font-family: "Zilla Slab";
-	src: url("fonts/Zilla Slab.ttf");
-}
+			    @font-face {
+		        font-family: "Work Sans";
+		        src: url("fonts/Work Sans.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Hind";
+		        src: url("fonts/Hind.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Grenze";
+		        src: url("fonts/Grenze.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Noto Sans Khmer";
+		        src: url("fonts/Noto Sans Khmer.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "EB Garamond";
+		        src: url("fonts/EB Garamond.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Kristi";
+		        src: url("fonts/Kristi.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Kaiti";
+		        src: url("fonts/Kaiti.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Recursive";
+		        src: url("fonts/Recursive.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Noto Sans Devanagari";
+		        src: url("fonts/Noto Sans Devanagari.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Zilla Slab";
+		        src: url("fonts/Zilla Slab.ttf");
+		    }
+		 
