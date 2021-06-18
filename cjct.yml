@@ -1,0 +1,34 @@
+title: Conjunct Forms
+script:
+  INDIC:
+    order: 9
+  USE:
+    order: 7
+group: Orthographic
+registered: Microsoft
+required: true
+description: |
+    This feature is applied to Indic scripts and scripts using the Universal
+    Shaping Engine as the final feature in the orthographic unit shaping phase,
+    before final reordering. It was intended for use in creating consonant
+    conjunct groups. (Consonant + Virama + Consonant.)
+
+
+    The difference between this feature and `blwf` is that the `blwf` feature
+    is intended for substituting the "tail" (virama + consonant) for a below-base
+    form, while this feature is intended for substituting the entire sequence
+    with a ligature.
+fea: |
+    feature cjct {
+        # Actual implementation will depend on conjunct glyphs provided in your font.
+        sub nga-deva virama-deva ga-deva by ngga-deva;
+        sub nga-deva virama-deva ma-deva by ngma-deva;
+        sub nga-deva virama-deva ya-deva by ngya-deva;
+        sub tta-deva virama-deva tta-deva by tttta-deva;
+        sub tta-deva virama-deva ya-deva by ttya-deva;
+        # ...
+    } cjct;
+done: true
+example:
+  font: Noto Sans Devanagari
+  text: ङ्म

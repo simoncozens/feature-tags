@@ -1,0 +1,31 @@
+title: Contextual Ligatures
+registered: Adobe
+group: typographic
+state: default
+script:
+  khmr:
+    order: 5
+done: true
+description: |
+    This feature has two distinct uses.
+
+
+    It was originally intended for ligature forms which are contextual in nature,
+    for example, for Latin script fonts, and typically made up of GSUB lookup 8 rules.
+    However, these rules may also be placed in other discretionary ligature
+    features, such as `rlig` or `liga`, and these should be used instead. As such
+    this use is relatively rare.
+
+
+    Separately, in the Khmer complex shaper, this is a mandatory feature used
+    for "ligatures that are desired for typographical correctness". It is
+    therefore used widely in Khmer fonts for general typographic shaping.
+fea: |
+    feature clig {
+      sub kho-khmer.conjunct aaSign-khmer by kho-khmer.conjunct.aa;
+      sub kho-khmer.conjunct auSign-khmer by kho-khmer.conjunct.au;
+      # ...
+      sub nyo-khmer' @conjuncts by nyo-khmer.alt;
+      sub nyo-khmer.alt nyo-khmer.conjunct' by nyo-khmer.conjunct.alt;
+      # ...
+    }

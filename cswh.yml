@@ -1,0 +1,20 @@
+title: Contextual Swash
+registered: Adobe
+state: discretionary
+description: |
+  This feature is similar to the `swsh` (Swash) feature, but is intended to be
+  used for contextual (conditional) swash substitutions. For example, while
+  Adobe Garamond Pro Italic uses the `swsh` feature to substitute *all*
+  capitals for swash forms, it uses the `cswh` feature to conditionally change
+  only capitals preceding a lowercase into swash forms.
+fea: |
+  feature cswh {
+    sub @capitals' @lowercase by @capitals.swsh;
+  } cswh;
+example:
+  font: Work Sans
+  text: WOWSERS!
+ui:
+  In the OS X typography panel, this feature is accessed via "Contextual
+  Alternates > Contextual Swash Alternates".
+done: true

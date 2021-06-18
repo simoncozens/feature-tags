@@ -1,0 +1,17 @@
+title: Capital Spacing
+registered: Adobe
+state: discretionary
+description: |
+  This feature inserts a small around of space (order of 5-10 units for a typical
+  font) around capital letters to improve the setting of all-capital runs.
+example:
+  font: Grenze
+  text: AAWW
+fea: |
+  feature cpsp {
+    pos @capitals <5 0 10 0>;
+  } cpsp;
+ui: |
+  In the OS X typography panel, this feature is accessed via "Case-Sensitive
+  Layout > Capital Spacing".
+done: true

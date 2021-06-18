@@ -1,0 +1,16 @@
+title: Centered CJK Punctuation
+description: |
+  This feature is intended to center punctuation (typically the ideographic
+  comma 、 and ideographic full stop 。) in Chinese fonts. Where presented, it
+  is often implemented as GPOS lookup 1 positioning rules to place these
+  glyphs within the center of the em square.
+example:
+  text: 我、你
+  font: Kaiti
+registered: Adobe
+done: true
+fea: |
+  feature cpct {
+     pos comma-han <328 350 0 0>;
+     pos period-han <359 350 0 0>;
+  } cpct;
