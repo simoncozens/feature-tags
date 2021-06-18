@@ -2,6 +2,10 @@ Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
 	return arg1 == arg2 ? options.fn(this) : options.inverse(this);
 });
 
+Handlebars.registerHelper("ifIncludes", function (arg1, arg2, options) {
+	return arg1.includes(arg2) ? options.fn(this) : options.inverse(this);
+});
+
 var featureTemplate = Handlebars.compile(`
 	<div class="feature">
 		<a name="{{tag}}"><h2> {{tag}}: {{feature.title}} </h2></a>
@@ -48,24 +52,42 @@ var featureTemplate = Handlebars.compile(`
 			</div>
 		{{/if}}
 
+		{{#ifEquals feature.registered "Microsoft"}}
+		<div class="tooltip" data-text="This feature was registered by Microsoft.">
+			<span class="material-icons-outlined microsoft">window</span>
+			</div>
+		{{/ifEquals}}
+
+		{{#ifEquals feature.registered "Adobe"}}
+		<div class="tooltip" data-text="This feature was registered by Adobe.">
+			<span class="adobe">A</span>
+		</div>
+		{{/ifEquals}}
+
+		{{#ifIncludes feature.registered "Tiro"}}
+		<div class="tooltip" data-text="This feature was registered by Tiro Typeworks.">
+			<span class="tiro">T</span>
+		</div>
+		{{/ifIncludes}}
 		{{{ feature.html_description }}}
 
 		{{#if feature.example}}
-		<h4>Example</h4>
-
+		<details open>
+				<summary>Example</summary>
 	  <div class="row">
-	  <div class="six columns">
+	  <div class="five columns">
 	  	Off:
 			<span class="example-off" style="font-family: '{{feature.example.font}}'; font-feature-settings: '{{tag}}' 0;">
 				{{feature.example.text}}
 			</span>
 		</div>
 
-	  <div class="six columns">
+	  <div class="five columns">
 	  	On:
 			<span class="example-on" style="font-family: '{{feature.example.font}}'; font-feature-settings: '{{tag}}' 1;">
 				{{feature.example.text}}
 			</span>
+		</div>
 		</div>
 
 		{{#ifEquals feature.state "required"}}
@@ -75,28 +97,32 @@ var featureTemplate = Handlebars.compile(`
 			Try viewing this example in Firefox or Chrome instead.</div>
 		{{/if}}
 		{{/ifEquals}}
-		</div>
 
+		</details>
 
 		{{/if}}
 
 		{{#if feature.fea}}
-			<details>
+			<details open>
 				<summary>Example Feature Code Implementation</summary>
 				<pre><code class="language-fea">{{feature.fea}}</code></pre>
 			</details>
 		{{/if}}
 
 		{{#if feature.ui}}
-			<details>
+			<details open>
 			<summary>User-Interface expectations</summary>
 			<div class="ui">
-				{{feature.ui}}
+				{{{feature.html_ui}}}
 			</div>
 			</details>
 		{{/if}}
 
-
+		<dl>
+			{{#if feature.group}}
+			<dt>Group:</dt><dd>{{feature.group}}</dd>
+			{{/if}}
+		</dl>
 
 	</div>
 `);
@@ -123,6 +149,10 @@ function renderAll() {
 
 		if (!feat.html_description) {
 			feat.html_description = marked(feat.description);
+		}
+
+		if (!feat.html_ui && feat.ui) {
+			feat.html_ui = marked(feat.ui);
 		}
 
 		if (!feat.html_scripts) {

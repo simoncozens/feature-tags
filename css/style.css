@@ -6,11 +6,12 @@
 }
 
 p,
-details,
-ul {
+details {
 	font-size: 1.2em;
 }
-
+.ui p {
+	font-size: 1em;
+}
 .example-off,
 .example-on {
 	font-size: 40px;
@@ -97,4 +98,36 @@ details div {
 
 .representative-glyph {
 	font-size: 2em;
+}
+
+.adobe {
+	content: url("adobe.svg");
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.microsoft {
+	content: url("microsoft.svg");
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+.tiro {
+	content: url("tiro.svg");
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+}
+dl {
+	display: grid;
+	grid-template-columns: max-content auto;
+}
+
+dt {
+	grid-column-start: 1;
+}
+
+dd {
+	grid-column-start: 2;
 }
