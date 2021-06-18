@@ -25,6 +25,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Allura";
+		        src: url("fonts/Allura.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "EB Garamond";
 		        src: url("fonts/EB Garamond.ttf");
 		    }
