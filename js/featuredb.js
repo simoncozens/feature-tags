@@ -78,6 +78,22 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "cv01": {
+        "title": "Character Variant 1 \u2013 Character Variant 99",
+        "registered": "Microsoft",
+        "state": "discretionary",
+        "automatic": "true",
+        "description": "These features - ranging from `cv01` to `cv99` - allow for stylistic variations\nof individual characters.\n\nThey are similar to the Stylistic Set (`ss01`--`ss20`) features, but (as their)\nname implies, stylistic sets are intended to allow a *set* of glyphs to\nvary in a common way (for example, straightening the \"leg\" of glyphs such as\n`hnm`, or overlining `MCXLVI`  characters to form Roman numerals).\nCharacter variant features, on the other hand, do not imply any common\nvariations across a range of glyphs.\n\n\nWhen this feature is coded manually, character variant features may be given\nidentifying names to be displayed in the user interface. See the\n[Adobe feature file specification](http://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html#8.d)\nfor the format of these names.\n",
+        "example": {
+            "font": "Source Code Pro",
+            "text": "Java"
+        },
+        "fea": "feature cv01 {\n  cvParameters {\n      FeatUILabelNameID {\n          name 3 1 0x0409 \"single-storey a\";\n          name 1 0 0 \"single-storey a\";\n      };\n      Character 0x61;\n  }\n  sub a by a.cv01;\n} cv01;\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Glyph Variants\".\nIn CSS, this feature is accessed through the [`font-variant-alternates`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates) property.\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "cpsp": {
         "title": "Capital Spacing",
         "registered": "Adobe",
@@ -180,6 +196,22 @@ window.featuredb={
             "text": "a\u017f\u017fi\u017ft"
         },
         "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "curs": {
+        "automatic": "true",
+        "title": "Cursive Positioning",
+        "registered": "Microsoft",
+        "state": "default",
+        "group": "positioning",
+        "description": "This feature is used to position glyphs with cursive connections.\n\n\nCertain scripts, in particular Arabic, are \"connected\" scripts, where the\nstart of a character has its position adjusted relative to the end of the previous\ncharacter. In font editors, this is normally defined by setting \"exit\" and\n\"entry\" anchor points. These are then converted to GPOS 3 cursive positioning\nrules.\n\n\nWhile this feature is not mandatory for designers - some styles of Arabic\nare aligned along the baseline, and so glyphs do not need to be repositioned\n- it is applied by default if present, and is not specific to Arabic script.\nIt is not impossible, but exceptionally uncommon, to use this feature for\nconnected \"cursive\" Latin fonts, and is often unnecessary because of the\npresence of a fixed baseline in Latin.\n",
+        "example": {
+            "font": "Aref Ruqaa",
+            "text": "\u0633\u0645\u0631"
+        },
+        "done": "true",
+        "fea": "feature curs {\n  pos cursive uni066F.medi <anchor 606 35> <anchor 0 35>;\n  pos cursive uni0640 <anchor 250 35> <anchor 0 35>;\n  pos cursive uni06A1.medi <anchor 606 35> <anchor 0 35>;\n  # ...\n} curs;\n",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -335,7 +367,7 @@ window.featuredb={
         },
         "group": "Orthographic",
         "registered": "Microsoft",
-        "required": "true",
+        "state": "required",
         "description": "This feature is applied to Indic scripts and scripts using the Universal\nShaping Engine as the final feature in the orthographic unit shaping phase,\nbefore final reordering. It was intended for use in creating consonant\nconjunct groups. (Consonant + Virama + Consonant.)\n\n\nThe difference between this feature and `blwf` is that the `blwf` feature\nis intended for substituting the \"tail\" (virama + consonant) for a below-base\nform, while this feature is intended for substituting the entire sequence\nwith a ligature.\n",
         "fea": "feature cjct {\n    # Actual implementation will depend on conjunct glyphs provided in your font.\n    sub nga-deva virama-deva ga-deva by ngga-deva;\n    sub nga-deva virama-deva ma-deva by ngma-deva;\n    sub nga-deva virama-deva ya-deva by ngya-deva;\n    sub tta-deva virama-deva tta-deva by tttta-deva;\n    sub tta-deva virama-deva ya-deva by ttya-deva;\n    # ...\n} cjct;\n",
         "done": "true",
@@ -351,6 +383,7 @@ window.featuredb={
         "state": "discretionary",
         "group": "typographic",
         "registered": "Adobe",
+        "automatic": "true",
         "description": "This features is intended to reposition glyphs (either by substitution or\npositioning), particularly punctuation glyphs, so that they are better\naligned within all-capital sequences or sequences of lining numerals.\nIt should also change oldstyle numerals to lining numerals.\n\n\nNote that while it was hoped that layout engines would automatically apply\nthis feature within all-capital sequences, this is not currently known to\nbe automatically applied, and must be applied manually by the typesetter.\n",
         "done": "true",
         "fea": "feature case {\n  sub [guillemotleft guillemotright hyphen] by [guillemotleft.cap guillemotright.cap hyphen.cap];\n} case;\n",
