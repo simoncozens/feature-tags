@@ -185,6 +185,21 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "dlig": {
+        "title": "Discretionary Ligatures",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "description": "This feature is used for additional typographic ligatures which are selectable\nby the end-user.\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Ligatures -> Rare\nLigatures.\" (Not to be confused with the `rlig` feature, which is for required\nligatures...) In Adobe applications, this feature is\naccessed via \"Discretionary Ligatures\" in the OpenType panel.\n",
+        "fea": "sub dlig {\n  sub t h by t_h;\n  sub p p by p_p;\n} dlig;\n",
+        "example": {
+            "font": "Allura",
+            "text": "coppersmith"
+        },
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
     "hlig": {
         "title": "Historical Ligatures",
         "registered": "Microsoft",
@@ -309,6 +324,20 @@ window.featuredb={
         },
         "popularity": "extremely rare",
         "popularity_ix": 1
+    },
+    "dist": {
+        "title": "Distances",
+        "registered": "Microsoft",
+        "state": "required",
+        "group": "positioning",
+        "description": "This feature provides positional adjustments between glyphs. It is largely\nequivalent to the `kern` feature, but should be considered as \"required\"\nkerning in that no user interface is provided to disable it.",
+        "done": "true",
+        "example": {
+            "font": "Noto Sans Devanagari",
+            "text": "\u0926\u0957"
+        },
+        "popularity": "rare",
+        "popularity_ix": 2
     },
     "c2pc": {
         "title": "Petite Capitals From Capitals",
