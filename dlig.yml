@@ -1,0 +1,20 @@
+title: Discretionary Ligatures
+registered: Adobe
+state: discretionary
+description: |
+  This feature is used for additional typographic ligatures which are selectable
+  by the end-user.
+ui: |
+  In the OS X typography panel, this feature is accessed via "Ligatures -> Rare
+  Ligatures." (Not to be confused with the `rlig` feature, which is for required
+  ligatures...) In Adobe applications, this feature is
+  accessed via "Discretionary Ligatures" in the OpenType panel.
+fea: |
+  sub dlig {
+    sub t h by t_h;
+    sub p p by p_p;
+  } dlig;
+example:
+  font: Allura
+  text: coppersmith
+done: true

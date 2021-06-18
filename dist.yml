@@ -1,0 +1,12 @@
+title: Distances
+registered: Microsoft
+state: required
+group: positioning
+description: |-
+  This feature provides positional adjustments between glyphs. It is largely
+  equivalent to the `kern` feature, but should be considered as "required"
+  kerning in that no user interface is provided to disable it.
+done: true
+example:
+  font: Noto Sans Devanagari
+  text: दॗ
