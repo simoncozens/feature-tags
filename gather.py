@@ -51,13 +51,18 @@ with open("css/fonts.css", "w") as f:
 		f.write("""
 			    @font-face {
 		        font-family: "%s";
-		        src: url(fonts/%s.ttf);
+		        src: url("fonts/%s.ttf");
 		    }
 		 """ % (font,font))
-		if font not in font_db:
+		if font == "Recursive":
+			reg = "https://github.com/google/fonts/raw/main/ofl/recursive/Recursive%5BCASL%2CCRSV%2CMONO%2Cslnt%2Cwght%5D.ttf"
+		elif font == "Noto Sans Khmer":
+			reg = "https://github.com/google/fonts/raw/main/ofl/notosanskhmer/NotoSansKhmer%5Bwdth%2Cwght%5D.ttf"
+		elif font not in font_db:
 			print("Couldn't get %s" % font)
 			continue
-		reg = font_db[font]["files"].get("regular")
+		else:
+			reg = font_db[font]["files"].get("regular")
 		if not reg:
 			reg = list(font_db["font"]["files"].values())[0]
 		fontdata = requests.get(reg)
