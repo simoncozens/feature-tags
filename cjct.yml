@@ -6,7 +6,7 @@ script:
     order: 7
 group: Orthographic
 registered: Microsoft
-required: true
+state: required
 description: |
     This feature is applied to Indic scripts and scripts using the Universal
     Shaping Engine as the final feature in the orthographic unit shaping phase,

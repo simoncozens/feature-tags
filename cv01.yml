@@ -1,0 +1,38 @@
+title: Character Variant 1 – Character Variant 99
+registered: Microsoft
+state: discretionary
+automatic: true
+description: |
+  These features - ranging from `cv01` to `cv99` - allow for stylistic variations
+  of individual characters.
+
+  They are similar to the Stylistic Set (`ss01`--`ss20`) features, but (as their)
+  name implies, stylistic sets are intended to allow a *set* of glyphs to
+  vary in a common way (for example, straightening the "leg" of glyphs such as
+  `hnm`, or overlining `MCXLVI`  characters to form Roman numerals).
+  Character variant features, on the other hand, do not imply any common
+  variations across a range of glyphs.
+
+
+  When this feature is coded manually, character variant features may be given
+  identifying names to be displayed in the user interface. See the
+  [Adobe feature file specification](http://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html#8.d)
+  for the format of these names.
+example:
+  font: Source Code Pro
+  text: Java
+fea: |
+  feature cv01 {
+    cvParameters {
+        FeatUILabelNameID {
+            name 3 1 0x0409 "single-storey a";
+            name 1 0 0 "single-storey a";
+        };
+        Character 0x61;
+    }
+    sub a by a.cv01;
+  } cv01;
+ui: |
+  In the OS X typography panel, this feature is accessed via "Glyph Variants".
+  In CSS, this feature is accessed through the [`font-variant-alternates`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates) property.
+done: true

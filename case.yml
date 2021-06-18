@@ -2,6 +2,7 @@ title: Case-Sensitive Forms
 state: discretionary
 group: typographic
 registered: Adobe
+automatic: true
 description: |
   This features is intended to reposition glyphs (either by substitution or
   positioning), particularly punctuation glyphs, so that they are better

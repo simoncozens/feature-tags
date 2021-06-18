@@ -46,7 +46,7 @@ for file in glob.glob("*.yml"):
 with open("featuredb.js", "w") as f:
 	f.write(("window.featuredb="+json.dumps(features, indent=4)))
 
-with open("css/fonts.css", "w") as f:
+with open("css2/fonts.css", "w") as f:
 	for font, text in examples.items():
 		f.write("""
 			    @font-face {
@@ -72,4 +72,4 @@ with open("css/fonts.css", "w") as f:
 		ss = Subsetter(Options(layout_scripts=["*"], layout_features=["*"]))
 		ss.populate(text=text)
 		ss.subset(ttfont)
-		ttfont.save("css/fonts/%s.ttf" % font)
+		ttfont.save("css2/fonts/%s.ttf" % font)

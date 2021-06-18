@@ -1,0 +1,34 @@
+automatic: true
+title: Cursive Positioning
+registered: Microsoft
+state: default
+group: positioning
+description: |
+  This feature is used to position glyphs with cursive connections.
+
+
+  Certain scripts, in particular Arabic, are "connected" scripts, where the
+  start of a character has its position adjusted relative to the end of the previous
+  character. In font editors, this is normally defined by setting "exit" and
+  "entry" anchor points. These are then converted to GPOS 3 cursive positioning
+  rules.
+
+
+  While this feature is not mandatory for designers - some styles of Arabic
+  are aligned along the baseline, and so glyphs do not need to be repositioned
+  - it is applied by default if present, and is not specific to Arabic script.
+  It is not impossible, but exceptionally uncommon, to use this feature for
+  connected "cursive" Latin fonts, and is often unnecessary because of the
+  presence of a fixed baseline in Latin.
+example:
+  font: Aref Ruqaa
+  text: سمر
+done: true
+fea: |
+  feature curs {
+    pos cursive uni066F.medi <anchor 606 35> <anchor 0 35>;
+    pos cursive uni0640 <anchor 250 35> <anchor 0 35>;
+    pos cursive uni06A1.medi <anchor 606 35> <anchor 0 35>;
+    # ...
+  } curs;
+
