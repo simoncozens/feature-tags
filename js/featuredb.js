@@ -135,6 +135,19 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "jp78": {
+        "title": "JIS78 Forms",
+        "registered": "Adobe",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1978 and 1983 revisions, the \"road\" radical (*shinny\u014d*) changed form\nin some characters, moving from two initial dots to one dot. (This change\nwas reversed in the 2004 revision.)\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n\n\nIf the `jp78` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1978 revision of the standard.\n",
+        "fea": "feature jp78 {\n  sub uni5049 by uni5049.jp78;\n  sub uni5275 by uni5275.jp78;\n  sub uni8328 by uni8328.jp78;\n  # ...\n} jp83;\n",
+        "done": "true",
+        "example": {
+            "font": "Shippori Mincho",
+            "text": "\u5049\u8328\u5275"
+        },
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "blwf": {
         "title": "Below-base Forms",
         "registered": "Microsoft",
@@ -185,6 +198,19 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "jp90": {
+        "title": "JIS90 Forms",
+        "registered": "Adobe",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1983 and 1990 revisions, the \"long stride\" radical (*inny\u014d*) changed form\nin some characters, losing the upstroke on the third stroke.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n\n\nIf the `jp90` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1990 revision of the standard.\n",
+        "fea": "feature jp90 {\n  sub uni853D by uni853D.jp90;\n  sub uni8AB9 by uni8AB9.jp90;\n  sub uni990C by uni990C.jp90;\n  # ...\n} jp90;\n",
+        "done": "true",
+        "example": {
+            "font": "Kiwi Maru",
+            "text": "\u990c\u8ab9\u853d"
+        },
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "dlig": {
         "title": "Discretionary Ligatures",
         "registered": "Adobe",
@@ -211,6 +237,19 @@ window.featuredb={
             "text": "a\u017f\u017fi\u017ft"
         },
         "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "jp83": {
+        "title": "JIS83 Forms",
+        "registered": "Adobe",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1983 and 1990 revisions, the \"eight\" radical (*hachigashira*) changed form,\nlosing its top horizontal line.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n\n\nIf the `jp83` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1983 revision of the standard.\n",
+        "fea": "feature jp83 {\n  sub uni82A6 by uni82A6.jp83;\n  sub uni9022 by uni9022.jp83;\n  # ...\n} jp83;\n",
+        "done": "true",
+        "example": {
+            "font": "Shippori Mincho",
+            "text": "\u9022\u82a6\u6666"
+        },
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -364,6 +403,14 @@ window.featuredb={
         },
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "jp04": {
+        "title": "JIS04 Forms",
+        "registered": "Adobe",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions. If the `jp04` feature is applied, kanji should be\nreplaced by variant forms representing those specified in the 2004 revision\nof the standard. As 2004 is the current revision, this feature should only\nbe implemented when providing updates to older fonts or to provide remappings\nfor glyphs where both older and newer forms are encoded in Unicode and provided\nin the font (for example, `sub uni5516 by uni555E;`).\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
     },
     "c2pc": {
         "title": "Petite Capitals From Capitals",

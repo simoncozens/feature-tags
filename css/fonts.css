@@ -25,6 +25,16 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Shippori Mincho";
+		        src: url("fonts/Shippori Mincho.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Kiwi Maru";
+		        src: url("fonts/Kiwi Maru.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Allura";
 		        src: url("fonts/Allura.ttf");
 		    }
