@@ -1,0 +1,18 @@
+title: Denominators
+automatic: true
+state: discretionary
+status: deprecated
+registered: Adobe
+description: |
+  This deprecated feature replaces numeric glyphs with denominator forms. See also `numr`.
+
+  Note that, despite the description of this feature in the OpenType specification,
+  the application of the `frac` feature is independent of this feature. It was
+  originally intended that applying the `frac` feature would "trigger" the
+  application of the `numr` feature for glyphs before the division slash and
+  the `dnom` feature for glyphs after it. This behavior was never implemented in
+  OpenType shaping, and instead contextual rules are used within the `frac` feature
+  to choose appropriate glyphs for numerator and denominator.
+
+  New fonts should use the `frac` feature in preference to this feature.
+done: true
