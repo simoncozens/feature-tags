@@ -1,0 +1,29 @@
+title: 'Terminal Form #3'
+registered: Microsoft
+group: orthographic
+required: true
+script:
+  syrc:
+    order: 3
+description: |
+    This feature is used by the Arabic complex shaper when processing the Syriac
+    script. The Syriac letter alaph (U+0710) has multiple final forms: the first
+    final form, used when the preceding character is a joining
+    character, is selected using the `fina` feature, similar to an Arabic alif.
+
+
+    However, when the preceding character is a non-joining character, the selection
+    of the final form of alaph depends on whether the preceding character has
+    joining group `Dalath_Rish`. If the preceding character (skipping all characters
+    with a transparent joining group) is either U+0715 (dalath), U+0716 (dotless
+    dalath rish) or U+072A (rish), this feature is applied. Otherwise,
+    the `fin2` feature is applied.
+example:
+  font: Noto Sans Syriac
+  text: ܕܐ
+fea: |
+  feature fin3 {
+    lookupflag RightToLeft IgnoreMarks;
+    sub uni0710 by uni0710.Fina3;
+    } fin2;
+done: true
