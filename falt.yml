@@ -1,0 +1,10 @@
+title: Final Glyph on Line Alternates
+registered: Microsoft
+description: |
+  This feature was intended to allow a justification system to substitute a
+  glyph for another form when the glyph is the final one on a line of text,
+  to improve the fitting of the line. (See also `jalt`.) No known layout
+  engine supports activating this and it is unclear whether any fonts
+  implemented the feature.
+done: true
+status: deprecated

@@ -1,0 +1,96 @@
+title: Fractions
+status: discretionary
+registered: Microsoft/Adobe
+description:
+  The feature is used to set fractions, both those fractions for which there is
+  a precomposed glyph in the font (for example, `sub three slash four by threequarters;`)
+  and those made up of numerator and denominator forms of numerals.
+example:
+  font: Recursive
+  text: 3/4 cup (145/793g)
+fea: |
+  feature frac {
+    sub one slash four by onequarter;
+    sub three slash four by threequarters;
+    # ...
+
+    # This implementation due to Tal Leming and Ben Kiel
+    lookup FractionBar {
+        ignore sub slash @figures @figures @figures @figures @figures @figures @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures @figures @figures @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures @figures @figures @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures @figures @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures @figures @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures @figures slash;
+        ignore sub slash @figures @figures @figures slash';
+        ignore sub slash' @figures @figures @figures slash;
+        ignore sub slash @figures @figures slash';
+        ignore sub slash' @figures @figures slash;
+        ignore sub slash @figures slash';
+        ignore sub slash' @figures slash;
+        ignore sub slash slash';
+        ignore sub slash' slash;
+        sub @figures slash' @figures by fraction;
+    } FractionBar;
+
+    lookup Numerator1 {
+        sub @figures' fraction by @figuresNumerator;
+    } Numerator1;
+
+    lookup Numerator2 {
+        sub @figures' @figuresNumerator fraction by @figuresNumerator;
+    } Numerator2;
+
+    lookup Numerator3 {
+        sub @figures' @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator3;
+
+    lookup Numerator4 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator4;
+
+    lookup Numerator5 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator5;
+
+    lookup Numerator6 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator6;
+
+    lookup Numerator7 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator7;
+
+    lookup Numerator8 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator8;
+
+    lookup Numerator9 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator9;
+
+    lookup Numerator10 {
+        sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;
+    } Numerator10;
+
+    lookup Denominator {
+        sub [fraction @figuresDenominator] @figures' by @figuresDenominator;
+    } Denominator;
+
+    sub @figures space' @figuresNumerator by space.frac;
+  } frac;
+ui: |
+  In the OS X Typography panel, this feature is accessed via "Contextual Fraction
+  Forms -> Diagonal."
+
+  In Adobe applications, this feature is accessed via "Fractions" in the OpenType
+  panel.
+done: true
