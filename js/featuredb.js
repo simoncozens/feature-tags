@@ -282,6 +282,17 @@ window.featuredb={
         "popularity": "non-existent",
         "popularity_ix": 0
     },
+    "numr": {
+        "title": "Numerators",
+        "automatic": "true",
+        "state": "discretionary",
+        "status": "deprecated",
+        "registered": "Adobe",
+        "description": "This deprecated feature replaces numeric glyphs with numerator forms. See also `dnom`.\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the `frac` feature is independent of this feature. It was\noriginally intended that applying the `frac` feature would \"trigger\" the\napplication of the `numr` feature for glyphs before the division slash and\nthe `dnom` feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the `frac` feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the `frac` feature in preference to this feature.\n",
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
     "aalt": {
         "title": "Access All Alternates",
         "registered": "Adobe",
@@ -334,7 +345,7 @@ window.featuredb={
         "done": "true",
         "example": {
             "font": "Noto Sans Devanagari",
-            "text": "\u0926\u0957"
+            "text": "\u0926\u0957\u0915\u0957"
         },
         "popularity": "rare",
         "popularity_ix": 2
@@ -433,5 +444,16 @@ window.featuredb={
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
+    },
+    "dnom": {
+        "title": "Denominators",
+        "automatic": "true",
+        "state": "discretionary",
+        "status": "deprecated",
+        "registered": "Adobe",
+        "description": "This deprecated feature replaces numeric glyphs with denominator forms. See also `numr`.\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the `frac` feature is independent of this feature. It was\noriginally intended that applying the `frac` feature would \"trigger\" the\napplication of the `numr` feature for glyphs before the division slash and\nthe `dnom` feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the `frac` feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the `frac` feature in preference to this feature.\n",
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
     }
 }

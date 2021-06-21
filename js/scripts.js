@@ -87,7 +87,7 @@ var scripts_db = {
 	mani: { name: "Manichaean" },
 	marc: { name: "Marchen" },
 	gonm: { name: "Masaram Gondi" },
-	math: { name: "Mathematical Alphanumeric Symbols" },
+	math: { name: "Mathematics", glyph: "∑" },
 	medf: { name: "Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)" },
 	mtei: { name: "Meitei Mayek (Meithei, Meetei)" },
 	mend: { name: "Mende Kikakui" },

@@ -72,6 +72,36 @@ var featureTemplate = Handlebars.compile(`
 		{{{ feature.html_description }}}
 
 		{{#if feature.example}}
+		{{#if feature.example.math}}
+		<details open>
+				<summary>Example</summary>
+	  <div class="row">
+	  <div class="five columns">
+	  	Off:
+			<span class="example-off">
+	      <math xmlns="http://www.w3.org/1998/Math/MathML" style="font-features-settings: '{{tag}}' 0;">
+	         <mrow>
+						{{feature.example.text}}
+						</mrow>
+				</math>
+			</span>
+		</div>
+
+	  <div class="five columns">
+	  	On:
+			<span class="example-on">
+	      <math xmlns="http://www.w3.org/1998/Math/MathML">
+	         <mrow>
+						{{feature.example.text}}
+						</mrow>
+				</math>
+			</span>
+		</div>
+		</div>
+			<div class="warning"> The above example contains MathML, which currently
+			only renders reliably using Firefox.</div>
+		</details>
+		{{else}}
 		<details open>
 				<summary>Example</summary>
 	  <div class="row">
@@ -100,6 +130,7 @@ var featureTemplate = Handlebars.compile(`
 
 		</details>
 
+		{{/if}}
 		{{/if}}
 
 		{{#if feature.fea}}
