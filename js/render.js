@@ -52,6 +52,20 @@ var featureTemplate = Handlebars.compile(`
 			</div>
 		{{/if}}
 
+
+		{{#ifEquals feature.status "deprecated"}}
+			<div class="tooltip" data-text="This feature is deprecated.">
+			<span class="material-icons-outlined">sick</span>
+			</div>
+		{{/ifEquals}}
+
+		{{#ifEquals feature.status "discouraged"}}
+			<div class="tooltip" data-text="This feature is discouraged.">
+			<span class="material-icons-outlined">sentiment_dissatisfied</span>
+			</div>
+		{{/ifEquals}}
+
+
 		{{#ifEquals feature.registered "Microsoft"}}
 		<div class="tooltip" data-text="This feature was registered by Microsoft.">
 			<span class="material-icons-outlined microsoft">window</span>
