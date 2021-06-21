@@ -1,0 +1,22 @@
+title: JIS04 Forms
+registered: Adobe
+description: |
+  The expected form of Japanese kanji characters in an OpenType font are the
+  forms specified in JIS X 0213 (which replaces the older standard, JIS X
+  0208). In the course of revision of this standard, the expected forms of a
+  number of kanji characters have changed over time.
+
+
+  Fonts should target the most recent revision of the standard (currently the
+  2004 revision). However, features may be used to access forms specified in
+  earlier revisions. If the `jp04` feature is applied, kanji should be
+  replaced by variant forms representing those specified in the 2004 revision
+  of the standard. As 2004 is the current revision, this feature should only
+  be implemented when providing updates to older fonts or to provide remappings
+  for glyphs where both older and newer forms are encoded in Unicode and provided
+  in the font (for example, `sub uni5516 by uni555E;`).
+
+
+  A historical comparison between different character forms in JIS revisions
+  can be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).
+done: true

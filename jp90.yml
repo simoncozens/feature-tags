@@ -1,0 +1,33 @@
+title: JIS90 Forms
+registered: Adobe
+description: |
+  The expected form of Japanese kanji characters in an OpenType font are the
+  forms specified in JIS X 0213 (which replaces the older standard, JIS X
+  0208). In the course of revision of this standard, the expected forms of a
+  number of kanji characters have changed over time. For example, between
+  the 1983 and 1990 revisions, the "long stride" radical (*innyō*) changed form
+  in some characters, losing the upstroke on the third stroke.
+
+
+  Fonts should target the most recent revision of the standard (currently the
+  2004 revision). However, features may be used to access forms specified in
+  earlier revisions.
+
+
+  A historical comparison between different character forms in JIS revisions
+  can be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).
+
+
+  If the `jp90` feature is applied, kanji should be replaced by variant forms
+  representing those specified in the 1990 revision of the standard.
+fea: |
+  feature jp90 {
+    sub uni853D by uni853D.jp90;
+    sub uni8AB9 by uni8AB9.jp90;
+    sub uni990C by uni990C.jp90;
+    # ...
+  } jp90;
+done: true
+example:
+  font: Kiwi Maru
+  text: 餌誹蔽

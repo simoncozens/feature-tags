@@ -1,0 +1,34 @@
+title: JIS78 Forms
+registered: Adobe
+description: |
+  The expected form of Japanese kanji characters in an OpenType font are the
+  forms specified in JIS X 0213 (which replaces the older standard, JIS X
+  0208). In the course of revision of this standard, the expected forms of a
+  number of kanji characters have changed over time. For example, between
+  the 1978 and 1983 revisions, the "road" radical (*shinnyō*) changed form
+  in some characters, moving from two initial dots to one dot. (This change
+  was reversed in the 2004 revision.)
+
+
+  Fonts should target the most recent revision of the standard (currently the
+  2004 revision). However, features may be used to access forms specified in
+  earlier revisions.
+
+
+  A historical comparison between different character forms in JIS revisions
+  can be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).
+
+
+  If the `jp78` feature is applied, kanji should be replaced by variant forms
+  representing those specified in the 1978 revision of the standard.
+fea: |
+  feature jp78 {
+    sub uni5049 by uni5049.jp78;
+    sub uni5275 by uni5275.jp78;
+    sub uni8328 by uni8328.jp78;
+    # ...
+  } jp83;
+done: true
+example:
+  font: Shippori Mincho
+  text: 偉茨創

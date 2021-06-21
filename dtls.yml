@@ -1,0 +1,22 @@
+title: Dotless Forms
+script:
+  math:
+registered: Microsoft
+description: |
+  This feature is used by a math layout handler to substitute glyphs by dotless
+  forms when accents are to be added to the base character.
+fea: |
+  feature dtls {
+    sub i by i.dotless;
+    sub j by j.dotless;
+    sub uni2148 by uni2148.dotless;
+    sub uni2149 by uni2149.dotless;
+    sub u1D422 by u1D422.dotless;
+    sub u1D423 by u1D423.dotless;
+    # ...
+  } dtls;
+example:
+  math:
+    <mover accent="true"><mi> i </mi> <mo> &#x0005E; </mo> </mover>
+done:
+  true
