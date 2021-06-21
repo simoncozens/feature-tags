@@ -39,6 +39,8 @@ for file in glob.glob("*.yml"):
 	features[tag] = this_feature
 	if "example" in this_feature:
 		ex = this_feature["example"]
+		if "math" in ex:
+			continue
 		if ex["font"] not in examples:
 			examples[ex["font"]] = ""
 		examples[ex["font"]] += ex["text"]
