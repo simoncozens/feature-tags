@@ -78,10 +78,10 @@ var featureTemplate = Handlebars.compile(`
 	  <div class="row">
 	  <div class="five columns">
 	  	Off:
-			<span class="example-off">
-	      <math xmlns="http://www.w3.org/1998/Math/MathML" style="font-features-settings: '{{tag}}' 0;">
+			<span class="example-off" style="font-feature-settings: '{{tag}}' 0;">
+	      <math xmlns="http://www.w3.org/1998/Math/MathML">
 	         <mrow>
-						{{feature.example.text}}
+						{{{feature.example.math}}}
 						</mrow>
 				</math>
 			</span>
@@ -92,7 +92,7 @@ var featureTemplate = Handlebars.compile(`
 			<span class="example-on">
 	      <math xmlns="http://www.w3.org/1998/Math/MathML">
 	         <mrow>
-						{{feature.example.text}}
+						{{{feature.example.math}}}
 						</mrow>
 				</math>
 			</span>

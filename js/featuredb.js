@@ -242,6 +242,21 @@ window.featuredb={
         "popularity": "common",
         "popularity_ix": 4
     },
+    "dtls": {
+        "title": "Dotless Forms",
+        "script": {
+            "math": ""
+        },
+        "registered": "Microsoft",
+        "description": "This feature is used by a math layout handler to substitute glyphs by dotless\nforms when accents are to be added to the base character.\n",
+        "fea": "feature dtls {\n  sub i by i.dotless;\n  sub j by j.dotless;\n  sub uni2148 by uni2148.dotless;\n  sub uni2149 by uni2149.dotless;\n  sub u1D422 by u1D422.dotless;\n  sub u1D423 by u1D423.dotless;\n  # ...\n} dtls;\n",
+        "example": {
+            "math": "<mover accent=\"true\"><mi> i </mi> <mo> &#x0005E; </mo> </mover>"
+        },
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "blwm": {
         "title": "Below-base Mark Positioning",
         "registered": "Microsoft",
