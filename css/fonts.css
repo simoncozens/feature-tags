@@ -25,6 +25,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Noto Sans Syriac";
+		        src: url("fonts/Noto Sans Syriac.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Shippori Mincho";
 		        src: url("fonts/Shippori Mincho.ttf");
 		    }
@@ -50,6 +55,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Recursive";
+		        src: url("fonts/Recursive.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Kristi";
 		        src: url("fonts/Kristi.ttf");
 		    }
@@ -57,11 +67,6 @@
 			    @font-face {
 		        font-family: "Kaiti";
 		        src: url("fonts/Kaiti.ttf");
-		    }
-		 
-			    @font-face {
-		        font-family: "Recursive";
-		        src: url("fonts/Recursive.ttf");
 		    }
 		 
 			    @font-face {

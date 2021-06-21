@@ -143,7 +143,7 @@ var scripts_db = {
 	xsux: { name: "Sumero-Akkadian Cuneiform" },
 	sund: { name: "Sundanese" },
 	sylo: { name: "Syloti Nagri" },
-	syrc: { name: "Syriac" },
+	syrc: { name: "Syriac", glyph: "ܫ" },
 	tglg: { name: "Tagalog" },
 	tagb: { name: "Tagbanwa" },
 	tale: { name: "Tai Le" },

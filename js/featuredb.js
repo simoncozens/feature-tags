@@ -135,16 +135,37 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "fin3": {
+        "title": "Terminal Form #3",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "required": "true",
+        "script": {
+            "syrc": {
+                "order": "3"
+            }
+        },
+        "description": "This feature is used by the Arabic complex shaper when processing the Syriac\nscript. The Syriac letter alaph (U+0710) has multiple final forms: the first\nfinal form, used when the preceding character is a joining\ncharacter, is selected using the `fina` feature, similar to an Arabic alif.\n\n\nHowever, when the preceding character is a non-joining character, the selection\nof the final form of alaph depends on whether the preceding character has\njoining group `Dalath_Rish`. If the preceding character (skipping all characters\nwith a transparent joining group) is either U+0715 (dalath), U+0716 (dotless\ndalath rish) or U+072A (rish), this feature is applied. Otherwise,\nthe `fin2` feature is applied.\n",
+        "example": {
+            "font": "Noto Sans Syriac",
+            "text": "\u0715\u0710"
+        },
+        "fea": "feature fin3 {\n  lookupflag RightToLeft IgnoreMarks;\n  sub uni0710 by uni0710.Fina3;\n  } fin2;\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "jp78": {
         "title": "JIS78 Forms",
         "registered": "Adobe",
-        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1978 and 1983 revisions, the \"road\" radical (*shinny\u014d*) changed form\nin some characters, moving from two initial dots to one dot. (This change\nwas reversed in the 2004 revision.)\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n\n\nIf the `jp78` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1978 revision of the standard.\n",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1978 and 1983 revisions, the \"road\" radical (*shinny\u014d*) changed form\nin some characters, moving from two initial dots to one dot. (This change\nwas reversed in the 2004 revision.)\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [this site](http://www.asahi-net.or.jp/~ax2s-kmtn/ref/jisrev.html).\n\n\nIf the `jp78` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1978 revision of the standard.\n",
         "fea": "feature jp78 {\n  sub uni5049 by uni5049.jp78;\n  sub uni5275 by uni5275.jp78;\n  sub uni8328 by uni8328.jp78;\n  # ...\n} jp83;\n",
         "done": "true",
         "example": {
             "font": "Shippori Mincho",
             "text": "\u5049\u8328\u5275"
         },
+        "ui": "In the Mac OS X typography panel, this feature is accessed via the \"character\nshape\" radio buttons.\n\nIn Adobe InDesign with CJK functionality, this feature can be accessed via\nthe \"Alternate Glyphs\" dropdown in the Advanced Character Formats panel of\nthe character style options dialog.\n",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -172,6 +193,26 @@ window.featuredb={
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "fin2": {
+        "title": "Terminal Form #2",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "required": "true",
+        "script": {
+            "syrc": {
+                "order": "3"
+            }
+        },
+        "description": "This feature is used by the Arabic complex shaper when processing the Syriac\nscript. The Syriac letter alaph (U+0710) has multiple final forms: the first\nfinal form, used when the preceding character is a joining\ncharacter, is selected using the `fina` feature, similar to an Arabic alif.\n\n\nHowever, when the preceding character is a non-joining character, the selection\nof the final form of alaph depends on whether the preceding character has\njoining group `Dalath_Rish`. If the preceding character (skipping all characters\nwith a transparent joining group) is either U+0715 (dalath), U+0716 (dotless\ndalath rish) or U+072A (rish), the `fin3` feature is applied. Otherwise,\nthis feature is applied.\n",
+        "example": {
+            "font": "Noto Sans Syriac",
+            "text": "\u0712\u0710"
+        },
+        "fea": "feature fin2 {\n  lookupflag RightToLeft IgnoreMarks;\n  sub uni0710 by uni0710.Fina2;\n  } fin2;\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
     },
     "blws": {
         "title": "Below-base Substitutions",
@@ -201,8 +242,9 @@ window.featuredb={
     "jp90": {
         "title": "JIS90 Forms",
         "registered": "Adobe",
-        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1983 and 1990 revisions, the \"long stride\" radical (*inny\u014d*) changed form\nin some characters, losing the upstroke on the third stroke.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n\n\nIf the `jp90` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1990 revision of the standard.\n",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1983 and 1990 revisions, the \"long stride\" radical (*inny\u014d*) changed form\nin some characters, losing the upstroke on the third stroke.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [this site](http://www.asahi-net.or.jp/~ax2s-kmtn/ref/jisrev.html).\n\n\nIf the `jp90` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1990 revision of the standard.\n",
         "fea": "feature jp90 {\n  sub uni853D by uni853D.jp90;\n  sub uni8AB9 by uni8AB9.jp90;\n  sub uni990C by uni990C.jp90;\n  # ...\n} jp90;\n",
+        "ui": "In the Mac OS X typography panel, this feature is accessed via the \"character\nshape\" radio buttons.\n\nIn Adobe InDesign with CJK functionality, this feature can be accessed via\nthe \"Alternate Glyphs\" dropdown in the Advanced Character Formats panel of\nthe character style options dialog.\n",
         "done": "true",
         "example": {
             "font": "Kiwi Maru",
@@ -210,6 +252,15 @@ window.featuredb={
         },
         "popularity": "extremely rare",
         "popularity_ix": 1
+    },
+    "falt": {
+        "title": "Final Glyph on Line Alternates",
+        "registered": "Microsoft",
+        "description": "This feature was intended to allow a justification system to substitute a\nglyph for another form when the glyph is the final one on a line of text,\nto improve the fitting of the line. (See also `jalt`.) No known layout\nengine supports activating this and it is unclear whether any fonts\nimplemented the feature.\n",
+        "done": "true",
+        "status": "deprecated",
+        "popularity": "non-existent",
+        "popularity_ix": 0
     },
     "dlig": {
         "title": "Discretionary Ligatures",
@@ -243,13 +294,14 @@ window.featuredb={
     "jp83": {
         "title": "JIS83 Forms",
         "registered": "Adobe",
-        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1983 and 1990 revisions, the \"eight\" radical (*hachigashira*) changed form,\nlosing its top horizontal line.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n\n\nIf the `jp83` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1983 revision of the standard.\n",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time. For example, between\nthe 1983 and 1990 revisions, the \"eight\" radical (*hachigashira*) changed form,\nlosing its top horizontal line.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions.\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [this site](http://www.asahi-net.or.jp/~ax2s-kmtn/ref/jisrev.html).\n\n\nIf the `jp83` feature is applied, kanji should be replaced by variant forms\nrepresenting those specified in the 1983 revision of the standard.\n",
         "fea": "feature jp83 {\n  sub uni82A6 by uni82A6.jp83;\n  sub uni9022 by uni9022.jp83;\n  # ...\n} jp83;\n",
         "done": "true",
         "example": {
             "font": "Shippori Mincho",
             "text": "\u9022\u82a6\u6666"
         },
+        "ui": "In the Mac OS X typography panel, this feature is accessed via the \"character\nshape\" radio buttons.\n\nIn Adobe InDesign with CJK functionality, this feature can be accessed via\nthe \"Alternate Glyphs\" dropdown in the Advanced Character Formats panel of\nthe character style options dialog.\n",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -277,6 +329,21 @@ window.featuredb={
         "order": "0",
         "description": "After OpenType normalization but before the processing of other features,\nit may be useful to decompose single glyphs into sequences, or combine\nsequences into a single glyph. For example:\n\n\n* In Arabic fonts, treating the rasm letters and the nukta dots separately\nallows for more flexible positioning and reduces the number of glyphs which\nneed to be drawn. Using rules such as `sub beh-ar by behDotless-ar dotbelow;`\nin the `ccmp` feature decomposes the dots into separate glyphs.\n\n* The i acute character (\u00ed, U+00ED) is normalized to U+0069 U+0301 (i acutecomb).\nHowever, as the acute replaces the tittle on the `i`, it is useful to substitute\nthis for a dotless form: `sub i' acutecomb by idotless;`.\n\n* Conversely, multiple glyphs may be combined into one. In Tibetan, stacked\nletters such as \u0f43 (U+0F43) have their own Unicode codepoints, but can\nalternatively be encoded in documents using the decomposed form U+0F42 (\u0f42)\n\u25cc\u0fb7 (U+0FB7). These two encodings can be unified in the font with a rule such\nas `sub uni0F42 uni0FB7 by uni0F43;`.\n",
         "fea": "feature ccmp {\n  sub alefHamzaabove-ar by alef-ar hamzaabove-ar;\n  sub alefHamzabelow-ar by alef-ar hamzabelow-ar;\n  sub beh-ar by behDotless-ar dotbelow-ar;\n  sub teh-ar by behDotless-ar twodotsabove-ar;\n  sub theh-ar by behDotless-ar threedotsabove-ar;\n  sub jeem-ar by hah-ar dotbelow-ar;\n  sub khah-ar by hah-ar dotabove-ar;\n  ...\n} ccmp;\n",
+        "done": "true",
+        "popularity": "common",
+        "popularity_ix": 4
+    },
+    "frac": {
+        "title": "Fractions",
+        "status": "discretionary",
+        "registered": "Microsoft/Adobe",
+        "description": "The feature is used to set fractions, both those fractions for which there is a precomposed glyph in the font (for example, `sub three slash four by threequarters;`) and those made up of numerator and denominator forms of numerals.",
+        "example": {
+            "font": "Recursive",
+            "text": "3/4 cup (145/793g)"
+        },
+        "fea": "feature frac {\n  sub one slash four by onequarter;\n  sub three slash four by threequarters;\n  # ...\n\n  # This implementation due to Tal Leming and Ben Kiel\n  lookup FractionBar {\n      ignore sub slash @figures @figures @figures @figures @figures @figures @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures @figures @figures @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures @figures @figures @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures @figures @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures @figures @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures @figures slash;\n      ignore sub slash @figures @figures @figures slash';\n      ignore sub slash' @figures @figures @figures slash;\n      ignore sub slash @figures @figures slash';\n      ignore sub slash' @figures @figures slash;\n      ignore sub slash @figures slash';\n      ignore sub slash' @figures slash;\n      ignore sub slash slash';\n      ignore sub slash' slash;\n      sub @figures slash' @figures by fraction;\n  } FractionBar;\n\n  lookup Numerator1 {\n      sub @figures' fraction by @figuresNumerator;\n  } Numerator1;\n\n  lookup Numerator2 {\n      sub @figures' @figuresNumerator fraction by @figuresNumerator;\n  } Numerator2;\n\n  lookup Numerator3 {\n      sub @figures' @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator3;\n\n  lookup Numerator4 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator4;\n\n  lookup Numerator5 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator5;\n\n  lookup Numerator6 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator6;\n\n  lookup Numerator7 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator7;\n\n  lookup Numerator8 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator8;\n\n  lookup Numerator9 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator9;\n\n  lookup Numerator10 {\n      sub @figures' @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator @figuresNumerator fraction by @figuresNumerator;\n  } Numerator10;\n\n  lookup Denominator {\n      sub [fraction @figuresDenominator] @figures' by @figuresDenominator;\n  } Denominator;\n\n  sub @figures space' @figuresNumerator by space.frac;\n} frac;\n",
+        "ui": "In the OS X Typography panel, this feature is accessed via \"Contextual Fraction\nForms -> Diagonal.\"\n\nIn Adobe applications, this feature is accessed via \"Fractions\" in the OpenType\npanel.\n",
         "done": "true",
         "popularity": "common",
         "popularity_ix": 4
@@ -407,8 +474,9 @@ window.featuredb={
     "jp04": {
         "title": "JIS04 Forms",
         "registered": "Adobe",
-        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions. If the `jp04` feature is applied, kanji should be\nreplaced by variant forms representing those specified in the 2004 revision\nof the standard. As 2004 is the current revision, this feature should only\nbe implemented when providing updates to older fonts or to provide remappings\nfor glyphs where both older and newer forms are encoded in Unicode and provided\nin the font (for example, `sub uni5516 by uni555E;`).\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [https://www.asahi-net.or.jp/~ax2s-kmtn/ref/jis83-90.html](this site).\n",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). In the course of revision of this standard, the expected forms of a\nnumber of kanji characters have changed over time.\n\n\nFonts should target the most recent revision of the standard (currently the\n2004 revision). However, features may be used to access forms specified in\nearlier revisions. If the `jp04` feature is applied, kanji should be\nreplaced by variant forms representing those specified in the 2004 revision\nof the standard. As 2004 is the current revision, this feature should only\nbe implemented when providing updates to older fonts or to provide remappings\nfor glyphs where both older and newer forms are encoded in Unicode and provided\nin the font (for example, `sub uni5516 by uni555E;`).\n\n\nA historical comparison between different character forms in JIS revisions\ncan be found at [this site](http://www.asahi-net.or.jp/~ax2s-kmtn/ref/jisrev.html).\n",
         "done": "true",
+        "ui": "In the Mac OS X typography panel, this feature is accessed via the \"character\nshape\" radio buttons.\n\nIn Adobe InDesign with CJK functionality, this feature can be accessed via\nthe \"Alternate Glyphs\" dropdown in the Advanced Character Formats panel of\nthe character style options dialog.\n",
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
@@ -452,6 +520,7 @@ window.featuredb={
         "group": "Orthographic",
         "title": "Conjunct Form After Ro",
         "registered": "Microsoft",
+        "status": "discouraged",
         "description": "This feature is only applied during orthographic unit shaping in the Khmer\ncomplex shaper. In Khmer, the conjunct form of the letter ro (after a\ncoeng) is reordered to the left of the base consonant and displayed as a\ndeep letterform which can interact with below-base glyphs. This feature\nwas intended as offering an opportunity to fix up below-base glyphs to\navoid clashing with the coeng ro.\n\n\nNo examples of the use of this feature have been found. Consider using\n`blws` instead.\n",
         "done": "true",
         "popularity": "non-existent",
