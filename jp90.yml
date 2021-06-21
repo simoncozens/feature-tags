@@ -27,6 +27,13 @@ fea: |
     sub uni990C by uni990C.jp90;
     # ...
   } jp90;
+ui: |
+  In the Mac OS X typography panel, this feature is accessed via the "character
+  shape" radio buttons.
+
+  In Adobe InDesign with CJK functionality, this feature can be accessed via
+  the "Alternate Glyphs" dropdown in the Advanced Character Formats panel of
+  the character style options dialog.
 done: true
 example:
   font: Kiwi Maru

@@ -5,6 +5,7 @@ script:
 group: Orthographic
 title: Conjunct Form After Ro
 registered: Microsoft
+status: discouraged
 description: |
   This feature is only applied during orthographic unit shaping in the Khmer
   complex shaper. In Khmer, the conjunct form of the letter ro (after a
