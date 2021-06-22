@@ -1,0 +1,31 @@
+automatic: true
+state: discretionary
+title: Oldstyle Figures
+registered: Adobe
+description: |
+  This feature substitutes digits for oldstyle forms. Oldstyle figures are
+  designed to fit in mixed case text settings.
+
+  In theory, this feature should not just substitute the default form
+  of figures (e.g. `one`, `two`) for oldstyle forms, but also any alternate
+  lining forms (such as lining figures) for oldstyle forms. Where
+  oldstyle forms are the default, implementing a substitution from lining
+  figures to oldstyle figures is not typographically necessary but will cause
+  the UI of layout programs to display oldstyle figures as an option.
+
+  See also `onum`, `pnum`, `tnum`.
+fea: |
+  feature lnum {
+    sub one by one.osf;
+    sub two by two.osf;
+    # ...
+  } lnum;
+example:
+  font: Cardo
+  text: ABC1234
+ui: |
+  In the OS X typography panel, this feature is accessed via "Number Case >
+  Old-Style Figures". In Adobe applications, selecting "Tabular oldstyle" from the
+  OpenType panel will apply this feature and the `tnum` feature, while selecting
+  "Proportional oldstyle" will apply this feature and the `pnum` feature.
+done: true

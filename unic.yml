@@ -1,0 +1,14 @@
+title: Unicase
+registered: Tiro Typeworks
+description: |
+    This feature was intended for mapping both upper- and lowercase letters
+    to a "unicase" alphabet, a set of glyphs with a common glyph height using
+    a mix of upper- and lowercase glyph forms. (For example, a font may use
+    the lowercase style of `a` but the uppercase style of `B`, but both glyphs
+    will have the same height; see Bradbury Thompson's [Alphabet 26](https://en.wikipedia.org/wiki/Bradbury_Thompson#Alphabet_26)
+    or Zuzana Licko's [Filosofia Unicase](https://www.emigre.com/Fonts/Filosofia).)
+ui: |
+  This feature can be activated using the CSS rule `font-variant-caps: unicase`,
+  subject to browser support.
+done: true
+

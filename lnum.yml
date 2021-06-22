@@ -1,0 +1,31 @@
+automatic: true
+state: discretionary
+title: Lining Figures
+registered: Adobe
+description: |
+  This feature substitutes digits for lining forms. Lining figures are
+  designed to fit in all-capital settings.
+
+  In theory, this feature should not just substitute the default form
+  of figures (e.g. `one`, `two`) for lining forms, but also any alternate
+  non-lining forms (such as oldstyle figures) for lining forms. Where
+  lining forms are the default, implementing a substitution from oldstyle
+  figures to lining figures is not typographically necessary but will cause
+  the UI of layout programs to display lining figures as an option.
+
+  See also `onum`, `pnum`, `tnum`.
+fea: |
+  feature lnum {
+    sub one by one.lf;
+    sub two by two.lf;
+    # ...
+  } lnum;
+example:
+  font: Baskervville
+  text: ABC1234
+ui: |
+  In the OS X typography panel, this feature is accessed via "Number Case >
+  Lining Figures". In Adobe applications, selecting "Tabular lining" from the
+  OpenType panel will apply this feature and the `tnum` feature, while selecting
+  "Proportional lining" will apply this feature and the `pnum` feature.
+done: true

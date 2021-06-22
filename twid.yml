@@ -1,0 +1,22 @@
+title: Third Widths
+automatic: true
+state: discretionary
+registered: Adobe
+description: |
+  This feature replaces glyphs (normally figures and punctuation) with variants
+  which are one-third of the em square. This is generally used with CJK fonts
+  and in the context of vertical typesetting. (For placing a sequence of three
+  numbers horizontally across an em-width vertical column.)
+fea: |
+  feature twid {
+    sub one by one.twid;
+    sub two by two.twid;
+    # ...
+  }
+example:
+  font: Feature Sans
+  text: か123か
+ui:
+  In the OS X typography panel, this feature is accessed via "Text spacing >
+  Third Width".
+done: true

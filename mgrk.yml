@@ -1,0 +1,22 @@
+title: Mathematical Greek
+registered: Adobe
+status: discretionary
+description: |
+  This feature replaces Greek glyphs with mathematical symbols: for example,
+  `Sigma` is replaced by the `summation` glyph.
+fea: |
+  feature mgrk {
+    sub uni0394 by uni2206;
+    sub Pi by product;
+    sub Sigma by summation;
+    sub uni03A9 by uni2126;
+    sub uni03BC by uni00B5;
+    sub phi by uni03D5;
+  } mgrk;
+ui: |
+  In the OS X typography panel, this feature is accessed via "Mathematical Extras
+  -> Mathematical Greek Letter Forms".
+example:
+  font: Vollkorn
+  text: φ(n)=Σ Δn
+done: true

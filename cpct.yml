@@ -5,8 +5,8 @@ description: |
   is often implemented as GPOS lookup 1 positioning rules to place these
   glyphs within the center of the em square.
 example:
-  text: 我、你
-  font: Kaiti
+  text: か、か
+  font: Feature Sans
 registered: Adobe
 done: true
 fea: |

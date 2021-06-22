@@ -1,0 +1,19 @@
+status: discretionary
+title: Alternate Annotation Forms
+registered: Adobe
+description: |
+  This feature replaces glyphs with "notational" forms - glyphs in boxes,
+  circles, etc. It is often used in CJK fonts to access characters in the Unicode
+  "Enclosed CJK Letters and Months" block (for example, `sub uni3131 by uni3200;`),
+  but may also be used to access other enclosed forms (`sub one by uni2460;`).
+
+
+  Note that although the OT Specification describes this as implementable via
+  alternate substitution lookups, no interface supports this, and single substitutions
+  should be used instead.
+ui: |
+  No user interface to this feature has been found.
+done: true
+example:
+  font: Work Sans
+  text: 12345

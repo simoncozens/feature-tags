@@ -1,0 +1,7 @@
+status: deprecated
+title: Optical size
+description: |
+  This feature was intended as a way to store information about the optical size of the font
+  and the font's relationship to other optical size variants in the same family. It has
+  been entirely superseded by the `STAT` table, and should not be used.
+done: true

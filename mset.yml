@@ -1,0 +1,17 @@
+status: deprecated
+group: typographic
+title: Mark Positioning via substitution
+script:
+  arab:
+    order: 4
+registered: Microsoft
+description: |
+  This feature is used by the Arabic shaping as the final phase of the typographic
+  shaping group. It was intended for substitutions which combine marks and bases
+  into precomposed forms as an alternative to using positioning rules in the `mark`
+  feature; however, it is possible to use *substitution* rules in the `mark`
+  feature, making the `mset` feature redundant.
+
+  It was used in Microsoft's Windows 95 Arabic fonts, and practically no other font.
+  New fonts should use `mark`, `ccmp`, `rlig` or other features instead.
+done: true
