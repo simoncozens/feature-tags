@@ -3,7 +3,7 @@ Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
 });
 
 Handlebars.registerHelper("ifIncludes", function (arg1, arg2, options) {
-	return arg1.includes(arg2) ? options.fn(this) : options.inverse(this);
+	return arg1 && arg1.includes(arg2) ? options.fn(this) : options.inverse(this);
 });
 
 var featureTemplate = Handlebars.compile(`
