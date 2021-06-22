@@ -14,6 +14,20 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "nalt": {
+        "status": "discretionary",
+        "title": "Alternate Annotation Forms",
+        "registered": "Adobe",
+        "description": "This feature replaces glyphs with \"notational\" forms - glyphs in boxes,\ncircles, etc. It is often used in CJK fonts to access characters in the Unicode\n\"Enclosed CJK Letters and Months\" block (for example, `sub uni3131 by uni3200;`),\nbut may also be used to access other enclosed forms (`sub one by uni2460;`).\n\n\nNote that although the OT Specification describes this as implementable via\nalternate substitution lookups, no interface supports this, and single substitutions\nshould be used instead.\n",
+        "ui": "No user interface to this feature has been found.\n",
+        "done": "true",
+        "example": {
+            "font": "Work Sans",
+            "text": "12345"
+        },
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "akhn": {
         "group": "Preprocessing",
         "script": {
@@ -36,6 +50,22 @@ window.featuredb={
         },
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "twid": {
+        "title": "Third Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-third of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of three\nnumbers horizontally across an em-width vertical column.)\n",
+        "fea": "feature twid {\n  sub one by one.twid;\n  sub two by two.twid;\n  # ...\n}\n",
+        "example": {
+            "font": "Feature Sans",
+            "text": "\u304b123\u304b"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Third Width\".",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
     },
     "abvs": {
         "title": "Above-base Substitutions",
@@ -90,6 +120,21 @@ window.featuredb={
         },
         "fea": "feature cv01 {\n  cvParameters {\n      FeatUILabelNameID {\n          name 3 1 0x0409 \"single-storey a\";\n          name 1 0 0 \"single-storey a\";\n      };\n      Character 0x61;\n  }\n  sub a by a.cv01;\n} cv01;\n",
         "ui": "In the OS X typography panel, this feature is accessed via \"Glyph Variants\".\nIn CSS, this feature is accessed through the [`font-variant-alternates`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates) property.\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "mgrk": {
+        "title": "Mathematical Greek",
+        "registered": "Adobe",
+        "status": "discretionary",
+        "description": "This feature replaces Greek glyphs with mathematical symbols: for example,\n`Sigma` is replaced by the `summation` glyph.\n",
+        "fea": "feature mgrk {\n  sub uni0394 by uni2206;\n  sub Pi by product;\n  sub Sigma by summation;\n  sub uni03A9 by uni2126;\n  sub uni03BC by uni00B5;\n  sub phi by uni03D5;\n} mgrk;\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Mathematical Extras\n-> Mathematical Greek Letter Forms\".\n",
+        "example": {
+            "font": "Vollkorn",
+            "text": "\u03c6(n)=\u03a3 \u0394n"
+        },
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -253,6 +298,18 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "expt": {
+        "title": "Expert Forms",
+        "registered": "Adobe",
+        "description": "This feature is used to substitute Japanese kanji for alternative forms which\nare considered more \"typographical\". This includes the use of JIS78 forms\n(see `jp78`), but also a wide range of other substitutions.\n\nThe expected substitutions of the `expt` feature are defined in terms of the\n[Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.\nEngineers creating Japanese fonts according to that glyphset should read the\ninformation at the Adobe-Japan1 repository, and use the latest version of the\nfeature code provided there to implement this feature.\n\n(Thanks to Ken Lunde for the information about implementing this feature.)\n",
+        "done": "true",
+        "example": {
+            "font": "Kiwi Maru",
+            "text": "\u66c1\u5819\u50ca"
+        },
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "falt": {
         "title": "Final Glyph on Line Alternates",
         "registered": "Microsoft",
@@ -287,6 +344,22 @@ window.featuredb={
             "font": "EB Garamond",
             "text": "a\u017f\u017fi\u017ft"
         },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "lnum": {
+        "automatic": "true",
+        "state": "discretionary",
+        "title": "Lining Figures",
+        "registered": "Adobe",
+        "description": "This feature substitutes digits for lining forms. Lining figures are\ndesigned to fit in all-capital settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for lining forms, but also any alternate\nnon-lining forms (such as oldstyle figures) for lining forms. Where\nlining forms are the default, implementing a substitution from oldstyle\nfigures to lining figures is not typographically necessary but will cause\nthe UI of layout programs to display lining figures as an option.\n\nSee also `onum`, `pnum`, `tnum`.\n",
+        "fea": "feature lnum {\n  sub one by one.lf;\n  sub two by two.lf;\n  # ...\n} lnum;\n",
+        "example": {
+            "font": "Baskervville",
+            "text": "ABC1234"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nLining Figures\". In Adobe applications, selecting \"Tabular lining\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional lining\" will apply this feature and the `pnum` feature.\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -348,6 +421,21 @@ window.featuredb={
         "popularity": "common",
         "popularity_ix": 4
     },
+    "mset": {
+        "status": "deprecated",
+        "group": "typographic",
+        "title": "Mark Positioning via substitution",
+        "script": {
+            "arab": {
+                "order": "4"
+            }
+        },
+        "registered": "Microsoft",
+        "description": "This feature is used by the Arabic shaping as the final phase of the typographic\nshaping group. It was intended for substitutions which combine marks and bases\ninto precomposed forms as an alternative to using positioning rules in the `mark`\nfeature; however, it is possible to use *substitution* rules in the `mark`\nfeature, making the `mset` feature redundant.\n\nIt was used in Microsoft's Windows 95 Arabic fonts, and practically no other font.\nNew fonts should use `mark`, `ccmp`, `rlig` or other features instead.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "dtls": {
         "title": "Dotless Forms",
         "script": {
@@ -394,8 +482,8 @@ window.featuredb={
         "title": "Centered CJK Punctuation",
         "description": "This feature is intended to center punctuation (typically the ideographic\ncomma \u3001 and ideographic full stop \u3002) in Chinese fonts. Where presented, it\nis often implemented as GPOS lookup 1 positioning rules to place these\nglyphs within the center of the em square.\n",
         "example": {
-            "text": "\u6211\u3001\u4f60",
-            "font": "Kaiti"
+            "text": "\u304b\u3001\u304b",
+            "font": "Feature Sans"
         },
         "registered": "Adobe",
         "done": "true",
@@ -457,6 +545,15 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "unic": {
+        "title": "Unicase",
+        "registered": "Tiro Typeworks",
+        "description": "This feature was intended for mapping both upper- and lowercase letters\nto a \"unicase\" alphabet, a set of glyphs with a common glyph height using\na mix of upper- and lowercase glyph forms. (For example, a font may use\nthe lowercase style of `a` but the uppercase style of `B`, but both glyphs\nwill have the same height; see Bradbury Thompson's [Alphabet 26](https://en.wikipedia.org/wiki/Bradbury_Thompson#Alphabet_26)\nor Zuzana Licko's [Filosofia Unicase](https://www.emigre.com/Fonts/Filosofia).)\n",
+        "ui": "This feature can be activated using the CSS rule `font-variant-caps: unicase`,\nsubject to browser support.\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "dist": {
         "title": "Distances",
         "registered": "Microsoft",
@@ -495,6 +592,22 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "onum": {
+        "automatic": "true",
+        "state": "discretionary",
+        "title": "Oldstyle Figures",
+        "registered": "Adobe",
+        "description": "This feature substitutes digits for oldstyle forms. Oldstyle figures are\ndesigned to fit in mixed case text settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for oldstyle forms, but also any alternate\nlining forms (such as lining figures) for oldstyle forms. Where\noldstyle forms are the default, implementing a substitution from lining\nfigures to oldstyle figures is not typographically necessary but will cause\nthe UI of layout programs to display oldstyle figures as an option.\n\nSee also `onum`, `pnum`, `tnum`.\n",
+        "fea": "feature lnum {\n  sub one by one.osf;\n  sub two by two.osf;\n  # ...\n} lnum;\n",
+        "example": {
+            "font": "Cardo",
+            "text": "ABC1234"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nOld-Style Figures\". In Adobe applications, selecting \"Tabular oldstyle\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional oldstyle\" will apply this feature and the `pnum` feature.\n",
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
     "abvm": {
         "title": "Above-base Mark Positioning",
         "registered": "Microsoft",
@@ -522,6 +635,30 @@ window.featuredb={
         "registered": "Microsoft",
         "status": "discouraged",
         "description": "This feature is only applied during orthographic unit shaping in the Khmer\ncomplex shaper. In Khmer, the conjunct form of the letter ro (after a\ncoeng) is reordered to the left of the base consonant and displayed as a\ndeep letterform which can interact with below-base glyphs. This feature\nwas intended as offering an opportunity to fix up below-base glyphs to\navoid clashing with the coeng ro.\n\n\nNo examples of the use of this feature have been found. Consider using\n`blws` instead.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
+    "size": {
+        "status": "deprecated",
+        "title": "Optical size",
+        "description": "This feature was intended as a way to store information about the optical size of the font\nand the font's relationship to other optical size variants in the same family. It has\nbeen entirely superseded by the `STAT` table, and should not be used.\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "qwid": {
+        "title": "Quarter Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-quarter of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of four\nnumbers horizontally across an em-width vertical column.)\n",
+        "fea": "feature qwid {\n  sub one by one.qwid;\n  sub two by two.qwid;\n  # ...\n}\n",
+        "example": {
+            "font": "Feature Sans",
+            "text": "\u304b1231\u304b"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Quarter Width\".",
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0

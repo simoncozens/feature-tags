@@ -10,8 +10,18 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Feature Sans";
+		        src: url("fonts/Feature Sans.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Source Code Pro";
 		        src: url("fonts/Source Code Pro.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Vollkorn";
+		        src: url("fonts/Vollkorn.ttf");
 		    }
 		 
 			    @font-face {
@@ -50,6 +60,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Baskervville";
+		        src: url("fonts/Baskervville.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Aref Ruqaa";
 		        src: url("fonts/Aref Ruqaa.ttf");
 		    }
@@ -65,13 +80,13 @@
 		    }
 		 
 			    @font-face {
-		        font-family: "Kaiti";
-		        src: url("fonts/Kaiti.ttf");
+		        font-family: "Noto Sans Devanagari";
+		        src: url("fonts/Noto Sans Devanagari.ttf");
 		    }
 		 
 			    @font-face {
-		        font-family: "Noto Sans Devanagari";
-		        src: url("fonts/Noto Sans Devanagari.ttf");
+		        font-family: "Cardo";
+		        src: url("fonts/Cardo.ttf");
 		    }
 		 
 			    @font-face {
