@@ -1,0 +1,15 @@
+title: Historical Forms
+registered: Microsoft
+state: discretionary
+description: |
+    Substitutes forms of letters which are no longer commonly used, or which
+    give the text a "historical" feel. See also the `hlig` feature.
+fea: |
+  feature hist {
+    sub J by J.hist;
+    sub s by longs;
+  } hist;
+example:
+  font: EB Garamond
+  text: Justice
+done: true

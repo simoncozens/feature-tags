@@ -13,3 +13,6 @@ example:
   font: EB Garamond
   text: aſſiſt
 done: true
+ui: |
+  In the OS X typography panel, this feature is accessed via "Ligatures -> Historical
+  Ligatures."
