@@ -1,25 +1,24 @@
-title: Quarter Widths
+title: Half Widths
 automatic: true
 state: discretionary
 registered: Adobe
 description: |
   This feature replaces glyphs (normally figures and punctuation) with variants
-  which are one-quarter of the em square. This is generally used with CJK fonts
-  and in the context of vertical typesetting. (For placing a sequence of four
+  which are one-half of the em square. This is generally used with CJK fonts
+  and in the context of vertical typesetting. (For placing a sequence of two
   numbers horizontally across an em-width vertical column.)
 
-  See also `fwid`, `hwid`, `twid`.
+  See also `fwid`, `qwid`, `twid`.
 fea: |
-  feature qwid {
-    sub one by one.qwid;
-    sub two by two.qwid;
+  feature hwid {
+    sub one by one.hwid;
+    sub two by two.hwid;
     # ...
   }
 example:
   font: Feature Sans
-  text: か1231か
+  text: か12か
 ui:
   In the OS X typography panel, this feature is accessed via "Text spacing >
-  Quarter Width".
+  Half Width".
 done: true
-

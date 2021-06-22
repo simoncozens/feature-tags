@@ -1,0 +1,22 @@
+title: Quarter Widths
+automatic: true
+state: discretionary
+registered: Adobe
+description: |
+  This feature replaces glyphs with variants which fill the em square. This is
+  generally used with CJK fonts for setting text within an em-square grid (*hanmen*).
+fea: |
+  feature qwid {
+    sub one by uniFF11;
+    sub two by uniFF12;
+    # ...
+    sub a by uniFF41;
+    sub b by uniFF42;
+  }
+example:
+  font: Shippori Mincho
+  text: か12かab
+ui:
+  In the OS X typography panel, this feature is accessed via "Text spacing >
+  Full Width".
+done: true

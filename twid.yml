@@ -7,6 +7,8 @@ description: |
   which are one-third of the em square. This is generally used with CJK fonts
   and in the context of vertical typesetting. (For placing a sequence of three
   numbers horizontally across an em-width vertical column.)
+
+  See also `fwid`, `hwid`, `qwid`.
 fea: |
   feature twid {
     sub one by one.twid;

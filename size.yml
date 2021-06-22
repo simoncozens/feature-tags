@@ -1,4 +1,5 @@
 status: deprecated
+registered: Adobe
 title: Optical size
 description: |
   This feature was intended as a way to store information about the optical size of the font
