@@ -1,0 +1,24 @@
+title: Proportional Widths
+automatic: true
+state: discretionary
+registered: Adobe
+description: |
+  This feature replaces glyphs (normally figures and punctuation) sized to
+  the em-square with variants which are proportionally spaced. This is generally
+  used with CJK fonts. It is the opposite of the `fwid` feature.
+fea: |
+  feature pwid {
+    sub uniFF11 by one;
+    sub uniFF12 by two;
+    # ...
+    sub uniFF41 by a;
+    sub uniFF42 by b;
+    # ...
+  } pwid;
+example:
+  font: Kiwi Maru
+  text: かａｂｃか
+ui:
+  In the OS X typography panel, this feature is accessed via "Text spacing >
+  Proportional Widths".
+done: true

@@ -1,0 +1,23 @@
+title: Proportional Alternate Widths
+automatic: true
+state: discretionary
+registered: Adobe
+description: |
+  This feature is similar to the `pwid` feature, but instead of replaces full-width
+  glyphs with proportional equivalents, it re-spaces the glyphs using positioning
+  rules.
+fea: |
+  feature pwid {
+    pos uniFF41 <-186 0 -373 0>;
+    pos uniFF42 <-148 0 -346 0>;
+    pos uniFF43 <-220 0 -441 0>;
+    pos uniFF44 <-176 0 -353 0>;
+    # ...
+  } palt;
+example:
+  font: Shippori Mincho
+  text: かａｂｃか
+ui:
+  In the OS X typography panel, this feature is accessed via "Text spacing >
+  Alternative Proportional Widths".
+done: true
