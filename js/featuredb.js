@@ -56,7 +56,7 @@ window.featuredb={
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-third of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of three\nnumbers horizontally across an em-width vertical column.)\n",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-third of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of three\nnumbers horizontally across an em-width vertical column.)\n\nSee also `fwid`, `hwid`, `qwid`.\n",
         "fea": "feature twid {\n  sub one by one.twid;\n  sub two by two.twid;\n  # ...\n}\n",
         "example": {
             "font": "Feature Sans",
@@ -259,6 +259,22 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "fwid": {
+        "title": "Quarter Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature replaces glyphs with variants which fill the em square. This is\ngenerally used with CJK fonts for setting text within an em-square grid (*hanmen*).\n",
+        "fea": "feature qwid {\n  sub one by uniFF11;\n  sub two by uniFF12;\n  # ...\n  sub a by uniFF41;\n  sub b by uniFF42;\n}\n",
+        "example": {
+            "font": "Shippori Mincho",
+            "text": "\u304b12\u304bab"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Full Width\".",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "blws": {
         "title": "Below-base Substitutions",
         "registered": "Microsoft",
@@ -281,6 +297,22 @@ window.featuredb={
         "fea": "feature blws {\n    sub dvRA dvmU  by dvRA_mU;\n    sub dvRA dvmUU by dvRA_mUU;\n    sub dvHA dvmU  by dvHA_mU;\n    sub dvHA dvmUU by dvHA_mUU;\n    sub dvDA  dvmvR by dvDA_mvR;\n    sub dvSHA dvmvR by dvSHA_mvR;\n    sub dvHA  dvmvR by dvHA_mvR;\n} blws;\n",
         "done": "true",
         "state": "required",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "palt": {
+        "title": "Proportional Alternate Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature is similar to the `pwid` feature, but instead of replaces full-width\nglyphs with proportional equivalents, it re-spaces the glyphs using positioning\nrules.\n",
+        "fea": "feature pwid {\n  pos uniFF41 <-186 0 -373 0>;\n  pos uniFF42 <-148 0 -346 0>;\n  pos uniFF43 <-220 0 -441 0>;\n  pos uniFF44 <-176 0 -353 0>;\n  # ...\n} palt;\n",
+        "example": {
+            "font": "Shippori Mincho",
+            "text": "\u304b\uff41\uff42\uff43\u304b"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Alternative Proportional Widths\".",
+        "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -345,6 +377,7 @@ window.featuredb={
             "text": "a\u017f\u017fi\u017ft"
         },
         "done": "true",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Ligatures -> Historical\nLigatures.\"\n",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -360,6 +393,22 @@ window.featuredb={
             "text": "ABC1234"
         },
         "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nLining Figures\". In Adobe applications, selecting \"Tabular lining\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional lining\" will apply this feature and the `pnum` feature.\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "pwid": {
+        "title": "Proportional Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature replaces glyphs (normally figures and punctuation) sized to\nthe em-square with variants which are proportionally spaced. This is generally\nused with CJK fonts. It is the opposite of the `fwid` feature.\n",
+        "fea": "feature pwid {\n  sub uniFF11 by one;\n  sub uniFF12 by two;\n  # ...\n  sub uniFF41 by a;\n  sub uniFF42 by b;\n  # ...\n} pwid;\n",
+        "example": {
+            "font": "Kiwi Maru",
+            "text": "\u304b\uff41\uff42\uff43\u304b"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Proportional Widths\".",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -391,6 +440,22 @@ window.featuredb={
         },
         "done": "true",
         "fea": "feature curs {\n  pos cursive uni066F.medi <anchor 606 35> <anchor 0 35>;\n  pos cursive uni0640 <anchor 250 35> <anchor 0 35>;\n  pos cursive uni06A1.medi <anchor 606 35> <anchor 0 35>;\n  # ...\n} curs;\n",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "hwid": {
+        "title": "Half Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-half of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of two\nnumbers horizontally across an em-width vertical column.)\n\nSee also `fwid`, `qwid`, `twid`.\n",
+        "fea": "feature hwid {\n  sub one by one.hwid;\n  sub two by two.hwid;\n  # ...\n}\n",
+        "example": {
+            "font": "Feature Sans",
+            "text": "\u304b12\u304b"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Half Width\".",
+        "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -554,6 +619,20 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "hist": {
+        "title": "Historical Forms",
+        "registered": "Microsoft",
+        "state": "discretionary",
+        "description": "Substitutes forms of letters which are no longer commonly used, or which\ngive the text a \"historical\" feel. See also the `hlig` feature.\n",
+        "fea": "feature hist {\n  sub J by J.hist;\n  sub s by longs;\n} hist;\n",
+        "example": {
+            "font": "EB Garamond",
+            "text": "Justice"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "dist": {
         "title": "Distances",
         "registered": "Microsoft",
@@ -641,6 +720,7 @@ window.featuredb={
     },
     "size": {
         "status": "deprecated",
+        "registered": "Adobe",
         "title": "Optical size",
         "description": "This feature was intended as a way to store information about the optical size of the font\nand the font's relationship to other optical size variants in the same family. It has\nbeen entirely superseded by the `STAT` table, and should not be used.\n",
         "done": "true",
@@ -652,13 +732,28 @@ window.featuredb={
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-quarter of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of four\nnumbers horizontally across an em-width vertical column.)\n",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-quarter of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of four\nnumbers horizontally across an em-width vertical column.)\n\nSee also `fwid`, `hwid`, `twid`.\n",
         "fea": "feature qwid {\n  sub one by one.qwid;\n  sub two by two.qwid;\n  # ...\n}\n",
         "example": {
             "font": "Feature Sans",
             "text": "\u304b1231\u304b"
         },
         "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Quarter Width\".",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
+    "ital": {
+        "title": "Italics",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "description": "This feature is used in *very particular circumstances*. Despite its name, it\nis not a general mechanism for activating italic glyphs.\n\n\nHistorically CJK fonts, particular Japanese fonts, shipped with a glyphset\nwhich contained the Latin alphabet (usually full-width but sometimes proportional).\nAs will as upright forms, these fonts *also* included Latin italic glyphs.\n\n\nCJK fonts with both upright and italic Latin glyphs in the same font should use\nthis feature to select the italic forms\n",
+        "fea": "feature ital {\n  sub a by a.ital;\n  sub b by b.ital;\n  # ...\n} ital;\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Italics -> On\".\nIn Adobe applications, this feature is accessed via \"Roman Italics\" in the OpenType panel.\nNote that in neither case can the italic feature be accessed from the \"Italicise\"\nbutton or the \"Font Style\" menu.\n",
+        "example": {
+            "font": "Feature Sans",
+            "text": "\u304b123\u304b"
+        },
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
