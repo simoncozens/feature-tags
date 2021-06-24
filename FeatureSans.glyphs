@@ -5,7 +5,13 @@ DisplayStrings = (
 "か123/one.twid/two.twid/three.twid/three.qwid/two.qwid/one.qwid",
 "か",
 "か、",
-"123/one.hwid/two.hwid/three.hwid"
+"123/one.hwid/two.hwid/three.hwid",
+"1",
+"/one.ital",
+"2",
+"/two.ital",
+"3",
+"/three.ital"
 );
 date = "2021-06-22 09:59:19 +0000";
 familyName = "Feature Sans";
@@ -22,6 +28,7 @@ features = (
 automatic = 1;
 code = "feature twid;
 feature qwid;
+feature hwid;
 ";
 tag = aalt;
 },
@@ -50,6 +57,13 @@ sub two by two.hwid;
 sub three by three.hwid;
 ";
 tag = hwid;
+},
+{
+code = "sub one by one.ital;
+sub two by two.ital;
+sub three by three.ital;
+";
+tag = ital;
 }
 );
 fontMaster = (
@@ -459,6 +473,126 @@ nodes = (
 }
 );
 width = 500;
+}
+);
+},
+{
+glyphname = one.ital;
+lastChange = "2021-06-24 15:27:19 +0000";
+layers = (
+{
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(327,491,l),
+(489,585,l),
+(332,0,l),
+(482,0,l),
+(674,714,l),
+(524,714,l),
+(339,612,l)
+);
+}
+);
+width = 1000;
+}
+);
+},
+{
+glyphname = two.ital;
+lastChange = "2021-06-24 15:24:07 +0000";
+layers = (
+{
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(559,353,o),
+(378,204,o),
+(260,107,c),
+(259,106,l),
+(226,-20,l),
+(635,-20,l),
+(671,110,l),
+(476,110,l),
+(589,212,o),
+(696,331,o),
+(741,457,cs),
+(794,607,o),
+(741,715,o),
+(596,718,cs),
+(516,720,o),
+(437,689,o),
+(357,641,c),
+(413,528,l),
+(469,567,o),
+(507,578,o),
+(552,578,cs),
+(599,578,o),
+(627,544,o),
+(600,467,cs)
+);
+}
+);
+width = 1000;
+}
+);
+},
+{
+glyphname = three.ital;
+lastChange = "2021-06-24 15:27:43 +0000";
+layers = (
+{
+layerId = m01;
+shapes = (
+{
+closed = 1;
+nodes = (
+(202,28,l),
+(260,-4,o),
+(328,-20,o),
+(394,-18,cs),
+(539,-13,o),
+(664,79,o),
+(695,195,cs),
+(712,258,o),
+(716,326,o),
+(647,359,c),
+(737,399,o),
+(779,493,o),
+(788,529,cs),
+(819,644,o),
+(767,718,o),
+(640,718,cs),
+(562,718,o),
+(471,689,o),
+(391,641,c),
+(453,548,l),
+(485,570,o),
+(536,589,o),
+(578,589,cs),
+(626,589,o),
+(663,563,o),
+(642,491,cs),
+(629,440,o),
+(581,418,o),
+(497,418,cs),
+(436,418,l),
+(404,298,l),
+(474,298,ls),
+(611,298,o),
+(596,132,o),
+(455,112,cs),
+(398,104,o),
+(321,117,o),
+(290,143,c)
+);
+}
+);
+width = 1000;
 }
 );
 },

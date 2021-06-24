@@ -1,0 +1,30 @@
+title: Italics
+registered: Adobe
+state: discretionary
+description: |
+  This feature is used in *very particular circumstances*. Despite its name, it
+  is not a general mechanism for activating italic glyphs.
+
+
+  Historically CJK fonts, particular Japanese fonts, shipped with a glyphset
+  which contained the Latin alphabet (usually full-width but sometimes proportional).
+  As will as upright forms, these fonts *also* included Latin italic glyphs.
+
+
+  CJK fonts with both upright and italic Latin glyphs in the same font should use
+  this feature to select the italic forms
+fea: |
+  feature ital {
+    sub a by a.ital;
+    sub b by b.ital;
+    # ...
+  } ital;
+ui: |
+  In the OS X typography panel, this feature is accessed via "Italics -> On".
+  In Adobe applications, this feature is accessed via "Roman Italics" in the OpenType panel.
+  Note that in neither case can the italic feature be accessed from the "Italicise"
+  button or the "Font Style" menu.
+example:
+  font: Feature Sans
+  text: か123か
+done: true
