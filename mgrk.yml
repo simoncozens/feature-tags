@@ -1,6 +1,6 @@
 title: Mathematical Greek
 registered: Adobe
-status: discretionary
+state: discretionary
 description: |
   This feature replaces Greek glyphs with mathematical symbols: for example,
   `Sigma` is replaced by the `summation` glyph.
