@@ -15,7 +15,7 @@ window.featuredb={
         "popularity_ix": 2
     },
     "nalt": {
-        "status": "discretionary",
+        "state": "discretionary",
         "title": "Alternate Annotation Forms",
         "registered": "Adobe",
         "description": "This feature replaces glyphs with \"notational\" forms - glyphs in boxes,\ncircles, etc. It is often used in CJK fonts to access characters in the Unicode\n\"Enclosed CJK Letters and Months\" block (for example, `sub uni3131 by uni3200;`),\nbut may also be used to access other enclosed forms (`sub one by uni2460;`).\n\n\nNote that although the OT Specification describes this as implementable via\nalternate substitution lookups, no interface supports this, and single substitutions\nshould be used instead.\n",
@@ -96,6 +96,25 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "stch": {
+        "title": "Stretching Glyph Decomposition",
+        "registered": "Microsoft",
+        "required": "true",
+        "group": "Common",
+        "script": {
+            "arab": {
+                "order": "0"
+            },
+            "syrc": {
+                "order": "0"
+            }
+        },
+        "description": "Right.\n\n\nThe `stch` feature is part of the Arabic complex shaper. (It is the first\nfeature processed in the glyph preprocessing phase). It was designed to\nimplement the Syriac Abbreviation Mark (U+070F), which stretches to fill the\nwidth of the enclosed text.\n\n\nThe feature should be implemented by the font engineer as a multiple substitution,\nreplacing the glyph mapped to U+070F with an *odd number of glyphs*. When applying\nthe feature, the shaper performs the following actions:\n\n\n  * The substitution rules specified in the `stch` feature are applied, and the\n  sequence of glyphs returned by the rule applications are collected.\n\n  * The first glyph in the returned sequence is placed at the start of the glyph stream.\n\n  * The final glyph in the returned sequence is placed at the end of the glyph stream.\n\n  * At the end of processing, after positioning rules have been applied, the\n    width of the whole glyph stream is calculated.\n\n  * Next, odd-numbered glyphs inside the returned sequence other than the\n    first and final glyph are positioned such that they are distributed\n    evenly across the glyph stream. (For example, if there are five glyphs in the\n    sequence returned from `stch`, the third glyph is positioned horizontally\n    to appear in the middle of the glyph stream. If there are seven glyphs, the\n    third glyph is positioned to appear one-third of the way along the glyph\n    stream, and the fifth to appear two-thirds of the way along.)\n\n  * Finally, even-numbered glyphs inside the returned sequence are positioned\n    and *repeated* such that their widths completely fill the spaces between\n    the odd-numbered glyphs.\n\nFurther: the first and last glyphs in the returned sequence may be base glyphs\nor mark glyphs, and should have a non-zero horizontal advance. The\nremaining glyphs must be set as mark glyphs, but should also have a non-zero\nhorizontal advance.\n\n\nNote that although the OpenType specification describes this feature as having\nno \"script/language sensitivity\", and in theory can be applied to any situation\nwhere a glyph is decomposed and repeated to stretch over an enclosed sequence\nof glyphs (for example, enclosed numbers, Arabic year or end-of-aya marks, etc.),\nit is only processed as part of the Arabic complex shaper.\n\n\nNote also that as of macOS 11.4, the CoreText shaper does not apply this feature,\nand even if the feature is manually applied, the CoreText shaper does not implement\nthe distribution and stretching algorithm required to make the feature operated\nas expected. This has led some font engineers to create their own, manual\nimplementation inside the font; while this is an interesting engineering exercise,\nadding in the repeated glyphs manually inside the `stch` feature leads to\nerroneous results when such a font is used with a shaping engine which *does*\nimplement `stch` as specified, and cannot be recommended.\n",
+        "fea": "feature stch {\n  sub abbreviation-syriac by\n    abbreviation-syriac.start\n    abbreviation-syriac.line\n    abbreviation-syriac.linedot\n    abbreviation-syriac.line\n    abbreviation-syriac.end;\n} stch;\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "c2sc": {
         "title": "Small Capitals From Capitals",
         "registered": "Adobe",
@@ -127,7 +146,7 @@ window.featuredb={
     "mgrk": {
         "title": "Mathematical Greek",
         "registered": "Adobe",
-        "status": "discretionary",
+        "state": "discretionary",
         "description": "This feature replaces Greek glyphs with mathematical symbols: for example,\n`Sigma` is replaced by the `summation` glyph.\n",
         "fea": "feature mgrk {\n  sub uni0394 by uni2206;\n  sub Pi by product;\n  sub Sigma by summation;\n  sub uni03A9 by uni2126;\n  sub uni03BC by uni00B5;\n  sub phi by uni03D5;\n} mgrk;\n",
         "ui": "In the OS X typography panel, this feature is accessed via \"Mathematical Extras\n-> Mathematical Greek Letter Forms\".\n",
@@ -473,7 +492,7 @@ window.featuredb={
     },
     "frac": {
         "title": "Fractions",
-        "status": "discretionary",
+        "state": "discretionary",
         "registered": "Microsoft/Adobe",
         "description": "The feature is used to set fractions, both those fractions for which there is a precomposed glyph in the font (for example, `sub three slash four by threequarters;`) and those made up of numerator and denominator forms of numerals.",
         "example": {
