@@ -19,7 +19,7 @@ description: |
   can be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)
   in the Unicode Character Database.
 example:
-  font: Aref Ruqq
+  font: Aref Ruqaa
   text: جر
 automatic: true
 fea: |
