@@ -261,7 +261,7 @@ window.featuredb={
     "fin2": {
         "title": "Terminal Form #2",
         "registered": "Microsoft",
-        "group": "orthographic",
+        "group": "topographical",
         "required": "true",
         "script": {
             "syrc": {
@@ -370,6 +370,29 @@ window.featuredb={
         "popularity": "non-existent",
         "popularity_ix": 0
     },
+    "half": {
+        "title": "Half Forms",
+        "registered": "Microsoft",
+        "group": "Orthographic",
+        "script": {
+            "INDIC": {
+                "order": "6"
+            },
+            "USE": {
+                "order": "0"
+            }
+        },
+        "description": "This feature produces half forms of conjuncts. It is processed in the Indic\nand USE complex shapers as part of the orthographic shaping group.\n\n\nHalf forms are used in scripts such as Devanagari to display dead (unvoiced)\nconsonants after a virama in conjuncts which do not have a predetermined\nconjunct form. Half forms should be provided for all base consonants. These\nhalf forms can then be substituted into conjuncts later using the `pres`\nfeature. For example:\n\n```\nfeature half {\n  sub ka-deva halant-deva by k-deva;\n  ...\n} half;\nfeature pres {\n  sub k-deva sa-deva by ksa-deva;\n  ...\n} pres;\n```\n",
+        "example": {
+            "font": "Hind",
+            "text": "\u0917\u094d\u0924"
+        },
+        "state": "required",
+        "done": "true",
+        "fea": "feature half {\n  sub ka-deva halant-deva by k-deva;\n  sub kha-deva halant-deva by kh-deva;\n  sub ga-deva halant-deva by g-deva;\n  sub gha-deva halant-deva by gh-deva;\n  ...\n} half;\n",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "dlig": {
         "title": "Discretionary Ligatures",
         "registered": "Adobe",
@@ -459,6 +482,33 @@ window.featuredb={
         },
         "done": "true",
         "fea": "feature curs {\n  pos cursive uni066F.medi <anchor 606 35> <anchor 0 35>;\n  pos cursive uni0640 <anchor 250 35> <anchor 0 35>;\n  pos cursive uni06A1.medi <anchor 606 35> <anchor 0 35>;\n  # ...\n} curs;\n",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "fina": {
+        "title": "Terminal Forms",
+        "registered": "Microsoft/Adobe",
+        "group": "topographical",
+        "required": "true",
+        "script": {
+            "arab": {
+                "order": "2"
+            },
+            "syrc": {
+                "order": "2"
+            },
+            "USE": {
+                "order": "4"
+            }
+        },
+        "description": "This feature is used by the Arabic and USE complex shapers as part of topographic\nshaping. It is *not* appropriate for general end-of-word detection, but is\ndesigned to replace joining characters with final forms. This means characters\nwhich have the Unicode joining type `Right_Joining` or `Dual_Joining` in a\nright-to-left script, and characters which have the Unicode joining type `Left_Joining`\nor `Dual_Joining` in a left-to-right script. These joining type properties\ncan be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)\nin the Unicode Character Database.\n",
+        "example": {
+            "font": "Aref Ruqaa",
+            "text": "\u062c\u0631"
+        },
+        "automatic": "true",
+        "fea": "feature fina {\n  lookupflag RightToLeft IgnoreMarks;\n  sub alef-ar by alef-ar.fina;\n  sub beh-ar by beh-ar.fina;\n  # ...\n}\n",
+        "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -761,6 +811,21 @@ window.featuredb={
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
+    },
+    "flac": {
+        "title": "Flattened accent forms",
+        "script": {
+            "math": ""
+        },
+        "example": {
+            "math": "x&#x00301; X&#x00301;"
+        },
+        "registered": "Microsoft",
+        "description": "This feature replaces accents with flatter forms allowing them to fit within\nthe line when placed over a tall base character. This feature is automatically\napplied by the math layout engine when an accent is placed over a base character\nat a height of more than `MATH.MathConstants.FlattenedAccentBaseHeight`.\n",
+        "done": "true",
+        "fea": "feature flac {\n  sub uni0300 by uni0300.mathcap;\n  sub uni0301 by uni0301.mathcap;\n  sub uni0302 by uni0302.mathcap;\n  sub uni0303 by uni0303.mathcap;\n  sub uni0304 by uni0304.mathcap;\n  sub uni0306 by uni0306.mathcap;\n  sub uni0307 by uni0307.mathcap;\n  sub uni0308 by uni0308.mathcap;\n  sub uni030A by uni030A.mathcap;\n  sub uni030C by uni030C.mathcap;\n} flac;\n",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
     },
     "ital": {
         "title": "Italics",
