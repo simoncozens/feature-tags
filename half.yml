@@ -1,0 +1,42 @@
+title: Half Forms
+registered: Microsoft
+group: Orthographic
+script:
+  INDIC:
+    order: 6
+  USE:
+    order: 0
+description: |
+  This feature produces half forms of conjuncts. It is processed in the Indic
+  and USE complex shapers as part of the orthographic shaping group.
+
+
+  Half forms are used in scripts such as Devanagari to display dead (unvoiced)
+  consonants after a virama in conjuncts which do not have a predetermined
+  conjunct form. Half forms should be provided for all base consonants. These
+  half forms can then be substituted into conjuncts later using the `pres`
+  feature. For example:
+
+  ```
+  feature half {
+    sub ka-deva halant-deva by k-deva;
+    ...
+  } half;
+  feature pres {
+    sub k-deva sa-deva by ksa-deva;
+    ...
+  } pres;
+  ```
+example:
+  font: Hind
+  text: ग्त
+state: required
+done: true
+fea: |
+  feature half {
+    sub ka-deva halant-deva by k-deva;
+    sub kha-deva halant-deva by kh-deva;
+    sub ga-deva halant-deva by g-deva;
+    sub gha-deva halant-deva by gh-deva;
+    ...
+  } half;

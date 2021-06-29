@@ -1,0 +1,25 @@
+title: Flattened accent forms
+script:
+  math:
+example:
+  math: x&#x00301; X&#x00301;
+registered: Microsoft
+description: |
+  This feature replaces accents with flatter forms allowing them to fit within
+  the line when placed over a tall base character. This feature is automatically
+  applied by the math layout engine when an accent is placed over a base character
+  at a height of more than `MATH.MathConstants.FlattenedAccentBaseHeight`.
+done: true
+fea: |
+  feature flac {
+    sub uni0300 by uni0300.mathcap;
+    sub uni0301 by uni0301.mathcap;
+    sub uni0302 by uni0302.mathcap;
+    sub uni0303 by uni0303.mathcap;
+    sub uni0304 by uni0304.mathcap;
+    sub uni0306 by uni0306.mathcap;
+    sub uni0307 by uni0307.mathcap;
+    sub uni0308 by uni0308.mathcap;
+    sub uni030A by uni030A.mathcap;
+    sub uni030C by uni030C.mathcap;
+  } flac;

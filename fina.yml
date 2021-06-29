@@ -1,0 +1,32 @@
+title: Terminal Forms
+registered: Microsoft/Adobe
+group: topographical
+required: true
+script:
+  arab:
+    order: 2
+  syrc:
+    order: 2
+  USE:
+    order: 4
+description: |
+  This feature is used by the Arabic and USE complex shapers as part of topographic
+  shaping. It is *not* appropriate for general end-of-word detection, but is
+  designed to replace joining characters with final forms. This means characters
+  which have the Unicode joining type `Right_Joining` or `Dual_Joining` in a
+  right-to-left script, and characters which have the Unicode joining type `Left_Joining`
+  or `Dual_Joining` in a left-to-right script. These joining type properties
+  can be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)
+  in the Unicode Character Database.
+example:
+  font: Aref Ruqq
+  text: جر
+automatic: true
+fea: |
+  feature fina {
+    lookupflag RightToLeft IgnoreMarks;
+    sub alef-ar by alef-ar.fina;
+    sub beh-ar by beh-ar.fina;
+    # ...
+  }
+done: true
