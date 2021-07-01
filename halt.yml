@@ -13,7 +13,7 @@ fea: |
     pos [uni30FB uniFF01 uniFF1A uniFF1B] <-250 0 -500 0>;
   } halt;
 example:
-  font: Shippori Mincho
+  font: Reggae One
   text: か、が。さ
 ui:
   In the OS X typography panel, this feature is accessed via "Text spacing >
