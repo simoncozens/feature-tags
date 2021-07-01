@@ -1,0 +1,25 @@
+title: Vertical Kana Alternates
+registered: Adobe
+state: discretionary
+description: |
+  This feature replaces standard kana forms with glyphs which are designed
+  specifically for vertical layout. This may take a variety of forms: fonts
+  designed with proportional kana might provide fixed-width em-square kana
+  glyphs; glyphs may be raised from the horizontal baseline and centered
+  within the em-square; or structural changes may be made analogous to the
+  `hkna` feature. In many fonts, vertical alternates are only provided for
+  the "small" kana.
+example:
+  font: Cherry Bomb One
+  text: シャットアップ
+fea: |
+  feature hkna {
+    sub ka-hira by ka-hira.vkna;
+    sub sa-hira by sa-hira.vkna;
+    sub ta-hira by ta-hira.vkna;
+    # ...
+  } hkna;
+ui: |
+  In the Mac OS X typography panel, this feature is accessed via "Optimized
+  Kana Alternatives -> Vertical Alternatives".
+done: true

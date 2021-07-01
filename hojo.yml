@@ -1,0 +1,33 @@
+title: Hojo Kanji Forms (JIS X 0212-1990 Kanji Forms)
+registered: Adobe
+description: |
+  The expected form of Japanese kanji characters in an OpenType font are the
+  forms specified in JIS X 0213 (which replaces the older standard, JIS X
+  0208). As well as JIS X 0208, an additional standard, JIS X 0212, defined
+  supplementary characters, including 5,801 kanji characters. 2,743 of those
+  characters were included in the JIS X 0213 standard, but in some cases,
+  the representative forms are different between the 1990 revision of JIS X
+  0212 and the current revision (2004) of JIS X 0213. This feature is used to
+  select the JIS X 0212-1990 representative forms of these characters.
+
+
+  The best source of information about which glyph forms differ, and how this
+  feature should be implemented, is the
+  [Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) repository.
+fea: |
+  feature hojo {
+    sub uni7462 by uni7462.hojo;
+    sub uni7626 by uni7626.hojo;
+    # ...
+  } jp83;
+done: true
+example:
+  font: Kiwi Maru
+  text: 瑢瘦
+ui: |
+  In the Mac OS X typography panel, this feature is accessed via the "character
+  shape" radio buttons.
+
+  In Adobe InDesign with CJK functionality, this feature can be accessed via
+  the "Alternate Glyphs" dropdown in the Advanced Character Formats panel of
+  the character style options dialog.

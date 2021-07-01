@@ -80,6 +80,8 @@ with open("css2/fonts.css", "w") as f:
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosanssyriac/NotoSansSyriac-Regular.ttf"
 		elif font == "Allura":
 			reg = "https://github.com/google/fonts/raw/main/ofl/allura/Allura-Regular.ttf"
+		elif font == "Cherry Bomb One":
+			reg = "https://github.com/google/fonts/raw/main/ofl/cherrybombone/CherryBombOne-Regular.ttf"
 		elif font not in font_db:
 			print("Couldn't get %s" % font)
 			continue

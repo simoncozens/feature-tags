@@ -11,9 +11,9 @@ example:
   text: か12か
 fea: |
   feature hkna {
-    sub ka-hira by ka-hira.khna;
-    sub sa-hira by sa-hira.khna;
-    sub ta-hira by ta-hira.khna;
+    sub ka-hira by ka-hira.vkna;
+    sub sa-hira by sa-hira.vkna;
+    sub ta-hira by ta-hira.vkna;
     # ...
   } hkna;
 ui: |

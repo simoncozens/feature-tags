@@ -1,0 +1,14 @@
+title: Titling
+registered: Adobe
+state: discretionary
+automatic: true
+description: |
+  This feature substitutes glyphs for alternate forms designed for titling,
+  typically some or all capital letters.
+example:
+  font: Work Sans
+  text: PÖW
+done: true
+ui: |
+  In the Mac OS X typography panel, this feature is accessed via "Style Options >
+  Titling Capitals".
