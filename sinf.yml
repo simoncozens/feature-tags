@@ -1,0 +1,16 @@
+title: Scientific Inferiors
+registered: Microsoft/Adobe
+state: discretionary
+automatic: true
+description: |
+  This feature replaces glyphs with subscript forms, similar to the `subs` feature,
+  but in theory for a wider range of glyphs (including Latin letters),
+  generally for chemical or mathematical notation. (In practice, the same
+  substitutions are often made as those in the `subs` feature.)
+example:
+  font: Alegreya
+  text: H2O
+ui:
+  In the OS X typography panel, this feature is accessed via "Vertical Position >
+  Scientific Inferiors".
+done: true
