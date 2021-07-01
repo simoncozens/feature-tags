@@ -5,8 +5,18 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Cherry Bomb One";
+		        src: url("fonts/Cherry Bomb One.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Hind";
 		        src: url("fonts/Hind.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Kiwi Maru";
+		        src: url("fonts/Kiwi Maru.ttf");
 		    }
 		 
 			    @font-face {
@@ -42,11 +52,6 @@
 			    @font-face {
 		        font-family: "Shippori Mincho";
 		        src: url("fonts/Shippori Mincho.ttf");
-		    }
-		 
-			    @font-face {
-		        font-family: "Kiwi Maru";
-		        src: url("fonts/Kiwi Maru.ttf");
 		    }
 		 
 			    @font-face {

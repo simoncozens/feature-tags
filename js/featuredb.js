@@ -28,6 +28,21 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "vkna": {
+        "title": "Vertical Kana Alternates",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "description": "This feature replaces standard kana forms with glyphs which are designed\nspecifically for vertical layout. This may take a variety of forms: fonts\ndesigned with proportional kana might provide fixed-width em-square kana\nglyphs; glyphs may be raised from the horizontal baseline and centered\nwithin the em-square; or structural changes may be made analogous to the\n[`hkna`](#hkna) feature. In many fonts, vertical alternates are only provided for\nthe \"small\" kana.\n",
+        "example": {
+            "font": "Cherry Bomb One",
+            "text": "\u30b7\u30e3\u30c3\u30c8\u30a2\u30c3\u30d7"
+        },
+        "fea": "feature hkna {\n  sub ka-hira by ka-hira.vkna;\n  sub sa-hira by sa-hira.vkna;\n  sub ta-hira by ta-hira.vkna;\n  # ...\n} hkna;\n",
+        "ui": "In the Mac OS X typography panel, this feature is accessed via \"Optimized\nKana Alternatives -> Vertical Alternatives\".\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "akhn": {
         "group": "Preprocessing",
         "script": {
@@ -51,12 +66,26 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "hojo": {
+        "title": "Hojo Kanji Forms (JIS X 0212-1990 Kanji Forms)",
+        "registered": "Adobe",
+        "description": "The expected form of Japanese kanji characters in an OpenType font are the\nforms specified in JIS X 0213 (which replaces the older standard, JIS X\n0208). As well as JIS X 0208, an additional standard, JIS X 0212, defined\nsupplementary characters, including 5,801 kanji characters. 2,743 of those\ncharacters were included in the JIS X 0213 standard, but in some cases,\nthe representative forms are different between the 1990 revision of JIS X\n0212 and the current revision (2004) of JIS X 0213. This feature is used to\nselect the JIS X 0212-1990 representative forms of these characters.\n\n\nThe best source of information about which glyph forms differ, and how this\nfeature should be implemented, is the\n[Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) repository.\n",
+        "fea": "feature hojo {\n  sub uni7462 by uni7462.hojo;\n  sub uni7626 by uni7626.hojo;\n  # ...\n} jp83;\n",
+        "done": "true",
+        "example": {
+            "font": "Kiwi Maru",
+            "text": "\u7462\u7626"
+        },
+        "ui": "In the Mac OS X typography panel, this feature is accessed via the \"character\nshape\" radio buttons.\n\nIn Adobe InDesign with CJK functionality, this feature can be accessed via\nthe \"Alternate Glyphs\" dropdown in the Advanced Character Formats panel of\nthe character style options dialog.\n",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "twid": {
         "title": "Third Widths",
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-third of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of three\nnumbers horizontally across an em-width vertical column.)\n\nSee also `fwid`, `hwid`, `qwid`.\n",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-third of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of three\nnumbers horizontally across an em-width vertical column.)\n\nSee also [`fwid`](#fwid), [`hwid`](#hwid), [`qwid`](#qwid).\n",
         "fea": "feature twid {\n  sub one by one.twid;\n  sub two by two.twid;\n  # ...\n}\n",
         "example": {
             "font": "Feature Sans",
@@ -85,7 +114,7 @@ window.featuredb={
                 "order": "0"
             }
         },
-        "description": "This feature is intended for substituting base glyphs and above marks with ligature forms, but may be used for any standard typographic substitutions; engineers may wish to restrict its use to substitutions concerning above-base marks for organisational purposes. As a typographic substitution, it will be applied after the `abvf` feature.\n\nThis feature is applied by the shaper as part of the standard typographic presentation phase for Indic scripts, Khmer, Myanmar, and scripts using the Universal Shaping Engine. It is applied with a per-syllable context for Indic scripts, but applied across the whole run in other scripts.\n",
+        "description": "This feature is intended for substituting base glyphs and above marks with ligature forms, but may be used for any standard typographic substitutions; engineers may wish to restrict its use to substitutions concerning above-base marks for organisational purposes. As a typographic substitution, it will be applied after the [`abvf`](#abvf) feature.\n\nThis feature is applied by the shaper as part of the standard typographic presentation phase for Indic scripts, Khmer, Myanmar, and scripts using the Universal Shaping Engine. It is applied with a per-syllable context for Indic scripts, but applied across the whole run in other scripts.\n",
         "fea": "feature abvs {\n  sub eCandraMatra-gujarati candraBindu-gujarati by eCandraMatraCandraBindu-gujarati;\n  sub eMatra-gujarati candraBindu-gujarati by eMatraCandraBindu-gujarati;\n  sub aiMatra-gujarati candraBindu-gujarati by aiMatraCandraBindu-gujarati;\n  # ...\n} abvs;\n",
         "done": "true",
         "state": "required",
@@ -173,6 +202,21 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "titl": {
+        "title": "Titling",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "automatic": "true",
+        "description": "This feature substitutes glyphs for alternate forms designed for titling,\ntypically some or all capital letters.\n",
+        "example": {
+            "font": "Work Sans",
+            "text": "P\u00d6W"
+        },
+        "done": "true",
+        "ui": "In the Mac OS X typography panel, this feature is accessed via \"Style Options >\nTitling Capitals\".\n",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "abvf": {
         "title": "Above-base Forms",
         "registered": "Microsoft",
@@ -188,7 +232,7 @@ window.featuredb={
                 "order": "0"
             }
         },
-        "description": "Replaces above-base forms with special forms. This feature is applied by\nIndic, Khmer and USE complex shapers as part of the orthographic unit\nshaping phase. The context of application is restricted to a syllabic cluster.\n\n\nThis feature was originally intended for a specific use case in Khmer, the\nOE vowel sign (U+17BE, \u25cc\u17be), which has pre-base and above-base components.\nThe shaping engine [decomposes](https://github.com/n8willis/opentype-shaping-documents/blob/master/opentype-shaping-khmer.md#22-matra-decomposition)\nU+17BE into a pair of characters, U+17C1 (\u17c1) and U+17BE (again). It then\nreorders the syllable to put the pre-base vowel part before the base consonant,\nleaving the U+17BE after the base. The font is responsible for turning the\nremaining \u25cc\u17be glyph into the above-base part (\u17b8), hence the example\nimplementation below.\n\n\nHowever, more generally, this feature is a good home for above-base\nsubstitutions such as choosing alternate widths of an above-base vowel mark.\n\n\nSee also `abvs` which applies to the whole run, rather than per-cluster.\n",
+        "description": "Replaces above-base forms with special forms. This feature is applied by\nIndic, Khmer and USE complex shapers as part of the orthographic unit\nshaping phase. The context of application is restricted to a syllabic cluster.\n\n\nThis feature was originally intended for a specific use case in Khmer, the\nOE vowel sign (U+17BE, \u25cc\u17be), which has pre-base and above-base components.\nThe shaping engine [decomposes](https://github.com/n8willis/opentype-shaping-documents/blob/master/opentype-shaping-khmer.md#22-matra-decomposition)\nU+17BE into a pair of characters, U+17C1 (\u17c1) and U+17BE (again). It then\nreorders the syllable to put the pre-base vowel part before the base consonant,\nleaving the U+17BE after the base. The font is responsible for turning the\nremaining \u25cc\u17be glyph into the above-base part (\u17b8), hence the example\nimplementation below.\n\n\nHowever, more generally, this feature is a good home for above-base\nsubstitutions such as choosing alternate widths of an above-base vowel mark.\n\n\nSee also [`abvs`](#abvs) which applies to the whole run, rather than per-cluster.\n",
         "fea": "feature abvf {\n  sub uni17BE by uni17B8;\n} abvf;\n",
         "state": "required",
         "done": "true",
@@ -209,7 +253,7 @@ window.featuredb={
                 "order": "3"
             }
         },
-        "description": "This feature is used by the Arabic complex shaper when processing the Syriac\nscript. The Syriac letter alaph (U+0710) has multiple final forms: the first\nfinal form, used when the preceding character is a joining\ncharacter, is selected using the `fina` feature, similar to an Arabic alif.\n\n\nHowever, when the preceding character is a non-joining character, the selection\nof the final form of alaph depends on whether the preceding character has\njoining group `Dalath_Rish`. If the preceding character (skipping all characters\nwith a transparent joining group) is either U+0715 (dalath), U+0716 (dotless\ndalath rish) or U+072A (rish), this feature is applied. Otherwise,\nthe `fin2` feature is applied.\n",
+        "description": "This feature is used by the Arabic complex shaper when processing the Syriac\nscript. The Syriac letter alaph (U+0710) has multiple final forms: the first\nfinal form, used when the preceding character is a joining\ncharacter, is selected using the [`fina`](#fina) feature, similar to an Arabic alif.\n\n\nHowever, when the preceding character is a non-joining character, the selection\nof the final form of alaph depends on whether the preceding character has\njoining group `Dalath_Rish`. If the preceding character (skipping all characters\nwith a transparent joining group) is either U+0715 (dalath), U+0716 (dotless\ndalath rish) or U+072A (rish), this feature is applied. Otherwise,\nthe [`fin2`](#fin2) feature is applied.\n",
         "example": {
             "font": "Noto Sans Syriac",
             "text": "\u0715\u0710"
@@ -268,7 +312,7 @@ window.featuredb={
                 "order": "3"
             }
         },
-        "description": "This feature is used by the Arabic complex shaper when processing the Syriac\nscript. The Syriac letter alaph (U+0710) has multiple final forms: the first\nfinal form, used when the preceding character is a joining\ncharacter, is selected using the `fina` feature, similar to an Arabic alif.\n\n\nHowever, when the preceding character is a non-joining character, the selection\nof the final form of alaph depends on whether the preceding character has\njoining group `Dalath_Rish`. If the preceding character (skipping all characters\nwith a transparent joining group) is either U+0715 (dalath), U+0716 (dotless\ndalath rish) or U+072A (rish), the `fin3` feature is applied. Otherwise,\nthis feature is applied.\n",
+        "description": "This feature is used by the Arabic complex shaper when processing the Syriac\nscript. The Syriac letter alaph (U+0710) has multiple final forms: the first\nfinal form, used when the preceding character is a joining\ncharacter, is selected using the [`fina`](#fina) feature, similar to an Arabic alif.\n\n\nHowever, when the preceding character is a non-joining character, the selection\nof the final form of alaph depends on whether the preceding character has\njoining group `Dalath_Rish`. If the preceding character (skipping all characters\nwith a transparent joining group) is either U+0715 (dalath), U+0716 (dotless\ndalath rish) or U+072A (rish), the [`fin3`](#fin3) feature is applied. Otherwise,\nthis feature is applied.\n",
         "example": {
             "font": "Noto Sans Syriac",
             "text": "\u0712\u0710"
@@ -312,19 +356,34 @@ window.featuredb={
                 "order": "0"
             }
         },
-        "description": "This feature is intended for substituting base glyphs and below marks\nwith ligature forms, but may be used for any standard typographic\nsubstitutions; engineers may wish to restrict its use to substitutions\nconcerning below-base marks for organisational purposes. As a typographic\nsubstitution, it will be applied after the `blwf` feature.\n\n\nThis feature is applied by the shaper as part of the standard typographic\npresentation phase for Indic scripts, Khmer, Myanmar, and scripts using the\nUniversal Shaping Engine. It is applied with a per-syllable context for\nIndic scripts, but applied across the whole run in other scripts.\n",
+        "description": "This feature is intended for substituting base glyphs and below marks\nwith ligature forms, but may be used for any standard typographic\nsubstitutions; engineers may wish to restrict its use to substitutions\nconcerning below-base marks for organisational purposes. As a typographic\nsubstitution, it will be applied after the [`blwf`](#blwf) feature.\n\n\nThis feature is applied by the shaper as part of the standard typographic\npresentation phase for Indic scripts, Khmer, Myanmar, and scripts using the\nUniversal Shaping Engine. It is applied with a per-syllable context for\nIndic scripts, but applied across the whole run in other scripts.\n",
         "fea": "feature blws {\n    sub dvRA dvmU  by dvRA_mU;\n    sub dvRA dvmUU by dvRA_mUU;\n    sub dvHA dvmU  by dvHA_mU;\n    sub dvHA dvmUU by dvHA_mUU;\n    sub dvDA  dvmvR by dvDA_mvR;\n    sub dvSHA dvmvR by dvSHA_mvR;\n    sub dvHA  dvmvR by dvHA_mvR;\n} blws;\n",
         "done": "true",
         "state": "required",
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "hkna": {
+        "title": "Horizontal Kana Alternates",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "description": "This feature replaces standard kana forms with glyphs which are designed\nspecifically for horizontal layout. For example, while \"generic\" kana may\nhave curving crossbars for characters such as \u3055 and \u305f, horizontal variants\nmay use straight crossbars.\n",
+        "example": {
+            "font": "Feature Sans",
+            "text": "\u304b12\u304b"
+        },
+        "fea": "feature hkna {\n  sub ka-hira by ka-hira.vkna;\n  sub sa-hira by sa-hira.vkna;\n  sub ta-hira by ta-hira.vkna;\n  # ...\n} hkna;\n",
+        "ui": "In the Mac OS X typography panel, this feature is accessed via \"Optimized\nKana Alternatives -> Horizontal Alternatives\".\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "palt": {
         "title": "Proportional Alternate Widths",
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature is similar to the `pwid` feature, but instead of replaces full-width\nglyphs with proportional equivalents, it re-spaces the glyphs using positioning\nrules.\n",
+        "description": "This feature is similar to the [`pwid`](#pwid) feature, but instead of replaces full-width\nglyphs with proportional equivalents, it re-spaces the glyphs using positioning\nrules.\n",
         "fea": "feature pwid {\n  pos uniFF41 <-186 0 -373 0>;\n  pos uniFF42 <-148 0 -346 0>;\n  pos uniFF43 <-220 0 -441 0>;\n  pos uniFF44 <-176 0 -353 0>;\n  # ...\n} palt;\n",
         "example": {
             "font": "Shippori Mincho",
@@ -349,10 +408,26 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "halt": {
+        "title": "Alternate Half Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature is similar to the [`hwid`](#hwid) feature, but instead of replacing half-width\nglyphs with proportional equivalents, it re-spaces the glyphs using positioning\nrules.\n",
+        "fea": "feature halt {\n  pos [degree.full minute.full quotedblright.full quoteright.full second.full uni3001 uni3002 uni3009 uni300B uni300D uni300F uni3011 uni3015 uni301F uniFF09 uniFF0C uniFF0E uniFF3D uniFF5D] -500;\n  pos [quotedblleft.full quoteleft.full uni3008 uni300A uni300C uni300E uni3010 uni3014 uni301D uniFF08 uniFF3B uniFF5B] <-500 0 -500 0>;\n  pos [uni30FB uniFF01 uniFF1A uniFF1B] <-250 0 -500 0>;\n} halt;\n",
+        "example": {
+            "font": "Shippori Mincho",
+            "text": "\u304b\u3001\u304c\u3002\u3055"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Alternative Half Width\".",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "expt": {
         "title": "Expert Forms",
         "registered": "Adobe",
-        "description": "This feature is used to substitute Japanese kanji for alternative forms which\nare considered more \"typographical\". This includes the use of JIS78 forms\n(see `jp78`), but also a wide range of other substitutions.\n\nThe expected substitutions of the `expt` feature are defined in terms of the\n[Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.\nEngineers creating Japanese fonts according to that glyphset should read the\ninformation at the Adobe-Japan1 repository, and use the latest version of the\nfeature code provided there to implement this feature.\n\n(Thanks to Ken Lunde for the information about implementing this feature.)\n",
+        "description": "This feature is used to substitute Japanese kanji for alternative forms which\nare considered more \"typographical\". This includes the use of JIS78 forms\n(see [`jp78`](#jp78)), but also a wide range of other substitutions.\n\nThe expected substitutions of the `expt` feature are defined in terms of the\n[Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.\nEngineers creating Japanese fonts according to that glyphset should read the\ninformation at the Adobe-Japan1 repository, and use the latest version of the\nfeature code provided there to implement this feature.\n\n(Thanks to Ken Lunde for the information about implementing this feature.)\n",
         "done": "true",
         "example": {
             "font": "Kiwi Maru",
@@ -412,7 +487,7 @@ window.featuredb={
         "title": "Historical Ligatures",
         "registered": "Microsoft",
         "state": "discretionary",
-        "description": "Substitutes ligature forms which are no longer commonly used, or which\ngive the text a \"historical\" feel: for example, the \"st\" ligature. See\nalso the `hist` feature.\n",
+        "description": "Substitutes ligature forms which are no longer commonly used, or which\ngive the text a \"historical\" feel: for example, the \"st\" ligature. See\nalso the [`hist`](#hist) feature.\n",
         "fea": "feature hlig {\n  sub s t by s_t;\n} hlig;\n",
         "example": {
             "font": "EB Garamond",
@@ -423,12 +498,21 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "hngl": {
+        "status": "deprecated",
+        "title": "Hangul",
+        "registered": "Adobe",
+        "description": "This feature is deprecated and should not be used. The idea of this\nfeature was to replace hanja (Chinese Han characters) with hangul\nsyllables. But such semantic behavior should be processed at the\ninput method environment level, not at the font level, meaning this\nfeature was never a good idea.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "lnum": {
         "automatic": "true",
         "state": "discretionary",
         "title": "Lining Figures",
         "registered": "Adobe",
-        "description": "This feature substitutes digits for lining forms. Lining figures are\ndesigned to fit in all-capital settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for lining forms, but also any alternate\nnon-lining forms (such as oldstyle figures) for lining forms. Where\nlining forms are the default, implementing a substitution from oldstyle\nfigures to lining figures is not typographically necessary but will cause\nthe UI of layout programs to display lining figures as an option.\n\nSee also `onum`, `pnum`, `tnum`.\n",
+        "description": "This feature substitutes digits for lining forms. Lining figures are\ndesigned to fit in all-capital settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for lining forms, but also any alternate\nnon-lining forms (such as oldstyle figures) for lining forms. Where\nlining forms are the default, implementing a substitution from oldstyle\nfigures to lining figures is not typographically necessary but will cause\nthe UI of layout programs to display lining figures as an option.\n\nSee also [`onum`](#onum), `pnum`, `tnum`.\n",
         "fea": "feature lnum {\n  sub one by one.lf;\n  sub two by two.lf;\n  # ...\n} lnum;\n",
         "example": {
             "font": "Baskervville",
@@ -444,7 +528,7 @@ window.featuredb={
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature replaces glyphs (normally figures and punctuation) sized to\nthe em-square with variants which are proportionally spaced. This is generally\nused with CJK fonts. It is the opposite of the `fwid` feature.\n",
+        "description": "This feature replaces glyphs (normally figures and punctuation) sized to\nthe em-square with variants which are proportionally spaced. This is generally\nused with CJK fonts. It is the opposite of the [`fwid`](#fwid) feature.\n",
         "fea": "feature pwid {\n  sub uniFF11 by one;\n  sub uniFF12 by two;\n  # ...\n  sub uniFF41 by a;\n  sub uniFF42 by b;\n  # ...\n} pwid;\n",
         "example": {
             "font": "Kiwi Maru",
@@ -517,7 +601,7 @@ window.featuredb={
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-half of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of two\nnumbers horizontally across an em-width vertical column.)\n\nSee also `fwid`, `qwid`, `twid`.\n",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-half of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of two\nnumbers horizontally across an em-width vertical column.)\n\nSee also [`fwid`](#fwid), [`qwid`](#qwid), [`twid`](#twid).\n",
         "fea": "feature hwid {\n  sub one by one.hwid;\n  sub two by two.hwid;\n  # ...\n}\n",
         "example": {
             "font": "Feature Sans",
@@ -565,7 +649,7 @@ window.featuredb={
             }
         },
         "registered": "Microsoft",
-        "description": "This feature is used by the Arabic shaping as the final phase of the typographic\nshaping group. It was intended for substitutions which combine marks and bases\ninto precomposed forms as an alternative to using positioning rules in the `mark`\nfeature; however, it is possible to use *substitution* rules in the `mark`\nfeature, making the `mset` feature redundant.\n\nIt was used in Microsoft's Windows 95 Arabic fonts, and practically no other font.\nNew fonts should use `mark`, `ccmp`, `rlig` or other features instead.\n",
+        "description": "This feature is used by the Arabic shaping as the final phase of the typographic\nshaping group. It was intended for substitutions which combine marks and bases\ninto precomposed forms as an alternative to using positioning rules in the `mark`\nfeature; however, it is possible to use *substitution* rules in the `mark`\nfeature, making the `mset` feature redundant.\n\nIt was used in Microsoft's Windows 95 Arabic fonts, and practically no other font.\nNew fonts should use `mark`, [`ccmp`](#ccmp), `rlig` or other features instead.\n",
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
@@ -589,7 +673,7 @@ window.featuredb={
         "title": "Below-base Mark Positioning",
         "registered": "Microsoft",
         "group": "Common",
-        "description": "This feature allows for mark positioning, similar to the `mark` feature; it\nwas intended for positioning marks which are placed below a base consonant in\na syllabic script, but while the OpenType Specification describes this feature\nas being used for Indic scripts, Harfbuzz applies the `blwm` feature as\npart of common feature processing for all scripts.\n\n\nThe only distinction between this feature and the `mark` feature is a subtle\none: in `blwm` processing, any ZWJ characters are skipped when matching input\nand any ZWNJ characters are skipped when matching context, whereas in `mark`\nprocessing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice\nof `blwm` versus `mark` is a matter of notational convenience for the engineer.\n\n\nSee also `abvm`.\n",
+        "description": "This feature allows for mark positioning, similar to the `mark` feature; it\nwas intended for positioning marks which are placed below a base consonant in\na syllabic script, but while the OpenType Specification describes this feature\nas being used for Indic scripts, Harfbuzz applies the `blwm` feature as\npart of common feature processing for all scripts.\n\n\nThe only distinction between this feature and the `mark` feature is a subtle\none: in `blwm` processing, any ZWJ characters are skipped when matching input\nand any ZWNJ characters are skipped when matching context, whereas in `mark`\nprocessing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice\nof `blwm` versus `mark` is a matter of notational convenience for the engineer.\n\n\nSee also [`abvm`](#abvm).\n",
         "state": "required",
         "automatic": "true",
         "done": "true",
@@ -631,7 +715,7 @@ window.featuredb={
         "state": "discretionary",
         "status": "deprecated",
         "registered": "Adobe",
-        "description": "This deprecated feature replaces numeric glyphs with numerator forms. See also `dnom`.\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the `frac` feature is independent of this feature. It was\noriginally intended that applying the `frac` feature would \"trigger\" the\napplication of the `numr` feature for glyphs before the division slash and\nthe `dnom` feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the `frac` feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the `frac` feature in preference to this feature.\n",
+        "description": "This deprecated feature replaces numeric glyphs with numerator forms. See also [`dnom`](#dnom).\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the [`frac`](#frac) feature is independent of this feature. It was\noriginally intended that applying the [`frac`](#frac) feature would \"trigger\" the\napplication of the `numr` feature for glyphs before the division slash and\nthe [`dnom`](#dnom) feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the [`frac`](#frac) feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the [`frac`](#frac) feature in preference to this feature.\n",
         "done": "true",
         "popularity": "normal",
         "popularity_ix": 3
@@ -692,7 +776,7 @@ window.featuredb={
         "title": "Historical Forms",
         "registered": "Microsoft",
         "state": "discretionary",
-        "description": "Substitutes forms of letters which are no longer commonly used, or which\ngive the text a \"historical\" feel. See also the `hlig` feature.\n",
+        "description": "Substitutes forms of letters which are no longer commonly used, or which\ngive the text a \"historical\" feel. See also the [`hlig`](#hlig) feature.\n",
         "fea": "feature hist {\n  sub J by J.hist;\n  sub s by longs;\n} hist;\n",
         "example": {
             "font": "EB Garamond",
@@ -729,7 +813,7 @@ window.featuredb={
         "title": "Petite Capitals From Capitals",
         "registered": "Tiro Typeworks / Emigre",
         "state": "discretionary",
-        "description": "Substitutes capital characters for petite capitals. See the `pcap` feature for a description of petite capitals. See also `c2sc`.\n",
+        "description": "Substitutes capital characters for petite capitals. See the `pcap` feature for a description of petite capitals. See also [`c2sc`](#c2sc).\n",
         "fea": "feature c2pc {\n  sub A by A.pc;\n  sub B by B.pc;\n  # ...\n} c2pc;\n",
         "ui": "In the OS X typography panel, this feature is accessed via \"Uppercase ->\nPetite Capitals.\"\n\n\nIn CSS, this feature can be set with `font-variant-caps: all-petite-caps;`\n(although this also turns on `pcap`.)\n",
         "example": {
@@ -760,7 +844,7 @@ window.featuredb={
         "title": "Above-base Mark Positioning",
         "registered": "Microsoft",
         "group": "Common",
-        "description": "This feature allows for mark positioning, similar to the `mark` feature; it\nwas intended for positioning marks which are placed over a base consonant in\na syllabic script, but while the OpenType Specification describes this feature\nas being used for Indic scripts, Harfbuzz applies the `abvm` feature as\npart of common feature processing for all scripts.\n\n\nThe only distinction between this feature and the `mark` feature is a subtle\none: in `abvm` processing, any ZWJ characters are skipped when matching input\nand any ZWNJ characters are skipped when matching context, whereas in `mark`\nprocessing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice\nof `abvm` versus `mark` is a matter of notational convenience for the engineer.\n\n\nSee also `blwm`.\n",
+        "description": "This feature allows for mark positioning, similar to the `mark` feature; it\nwas intended for positioning marks which are placed over a base consonant in\na syllabic script, but while the OpenType Specification describes this feature\nas being used for Indic scripts, Harfbuzz applies the `abvm` feature as\npart of common feature processing for all scripts.\n\n\nThe only distinction between this feature and the `mark` feature is a subtle\none: in `abvm` processing, any ZWJ characters are skipped when matching input\nand any ZWNJ characters are skipped when matching context, whereas in `mark`\nprocessing, ZWJ/ZWNJ characters are not skipped. Other than that, the choice\nof `abvm` versus `mark` is a matter of notational convenience for the engineer.\n\n\nSee also [`blwm`](#blwm).\n",
         "automatic": "true",
         "done": "true",
         "state": "required",
@@ -782,7 +866,7 @@ window.featuredb={
         "title": "Conjunct Form After Ro",
         "registered": "Microsoft",
         "status": "discouraged",
-        "description": "This feature is only applied during orthographic unit shaping in the Khmer\ncomplex shaper. In Khmer, the conjunct form of the letter ro (after a\ncoeng) is reordered to the left of the base consonant and displayed as a\ndeep letterform which can interact with below-base glyphs. This feature\nwas intended as offering an opportunity to fix up below-base glyphs to\navoid clashing with the coeng ro.\n\n\nNo examples of the use of this feature have been found. Consider using\n`blws` instead.\n",
+        "description": "This feature is only applied during orthographic unit shaping in the Khmer\ncomplex shaper. In Khmer, the conjunct form of the letter ro (after a\ncoeng) is reordered to the left of the base consonant and displayed as a\ndeep letterform which can interact with below-base glyphs. This feature\nwas intended as offering an opportunity to fix up below-base glyphs to\navoid clashing with the coeng ro.\n\n\nNo examples of the use of this feature have been found. Consider using\n[`blws`](#blws) instead.\n",
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
@@ -801,7 +885,7 @@ window.featuredb={
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
-        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-quarter of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of four\nnumbers horizontally across an em-width vertical column.)\n\nSee also `fwid`, `hwid`, `twid`.\n",
+        "description": "This feature replaces glyphs (normally figures and punctuation) with variants\nwhich are one-quarter of the em square. This is generally used with CJK fonts\nand in the context of vertical typesetting. (For placing a sequence of four\nnumbers horizontally across an em-width vertical column.)\n\nSee also [`fwid`](#fwid), [`hwid`](#hwid), [`twid`](#twid).\n",
         "fea": "feature qwid {\n  sub one by one.qwid;\n  sub two by two.qwid;\n  # ...\n}\n",
         "example": {
             "font": "Feature Sans",
@@ -855,7 +939,7 @@ window.featuredb={
         "group": "Orthographic",
         "registered": "Microsoft",
         "state": "required",
-        "description": "This feature is applied to Indic scripts and scripts using the Universal\nShaping Engine as the final feature in the orthographic unit shaping phase,\nbefore final reordering. It was intended for use in creating consonant\nconjunct groups. (Consonant + Virama + Consonant.)\n\n\nThe difference between this feature and `blwf` is that the `blwf` feature\nis intended for substituting the \"tail\" (virama + consonant) for a below-base\nform, while this feature is intended for substituting the entire sequence\nwith a ligature.\n",
+        "description": "This feature is applied to Indic scripts and scripts using the Universal\nShaping Engine as the final feature in the orthographic unit shaping phase,\nbefore final reordering. It was intended for use in creating consonant\nconjunct groups. (Consonant + Virama + Consonant.)\n\n\nThe difference between this feature and [`blwf`](#blwf) is that the [`blwf`](#blwf) feature\nis intended for substituting the \"tail\" (virama + consonant) for a below-base\nform, while this feature is intended for substituting the entire sequence\nwith a ligature.\n",
         "fea": "feature cjct {\n    # Actual implementation will depend on conjunct glyphs provided in your font.\n    sub nga-deva virama-deva ga-deva by ngga-deva;\n    sub nga-deva virama-deva ma-deva by ngma-deva;\n    sub nga-deva virama-deva ya-deva by ngya-deva;\n    sub tta-deva virama-deva tta-deva by tttta-deva;\n    sub tta-deva virama-deva ya-deva by ttya-deva;\n    # ...\n} cjct;\n",
         "done": "true",
         "example": {
@@ -898,7 +982,7 @@ window.featuredb={
         "state": "discretionary",
         "status": "deprecated",
         "registered": "Adobe",
-        "description": "This deprecated feature replaces numeric glyphs with denominator forms. See also `numr`.\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the `frac` feature is independent of this feature. It was\noriginally intended that applying the `frac` feature would \"trigger\" the\napplication of the `numr` feature for glyphs before the division slash and\nthe `dnom` feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the `frac` feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the `frac` feature in preference to this feature.\n",
+        "description": "This deprecated feature replaces numeric glyphs with denominator forms. See also [`numr`](#numr).\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the [`frac`](#frac) feature is independent of this feature. It was\noriginally intended that applying the [`frac`](#frac) feature would \"trigger\" the\napplication of the [`numr`](#numr) feature for glyphs before the division slash and\nthe `dnom` feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the [`frac`](#frac) feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the [`frac`](#frac) feature in preference to this feature.\n",
         "done": "true",
         "popularity": "normal",
         "popularity_ix": 3
