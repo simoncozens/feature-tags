@@ -1,0 +1,13 @@
+title: Subscript
+registered: Microsoft/Adobe
+state: discretionary
+automatic: true
+description: |
+  This feature replaces glyphs, typically numerals, with subscript forms.
+example:
+  font: Alegreya
+  text: H2O
+ui:
+  In the OS X typography panel, this feature is accessed via "Vertical Position >
+  Inferiors/Subscripts".
+done: true
