@@ -1,0 +1,22 @@
+title: Horizontal Kana Alternates
+registered: Adobe
+state: discretionary
+description: |
+  This feature replaces standard kana forms with glyphs which are designed
+  specifically for horizontal layout. For example, while "generic" kana may
+  have curving crossbars for characters such as さ and た, horizontal variants
+  may use straight crossbars.
+example:
+  font: Feature Sans
+  text: か12か
+fea: |
+  feature hkna {
+    sub ka-hira by ka-hira.khna;
+    sub sa-hira by sa-hira.khna;
+    sub ta-hira by ta-hira.khna;
+    # ...
+  } hkna;
+ui: |
+  In the Mac OS X typography panel, this feature is accessed via "Optimized
+  Kana Alternatives -> Horizontal Alternatives".
+done: true

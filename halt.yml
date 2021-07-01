@@ -1,0 +1,21 @@
+title: Alternate Half Widths
+automatic: true
+state: discretionary
+registered: Adobe
+description: |
+  This feature is similar to the `hwid` feature, but instead of replacing half-width
+  glyphs with proportional equivalents, it re-spaces the glyphs using positioning
+  rules.
+fea: |
+  feature halt {
+    pos [degree.full minute.full quotedblright.full quoteright.full second.full uni3001 uni3002 uni3009 uni300B uni300D uni300F uni3011 uni3015 uni301F uniFF09 uniFF0C uniFF0E uniFF3D uniFF5D] -500;
+    pos [quotedblleft.full quoteleft.full uni3008 uni300A uni300C uni300E uni3010 uni3014 uni301D uniFF08 uniFF3B uniFF5B] <-500 0 -500 0>;
+    pos [uni30FB uniFF01 uniFF1A uniFF1B] <-250 0 -500 0>;
+  } halt;
+example:
+  font: Shippori Mincho
+  text: か、が。さ
+ui:
+  In the OS X typography panel, this feature is accessed via "Text spacing >
+  Alternative Half Width".
+done: true

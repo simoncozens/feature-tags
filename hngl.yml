@@ -1,0 +1,10 @@
+status: deprecated
+title: Hangul
+registered: Adobe
+description: |
+  This feature is deprecated and should not be used. The idea of this
+  feature was to replace hanja (Chinese Han characters) with hangul
+  syllables. But such semantic behavior should be processed at the
+  input method environment level, not at the font level, meaning this
+  feature was never a good idea.
+done: true

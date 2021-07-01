@@ -5,6 +5,7 @@ import requests
 from fontTools.ttLib import TTFont
 from fontTools.subset import Subsetter,Options
 from io import BytesIO
+import re
 
 
 
@@ -44,6 +45,19 @@ for file in glob.glob("*.yml"):
 		if ex["font"] not in examples:
 			examples[ex["font"]] = ""
 		examples[ex["font"]] += ex["text"]
+
+def replacer(g, this_tag):
+	feature = g.groups()[0]
+	if feature in features.keys() and feature != this_tag:
+		return f"[`{feature}`](#{feature})"
+	else:
+		return f"`{feature}`"
+
+# Link features in descriptions
+for tag, content in features.items():
+	if "description" not in content:
+		continue
+	content["description"] = re.sub("`(....)`", lambda x: replacer(x,tag), content["description"])
 
 with open("featuredb.js", "w") as f:
 	f.write(("window.featuredb="+json.dumps(features, indent=4)))
