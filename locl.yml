@@ -1,0 +1,44 @@
+title: Localized Forms
+registered: Tiro Typeworks
+required: true
+group: Common
+order: 0
+description: |
+  This feature allows for localization of glyph forms by making substitutions
+  conditional on the script and language selected by the user. Typical uses
+  of this feature include:
+
+
+  * Substituting Cyrillic glyphs with Bulgarian and Serbian variants.
+
+  * In Turkish, Azeri, Kazakh, Tatar and Crimean Tartar, substituting the `i` by
+  an `idotaccent` glyph so that when uppercased through case conversion features
+  such as `smcp`, the dot can be preserved.
+  (See [this tutorial](https://glyphsapp.com/learn/localize-your-font-turkish).)
+
+  * In Romanian and Moldovan, substituting the `scedilla` (U+015E) with `scommaaccent`.
+
+  * Repositioning the ogonek to the center of the glyph in Navajo.
+
+  * In Dutch, substituting the j in an `íj` pair with `íj́` (see [thread](https://typedrawers.com/discussion/1294/how-do-you-implement-ijacute-and-ijacute).)
+
+  * Substituting the Catalan "punt volat" for `ldot` ([tutorial](https://glyphsapp.com/learn/localize-your-font-catalan-punt-volat))
+
+  * In a font which has multiple scripts with different spacing conventions,
+    such as Latin and Urdu, conditionally resizing the advance width of the
+    space character to meet the expectations of the script in use.
+
+fea: |
+  feature locl {
+    script latn;
+    language ROM;
+    sub Scedilla by Scommaaccent;
+    sub scedilla by scommaaccent;
+    language MOL;
+    sub Scedilla by Scommaaccent;
+    sub scedilla by scommaaccent;
+    language CAT;
+    sub l' periodcentered' l by ldot;
+    sub L' periodcentered' L by Ldot;
+  } locl;
+done: true

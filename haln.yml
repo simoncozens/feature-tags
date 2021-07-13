@@ -1,0 +1,29 @@
+title: Halant Forms
+registered: Microsoft
+required: true
+group: Typographic
+script:
+  INDIC:
+    order: 6
+description: |
+  This feature is applied by the Indic shaper during the typographic presentation
+  phase, and is intended to "clean up" dead consonant sequences which have not
+  been formed into conjuncts, by replacing them with correct dead consonant forms.
+
+
+  For example, consider the two sequences "tta nukta virama ra" and "tta nukta virama"
+  without the final ra. In Noto Sans Devanagari, the "tta nukta virama" sequence is
+  first composed into `ttanuktadeva` by the `nukt` feature, leaving
+  `ttanuktadeva viramadeva radeva` and `ttanuktadeva viramadeva` respectively.
+
+
+  When the final ra is present, the `rkrf` feature creates a conjunct form
+  `ttanuktaradeva`. But without the final ra, we are left with `ttanuktadeva viramadeva`.
+  In this case, the default positioning of the nukta underneath the tta is
+  incorrect, as it needs to move to the left to accommodate the virama. A
+  precomposed glyph `ttanuktaprehalfdeva` is substituted in the `haln`
+  feature to tidy up this dead consonant sequence.
+example:
+  font: Noto Sans Devanagari
+  text: ट़्र ट़्
+done: true

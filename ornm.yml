@@ -1,0 +1,28 @@
+title: Ornaments
+description: |
+  This feature has two uses, both of which are used to select ornament glyphs
+  from within the font's glyphset.
+
+
+  In the first use, all ornamental glyphs (fleurons, manicules, dingbats and
+  so on) are made available through a GSUB3 alternate substitution from the
+  bullet character (U+2022).
+
+
+  In the second use, ASCII characters are substituted for ornamental forms using
+  a GSUB1 substitution.
+registered: Adobe
+state: discretionary
+fea: |
+  feature ornm {
+    sub bullet from @ornaments;
+
+
+    sub less by arrowleft;
+    sub greater by arrowright;
+    sub plus by arrowup;
+    # ...
+  } ornm;
+example:
+  font: Spectral
+  text: +×=<>
