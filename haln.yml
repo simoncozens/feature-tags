@@ -1,6 +1,6 @@
 title: Halant Forms
 registered: Microsoft
-required: true
+state: required
 group: Typographic
 script:
   INDIC:

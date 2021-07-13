@@ -1,6 +1,6 @@
 title: Stretching Glyph Decomposition
 registered: Microsoft
-required: true
+state: required
 group: Common
 script:
   arab:

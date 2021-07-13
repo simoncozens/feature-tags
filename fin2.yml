@@ -1,7 +1,7 @@
 title: 'Terminal Form #2'
 registered: Microsoft
 group: topographical
-required: true
+state: required
 script:
   syrc:
     order: 3

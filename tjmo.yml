@@ -1,7 +1,7 @@
 title: Trailing Jamo Forms
 registered: Microsoft
 group: topographical
-required: true
+state: required
 script:
   hang: 3
 description: |

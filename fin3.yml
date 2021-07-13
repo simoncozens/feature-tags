@@ -1,7 +1,7 @@
 title: 'Terminal Form #3'
 registered: Microsoft
 group: orthographic
-required: true
+state: required
 script:
   syrc:
     order: 3

@@ -1,7 +1,7 @@
 title: Vowel Jamo Forms
 registered: Microsoft
 group: topographical
-required: true
+state: required
 script:
   hang: 2
 description: |
