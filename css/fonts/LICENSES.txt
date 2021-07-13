@@ -5,7 +5,6 @@ Fonts Catalogue:
 	Aref Ruqaa.ttf: Copyright 2015-2020 The Aref Ruqaa Project Authors (https://github.com/alif-type/aref-ruqaa), with Reserved Font Name EURM10.
 	Baskervville.ttf: Copyright 2018 The Baskervville Project Authors (https://github.com/anrt-type/ANRT-Baskervville)
 	Cardo.ttf: Copyright (c) 2002-2011, David J. Perry (hospes02@scholarsfonts.net)
-	Cherry Bomb One.ttf: Copyright 2019 The Cherry Bomb Project Authors (https://github.com/satsuyako/CherryBomb)
 	EB Garamond.ttf: Copyright 2017 The EB Garamond Project Authors (https://github.com/octaviopardo/EBGaramond12)
 	Grenze.ttf: Copyright 2018 The Grenze Project Authors (https://github.com/Omnibus-Type/Grenze), with Reserved Font Name "Grenze".
 	Hind.ttf: Copyright (c) 2014 Indian Type Foundry (info@indiantypefoundry.com)

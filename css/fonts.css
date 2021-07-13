@@ -45,6 +45,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Aref Ruqaa";
+		        src: url("fonts/Aref Ruqaa.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Noto Sans Syriac";
 		        src: url("fonts/Noto Sans Syriac.ttf");
 		    }
@@ -52,6 +57,11 @@
 			    @font-face {
 		        font-family: "Shippori Mincho";
 		        src: url("fonts/Shippori Mincho.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Reggae One";
+		        src: url("fonts/Reggae One.ttf");
 		    }
 		 
 			    @font-face {
@@ -70,11 +80,6 @@
 		    }
 		 
 			    @font-face {
-		        font-family: "Aref Ruqaa";
-		        src: url("fonts/Aref Ruqaa.ttf");
-		    }
-		 
-			    @font-face {
 		        font-family: "Recursive";
 		        src: url("fonts/Recursive.ttf");
 		    }
@@ -82,6 +87,11 @@
 			    @font-face {
 		        font-family: "Kristi";
 		        src: url("fonts/Kristi.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Alegreya";
+		        src: url("fonts/Alegreya.ttf");
 		    }
 		 
 			    @font-face {

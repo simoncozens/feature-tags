@@ -243,6 +243,33 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "isol": {
+        "title": "Isolated Forms",
+        "registered": "Microsoft/Adobe",
+        "group": "topographical",
+        "required": "true",
+        "script": {
+            "arab": {
+                "order": "1"
+            },
+            "syrc": {
+                "order": "1"
+            },
+            "USE": {
+                "order": "1"
+            }
+        },
+        "description": "This feature is used by the Arabic and USE complex shapers as part of topographic\nshaping. It is designed to replace joining characters with isolated forms. This means characters\nwhich have the Unicode joining type `Right_Joining` or `Dual_Joining` in a\nright-to-left script, and characters which have the Unicode joining type `Left_Joining`\nor `Dual_Joining` in a left-to-right script. These joining type properties\ncan be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)\nin the Unicode Character Database.\n",
+        "example": {
+            "font": "Aref Ruqaa",
+            "text": "\u06cc\u06bd\u06c1"
+        },
+        "automatic": "true",
+        "fea": "feature isol {\n  sub yehHamzaabove-ar by CH_YEu1 HAMZA_ABOVE;\n  sub tehMarbutagoal-ar by HAYCu1 dda;\n  sub hah-ar by JIMu1;\n  sub noon-ar by NUNu1 sdi;\n} isol;\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "fin3": {
         "title": "Terminal Form #3",
         "registered": "Microsoft",
@@ -262,6 +289,21 @@ window.featuredb={
         "done": "true",
         "popularity": "extremely rare",
         "popularity_ix": 1
+    },
+    "kern": {
+        "title": "Kerning",
+        "registered": "Microsoft/Adobe",
+        "automatic": "true",
+        "state": "default",
+        "description": "This feature is one of the two facilities for kerning within OpenType.\nThe original TrueType `kern` *table* in the font implements simple,\nnon-contextual pair-based and class-based kerning, and a pair-based (format 0)\n`kern` table was historically required for kerning to function in applications\nsuch as Microsoft PowerPoint.\n\n\nHowever, modern fonts tend to implement kerning through the use of\nthis feature instead (see [discussion](https://typedrawers.com/discussion/comment/15218)).\nThe standard implementation is to use GPOS 2 pair positioning rules to adjustment\nthe X advance of the first glyph in the pair, although note that when\ngenerating a `kern` feature for right-to-left text, the adjustment is\ngenerally made to both advance *and* placement:\n\n```\npos period parentheses <-30 0 -30 0>;\n```\n\n\nSee also the `vkrn` feature for kerning in vertical settings. Kerning may\nbe disabled based on user preference; for mandatory adjustments, use the\n[`dist`](#dist) feature instead.\n",
+        "example": {
+            "font": "Vollkorn",
+            "text": "Avatar"
+        },
+        "ui": "In the OS X typography panel, this feature is *disabled* via \"Text Spacing > No Kerning\".",
+        "done": "true",
+        "popularity": "very common",
+        "popularity_ix": 5
     },
     "jp78": {
         "title": "JIS78 Forms",
@@ -302,6 +344,19 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "vjmo": {
+        "title": "Vowel Jamo Forms",
+        "registered": "Microsoft",
+        "group": "topographical",
+        "required": "true",
+        "script": {
+            "hang": "2"
+        },
+        "description": "The Korean Hangul script is encoded in Unicode in two ways: first, as a series\nof precomposed syllable graphemes (encoded from U+AC00 to U+D7AF); second, as\na series of indivdual, conjoining *jamo*. Korean syllables form a LVT?\n(leading consonant, vowel, optional trailing consonant) pattern; the leading consonant\n(*choseong*) jamo are encoded between U+1100 and U+115F, the vowel (*jungseong*)\njamo are encoded between U+1160 and U+11A7, and the optional trailing consonant\n(*jongseong*) jamo between U+11A8 and U+11FF. (At least in the primary Hangul\nJamo Unicode block; other jamo are encoded in extension blocks.)\n\n\nThe Hangul shaper will first attempt to compose any sequences of conjoining jamo\ninto an encoded form in the precomposed syllable block. But where this is not\nsuccessful - for example, in an Old Korean form which is not encoded in Unicode\nas a precomposed syllable - then the shaper will instead *decompose* any LV\nsyllables to break the syllable into separate L, V, and T? characters, and then\napply the Korean shaping features ([`ljmo`](#ljmo), `vjmo`, [`tjmo`](#tjmo)) to select forms of\nthe jamo which are appropriately positioned and sized to combine into the correct\ngrapheme-image.\n\n\nFor example, the Old Korean syllable \u1112\u119e\u11af is not encoded in Unicode as a precomposed\nsyllable, and so must be encoded with the three individual jamo. The Hangul\nshaper applies the [`ljmo`](#ljmo) feature to the *choseong*, the `vjmo` feature to the\n*jungseong* and the [`tjmo`](#tjmo) feature to the *jongseong*. The resulting sequence\nproduces a glyph which renders the syllable correctly, with the `vjmo` and\n[`tjmo`](#tjmo) generally producing zero-width mark glyphs positioned appropriately. An\nalternative to this technique is to use the [`ccmp`](#ccmp) feature to turn decomposed\njamo into a precomposed glyph.\n\n\nFor further information, see sections 3.12 and 18.6 of the Unicode Standard.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "fin2": {
         "title": "Terminal Form #2",
         "registered": "Microsoft",
@@ -323,7 +378,7 @@ window.featuredb={
         "popularity_ix": 1
     },
     "fwid": {
-        "title": "Quarter Widths",
+        "title": "Full Widths",
         "automatic": "true",
         "state": "discretionary",
         "registered": "Adobe",
@@ -416,7 +471,7 @@ window.featuredb={
         "description": "This feature is similar to the [`hwid`](#hwid) feature, but instead of replacing half-width\nglyphs with proportional equivalents, it re-spaces the glyphs using positioning\nrules.\n",
         "fea": "feature halt {\n  pos [degree.full minute.full quotedblright.full quoteright.full second.full uni3001 uni3002 uni3009 uni300B uni300D uni300F uni3011 uni3015 uni301F uniFF09 uniFF0C uniFF0E uniFF3D uniFF5D] -500;\n  pos [quotedblleft.full quoteleft.full uni3008 uni300A uni300C uni300E uni3010 uni3014 uni301D uniFF08 uniFF3B uniFF5B] <-500 0 -500 0>;\n  pos [uni30FB uniFF01 uniFF1A uniFF1B] <-250 0 -500 0>;\n} halt;\n",
         "example": {
-            "font": "Shippori Mincho",
+            "font": "Reggae One",
             "text": "\u304b\u3001\u304c\u3002\u3055"
         },
         "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Alternative Half Width\".",
@@ -439,7 +494,7 @@ window.featuredb={
     "falt": {
         "title": "Final Glyph on Line Alternates",
         "registered": "Microsoft",
-        "description": "This feature was intended to allow a justification system to substitute a\nglyph for another form when the glyph is the final one on a line of text,\nto improve the fitting of the line. (See also `jalt`.) No known layout\nengine supports activating this and it is unclear whether any fonts\nimplemented the feature.\n",
+        "description": "This feature was intended to allow a justification system to substitute a\nglyph for another form when the glyph is the final one on a line of text,\nto improve the fitting of the line. (See also [`jalt`](#jalt).) No known layout\nengine supports activating this and it is unclear whether any fonts\nimplemented the feature.\n",
         "done": "true",
         "status": "deprecated",
         "popularity": "non-existent",
@@ -497,6 +552,21 @@ window.featuredb={
         "ui": "In the OS X typography panel, this feature is accessed via \"Ligatures -> Historical\nLigatures.\"\n",
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "jalt": {
+        "title": "Justification Alternates",
+        "registered": "Microsoft",
+        "state": "discretionary",
+        "description": "This feature is intended to allow text layout engines to improve line justification\nby selecting alternate glyphs. A layout engine can set a line of text, and then\ntry applying the `jalt` feature to the line to see if the resulting glyphs have\na better fit. It is rarely implemented in layout engines, with Adobe InDesign\nand Photoshop being the only known implementations.\n",
+        "fea": "feature jalt {\n  sub qaf-ar by qaf-ar.jalt;\n  sub seen-ar by seen-ar.jalt;\n  # ...\n} jalt;\n",
+        "example": {
+            "font": "Aref Ruqaa",
+            "text": "\u0633\u0627\u0631\u0642 \u0627\u0644\u063a\u0646\u0645"
+        },
+        "done": "true",
+        "ui": "In Adobe InDesign, this can be automatically applied at the paragraph level by choosing \"Justification\" from the paragraph panel menu and selecting \"Justification Alternates (Naskh)\" in the Justification dropdown. It can also be manually applied at the character level by choosing the Justification Alternate option from the character panel menu.\nIn Adobe Photoshop, it can be manually applied at the character level by choosing \"Justification Alternates\" from the character panel.",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
     },
     "hngl": {
         "status": "deprecated",
@@ -568,6 +638,32 @@ window.featuredb={
         "fea": "feature curs {\n  pos cursive uni066F.medi <anchor 606 35> <anchor 0 35>;\n  pos cursive uni0640 <anchor 250 35> <anchor 0 35>;\n  pos cursive uni06A1.medi <anchor 606 35> <anchor 0 35>;\n  # ...\n} curs;\n",
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "ljmo": {
+        "title": "Leading Jamo Forms",
+        "registered": "Microsoft",
+        "group": "topographical",
+        "required": "true",
+        "script": {
+            "hang": "1"
+        },
+        "description": "The Korean Hangul script is encoded in Unicode in two ways: first, as a series\nof precomposed syllable graphemes (encoded from U+AC00 to U+D7AF); second, as\na series of indivdual, conjoining *jamo*. Korean syllables form a LVT?\n(leading consonant, vowel, optional trailing consonant) pattern; the leading consonant\n(*choseong*) jamo are encoded between U+1100 and U+115F, the vowel (*jungseong*)\njamo are encoded between U+1160 and U+11A7, and the optional trailing consonant\n(*jongseong*) jamo between U+11A8 and U+11FF. (At least in the primary Hangul\nJamo Unicode block; other jamo are encoded in extension blocks.)\n\n\nThe Hangul shaper will first attempt to compose any sequences of conjoining jamo\ninto an encoded form in the precomposed syllable block. But where this is not\nsuccessful - for example, in an Old Korean form which is not encoded in Unicode\nas a precomposed syllable - then the shaper will instead *decompose* any LV\nsyllables to break the syllable into separate L, V, and T? characters, and then\napply the Korean shaping features (`ljmo`, [`vjmo`](#vjmo), [`tjmo`](#tjmo)) to select forms of\nthe jamo which are appropriately positioned and sized to combine into the correct\ngrapheme-image.\n\n\nFor example, the Old Korean syllable \u1112\u119e\u11af is not encoded in Unicode as a precomposed\nsyllable, and so must be encoded with the three individual jamo. The Hangul\nshaper applies the `ljmo` feature to the *choseong*, the [`vjmo`](#vjmo) feature to the\n*jungseong* and the [`tjmo`](#tjmo) feature to the *jongseong*. The resulting sequence\nproduces a glyph which renders the syllable correctly, with the [`vjmo`](#vjmo) and\n[`tjmo`](#tjmo) generally producing zero-width mark glyphs positioned appropriately. An\nalternative to this technique is to use the [`ccmp`](#ccmp) feature to turn decomposed\njamo into a precomposed glyph.\n\n\nFor further information, see sections 3.12 and 18.6 of the Unicode Standard.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
+    "tjmo": {
+        "title": "Trailing Jamo Forms",
+        "registered": "Microsoft",
+        "group": "topographical",
+        "required": "true",
+        "script": {
+            "hang": "3"
+        },
+        "description": "The Korean Hangul script is encoded in Unicode in two ways: first, as a series\nof precomposed syllable graphemes (encoded from U+AC00 to U+D7AF); second, as\na series of indivdual, conjoining *jamo*. Korean syllables form a LVT?\n(leading consonant, vowel, optional trailing consonant) pattern; the leading consonant\n(*choseong*) jamo are encoded between U+1100 and U+115F, the vowel (*jungseong*)\njamo are encoded between U+1160 and U+11A7, and the optional trailing consonant\n(*jongseong*) jamo between U+11A8 and U+11FF. (At least in the primary Hangul\nJamo Unicode block; other jamo are encoded in extension blocks.)\n\n\nThe Hangul shaper will first attempt to compose any sequences of conjoining jamo\ninto an encoded form in the precomposed syllable block. But where this is not\nsuccessful - for example, in an Old Korean form which is not encoded in Unicode\nas a precomposed syllable - then the shaper will instead *decompose* any LV\nsyllables to break the syllable into separate L, V, and T? characters, and then\napply the Korean shaping features ([`ljmo`](#ljmo), [`vjmo`](#vjmo), `tjmo`) to select forms of\nthe jamo which are appropriately positioned and sized to combine into the correct\ngrapheme-image.\n\n\nFor example, the Old Korean syllable \u1112\u119e\u11af is not encoded in Unicode as a precomposed\nsyllable, and so must be encoded with the three individual jamo. The Hangul\nshaper applies the [`ljmo`](#ljmo) feature to the *choseong*, the [`vjmo`](#vjmo) feature to the\n*jungseong* and the `tjmo` feature to the *jongseong*. The resulting sequence\nproduces a glyph which renders the syllable correctly, with the [`vjmo`](#vjmo) and\n`tjmo` generally producing zero-width mark glyphs positioned appropriately. An\nalternative to this technique is to use the [`ccmp`](#ccmp) feature to turn decomposed\njamo into a precomposed glyph.\n\n\nFor further information, see sections 3.12 and 18.6 of the Unicode Standard.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
     },
     "fina": {
         "title": "Terminal Forms",
@@ -653,6 +749,22 @@ window.featuredb={
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
+    },
+    "liga": {
+        "title": "Standard Ligatures",
+        "registered": "Microsoft/Adobe",
+        "state": "default",
+        "description": "Ligatures provide typographic refinement by replacing multiple glyphs with a\nsingle, ligated form. This feature is used for standard ligatures, which are\nto be applied by default; in Latin text, this is generally sequences such as\n`f f`, `f f l`, `f f`, `f i`, and `f f i`.\n\nLigature code is often automatically generated by the font editor based on\ndetecting sequences of glyph names combined with underscores; note, however,\nthat the common ligature glyph `fi` does *not* contain an underscore.\n",
+        "automatic": "true",
+        "fea": "feature liga {\n  sub f f i by f_f_i;\n  sub f f l by f_f_l;\n  sub f f by f_f;\n  sub f i by fi;\n  sub f l by f_l;\n}\n",
+        "example": {
+            "font": "EB Garamond",
+            "text": "Official"
+        },
+        "done": "true",
+        "ui": "In the OS X typography panel, this feature is *disabled* via \"Ligatures >\nCommon Ligatures\".\n",
+        "popularity": "common",
+        "popularity_ix": 4
     },
     "dtls": {
         "title": "Dotless Forms",
@@ -743,7 +855,7 @@ window.featuredb={
             }
         },
         "done": "true",
-        "description": "This feature has two distinct uses.\n\n\nIt was originally intended for ligature forms which are contextual in nature,\nfor example, for Latin script fonts, and typically made up of GSUB lookup 8 rules.\nHowever, these rules may also be placed in other discretionary ligature\nfeatures, such as `rlig` or `liga`, and these should be used instead. As such\nthis use is relatively rare.\n\n\nSeparately, in the Khmer complex shaper, this is a mandatory feature used\nfor \"ligatures that are desired for typographical correctness\". It is\ntherefore used widely in Khmer fonts for general typographic shaping.\n",
+        "description": "This feature has two distinct uses.\n\n\nIt was originally intended for ligature forms which are contextual in nature,\nfor example, for Latin script fonts, and typically made up of GSUB lookup 8 rules.\nHowever, these rules may also be placed in other discretionary ligature\nfeatures, such as `rlig` or [`liga`](#liga), and these should be used instead. As such\nthis use is relatively rare.\n\n\nSeparately, in the Khmer complex shaper, this is a mandatory feature used\nfor \"ligatures that are desired for typographical correctness\". It is\ntherefore used widely in Khmer fonts for general typographic shaping.\n",
         "fea": "feature clig {\n  sub kho-khmer.conjunct aaSign-khmer by kho-khmer.conjunct.aa;\n  sub kho-khmer.conjunct auSign-khmer by kho-khmer.conjunct.au;\n  # ...\n  sub nyo-khmer' @conjuncts by nyo-khmer.alt;\n  sub nyo-khmer.alt nyo-khmer.conjunct' by nyo-khmer.conjunct.alt;\n  # ...\n}\n",
         "popularity": "rare",
         "popularity_ix": 2
@@ -772,6 +884,36 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "subs": {
+        "title": "Subscript",
+        "registered": "Microsoft/Adobe",
+        "state": "discretionary",
+        "automatic": "true",
+        "description": "This feature replaces glyphs, typically numerals, with subscript forms.\n",
+        "example": {
+            "font": "Alegreya",
+            "text": "H2O"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Vertical Position > Inferiors/Subscripts\".",
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
+    "sinf": {
+        "title": "Scientific Inferiors",
+        "registered": "Microsoft/Adobe",
+        "state": "discretionary",
+        "automatic": "true",
+        "description": "This feature replaces glyphs with subscript forms, similar to the [`subs`](#subs) feature,\nbut in theory for a wider range of glyphs (including Latin letters),\ngenerally for chemical or mathematical notation.\n\n\nAlso, in theory, subscript numerals should sit on the baseline, while scientific\ninferiors should bisect the baseline\n\nIn practice, the same substitutions are often made as those in the [`subs`](#subs) feature.\n",
+        "example": {
+            "font": "Alegreya",
+            "text": "H2O"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Vertical Position > Scientific Inferiors\".",
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
     "hist": {
         "title": "Historical Forms",
         "registered": "Microsoft",
@@ -791,12 +933,39 @@ window.featuredb={
         "registered": "Microsoft",
         "state": "required",
         "group": "positioning",
-        "description": "This feature provides positional adjustments between glyphs. It is largely\nequivalent to the `kern` feature, but should be considered as \"required\"\nkerning in that no user interface is provided to disable it.",
+        "description": "This feature provides positional adjustments between glyphs. It is largely\nequivalent to the [`kern`](#kern) feature, but should be considered as \"required\"\nkerning in that no user interface is provided to disable it.",
         "done": "true",
         "example": {
             "font": "Noto Sans Devanagari",
             "text": "\u0926\u0957\u0915\u0957"
         },
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "init": {
+        "title": "Initial Forms",
+        "registered": "Microsoft/Adobe",
+        "group": "topographical",
+        "required": "true",
+        "script": {
+            "arab": {
+                "order": "7"
+            },
+            "syrc": {
+                "order": "7"
+            },
+            "USE": {
+                "order": "2"
+            }
+        },
+        "description": "This feature is used by the Arabic and USE complex shapers as part of topographic\nshaping. It is *not* appropriate for general start-of-word detection, but is\ndesigned to replace joining characters with initial forms. This means characters\nwhich have the Unicode joining type `Right_Joining` or `Dual_Joining` in a\nright-to-left script, and characters which have the Unicode joining type `Left_Joining`\nor `Dual_Joining` in a left-to-right script. These joining type properties\ncan be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)\nin the Unicode Character Database.\n",
+        "example": {
+            "font": "Aref Ruqaa",
+            "text": "\u062c\u0631"
+        },
+        "automatic": "true",
+        "fea": "feature init {\n  lookupflag RightToLeft IgnoreMarks;\n  sub beh-ar by beh-ar.init;\n  sub jeem-ar by jeem-ar.init;\n  # ...\n}\n",
+        "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
     },
