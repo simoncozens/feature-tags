@@ -1,0 +1,28 @@
+title: Justification Alternates
+registered: Microsoft
+state: discretionary
+description: |
+  This feature is intended to allow text layout engines to improve line justification
+  by selecting alternate glyphs. A layout engine can set a line of text, and then
+  try applying the `jalt` feature to the line to see if the resulting glyphs have
+  a better fit. It is rarely implemented in layout engines, with Adobe InDesign
+  and Photoshop being the only known implementations.
+fea: |
+  feature jalt {
+    sub qaf-ar by qaf-ar.jalt;
+    sub seen-ar by seen-ar.jalt;
+    # ...
+  } jalt;
+example:
+  font: Aref Ruqaa
+  text: سارق الغنم
+done: true
+ui:
+  In Adobe InDesign, this can be automatically applied at the paragraph level by choosing
+  "Justification" from the paragraph panel menu and selecting "Justification Alternates
+  (Naskh)" in the Justification dropdown. It can also be manually applied at the character
+  level by choosing the Justification Alternate option from the character panel
+  menu.
+
+  In Adobe Photoshop, it can be manually applied at the character level by choosing
+  "Justification Alternates" from the character panel.

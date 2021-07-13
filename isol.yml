@@ -1,0 +1,31 @@
+title: Isolated Forms
+registered: Microsoft/Adobe
+group: topographical
+required: true
+script:
+  arab:
+    order: 1
+  syrc:
+    order: 1
+  USE:
+    order: 1
+description: |
+  This feature is used by the Arabic and USE complex shapers as part of topographic
+  shaping. It is designed to replace joining characters with isolated forms. This means characters
+  which have the Unicode joining type `Right_Joining` or `Dual_Joining` in a
+  right-to-left script, and characters which have the Unicode joining type `Left_Joining`
+  or `Dual_Joining` in a left-to-right script. These joining type properties
+  can be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)
+  in the Unicode Character Database.
+example:
+  font: Aref Ruqaa
+  text: یڽہ
+automatic: true
+fea: |
+  feature isol {
+    sub yehHamzaabove-ar by CH_YEu1 HAMZA_ABOVE;
+    sub tehMarbutagoal-ar by HAYCu1 dda;
+    sub hah-ar by JIMu1;
+    sub noon-ar by NUNu1 sdi;
+  } isol;
+done: true
