@@ -298,7 +298,7 @@ window.featuredb={
         "description": "This feature is one of the two facilities for kerning within OpenType.\nThe original TrueType `kern` *table* in the font implements simple,\nnon-contextual pair-based and class-based kerning, and a pair-based (format 0)\n`kern` table was historically required for kerning to function in applications\nsuch as Microsoft PowerPoint.\n\n\nHowever, modern fonts tend to implement kerning through the use of\nthis feature instead (see [discussion](https://typedrawers.com/discussion/comment/15218)).\nThe standard implementation is to use GPOS 2 pair positioning rules to adjustment\nthe X advance of the first glyph in the pair, although note that when\ngenerating a `kern` feature for right-to-left text, the adjustment is\ngenerally made to both advance *and* placement:\n\n```\npos period parentheses <-30 0 -30 0>;\n```\n\n\nSee also the `vkrn` feature for kerning in vertical settings. Kerning may\nbe disabled based on user preference; for mandatory adjustments, use the\n[`dist`](#dist) feature instead.\n",
         "example": {
             "font": "Vollkorn",
-            "text": "Avatar"
+            "text": "AVATAR"
         },
         "ui": "In the OS X typography panel, this feature is *disabled* via \"Text Spacing > No Kerning\".",
         "done": "true",
