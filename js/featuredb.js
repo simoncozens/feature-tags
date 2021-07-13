@@ -128,7 +128,7 @@ window.featuredb={
     "stch": {
         "title": "Stretching Glyph Decomposition",
         "registered": "Microsoft",
-        "required": "true",
+        "state": "required",
         "group": "Common",
         "script": {
             "arab": {
@@ -247,7 +247,7 @@ window.featuredb={
         "title": "Isolated Forms",
         "registered": "Microsoft/Adobe",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "arab": {
                 "order": "1"
@@ -274,7 +274,7 @@ window.featuredb={
         "title": "Terminal Form #3",
         "registered": "Microsoft",
         "group": "orthographic",
-        "required": "true",
+        "state": "required",
         "script": {
             "syrc": {
                 "order": "3"
@@ -348,7 +348,7 @@ window.featuredb={
         "title": "Vowel Jamo Forms",
         "registered": "Microsoft",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "hang": "2"
         },
@@ -361,7 +361,7 @@ window.featuredb={
         "title": "Terminal Form #2",
         "registered": "Microsoft",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "syrc": {
                 "order": "3"
@@ -643,7 +643,7 @@ window.featuredb={
         "title": "Leading Jamo Forms",
         "registered": "Microsoft",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "hang": "1"
         },
@@ -656,7 +656,7 @@ window.featuredb={
         "title": "Trailing Jamo Forms",
         "registered": "Microsoft",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "hang": "3"
         },
@@ -669,7 +669,7 @@ window.featuredb={
         "title": "Terminal Forms",
         "registered": "Microsoft/Adobe",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "arab": {
                 "order": "2"
@@ -811,7 +811,7 @@ window.featuredb={
     "haln": {
         "title": "Halant Forms",
         "registered": "Microsoft",
-        "required": "true",
+        "state": "required",
         "group": "Typographic",
         "script": {
             "INDIC": {
@@ -950,7 +950,7 @@ window.featuredb={
     "locl": {
         "title": "Localized Forms",
         "registered": "Tiro Typeworks",
-        "required": "true",
+        "state": "required",
         "group": "Common",
         "order": "0",
         "description": "This feature allows for localization of glyph forms by making substitutions\nconditional on the script and language selected by the user. Typical uses\nof this feature include:\n\n\n* Substituting Cyrillic glyphs with Bulgarian and Serbian variants.\n\n* In Turkish, Azeri, Kazakh, Tatar and Crimean Tartar, substituting the `i` by\nan `idotaccent` glyph so that when uppercased through case conversion features\nsuch as `smcp`, the dot can be preserved.\n(See [this tutorial](https://glyphsapp.com/learn/localize-your-font-turkish).)\n\n* In Romanian and Moldovan, substituting the `scedilla` (U+015E) with `scommaaccent`.\n\n* Repositioning the ogonek to the center of the glyph in Navajo.\n\n* In Dutch, substituting the j in an `\u00edj` pair with `\u00edj\u0301` (see [thread](https://typedrawers.com/discussion/1294/how-do-you-implement-ijacute-and-ijacute).)\n\n* Substituting the Catalan \"punt volat\" for `ldot` ([tutorial](https://glyphsapp.com/learn/localize-your-font-catalan-punt-volat))\n\n* In a font which has multiple scripts with different spacing conventions,\n  such as Latin and Urdu, conditionally resizing the advance width of the\n  space character to meet the expectations of the script in use.\n",
@@ -977,7 +977,7 @@ window.featuredb={
         "title": "Initial Forms",
         "registered": "Microsoft/Adobe",
         "group": "topographical",
-        "required": "true",
+        "state": "required",
         "script": {
             "arab": {
                 "order": "7"
