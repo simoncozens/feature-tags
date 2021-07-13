@@ -1,0 +1,39 @@
+title: Vowel Jamo Forms
+registered: Microsoft
+group: topographical
+required: true
+script:
+  hang: 2
+description: |
+  The Korean Hangul script is encoded in Unicode in two ways: first, as a series
+  of precomposed syllable graphemes (encoded from U+AC00 to U+D7AF); second, as
+  a series of indivdual, conjoining *jamo*. Korean syllables form a LVT?
+  (leading consonant, vowel, optional trailing consonant) pattern; the leading consonant
+  (*choseong*) jamo are encoded between U+1100 and U+115F, the vowel (*jungseong*)
+  jamo are encoded between U+1160 and U+11A7, and the optional trailing consonant
+  (*jongseong*) jamo between U+11A8 and U+11FF. (At least in the primary Hangul
+  Jamo Unicode block; other jamo are encoded in extension blocks.)
+
+
+  The Hangul shaper will first attempt to compose any sequences of conjoining jamo
+  into an encoded form in the precomposed syllable block. But where this is not
+  successful - for example, in an Old Korean form which is not encoded in Unicode
+  as a precomposed syllable - then the shaper will instead *decompose* any LV
+  syllables to break the syllable into separate L, V, and T? characters, and then
+  apply the Korean shaping features (`ljmo`, `vjmo`, `tjmo`) to select forms of
+  the jamo which are appropriately positioned and sized to combine into the correct
+  grapheme-image.
+
+
+  For example, the Old Korean syllable ᄒᆞᆯ is not encoded in Unicode as a precomposed
+  syllable, and so must be encoded with the three individual jamo. The Hangul
+  shaper applies the `ljmo` feature to the *choseong*, the `vjmo` feature to the
+  *jungseong* and the `tjmo` feature to the *jongseong*. The resulting sequence
+  produces a glyph which renders the syllable correctly, with the `vjmo` and
+  `tjmo` generally producing zero-width mark glyphs positioned appropriately. An
+  alternative to this technique is to use the `ccmp` feature to turn decomposed
+  jamo into a precomposed glyph.
+
+
+  For further information, see sections 3.12 and 18.6 of the Unicode Standard.
+done: true
