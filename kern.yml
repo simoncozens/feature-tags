@@ -27,7 +27,7 @@ description: |
   `dist` feature instead.
 example:
   font: Vollkorn
-  text: Avatar
+  text: AVATAR
 ui:
   In the OS X typography panel, this feature is *disabled* via "Text Spacing >
   No Kerning".
