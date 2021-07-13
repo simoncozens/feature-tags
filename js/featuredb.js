@@ -808,6 +808,25 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "haln": {
+        "title": "Halant Forms",
+        "registered": "Microsoft",
+        "required": "true",
+        "group": "Typographic",
+        "script": {
+            "INDIC": {
+                "order": "6"
+            }
+        },
+        "description": "This feature is applied by the Indic shaper during the typographic presentation\nphase, and is intended to \"clean up\" dead consonant sequences which have not\nbeen formed into conjuncts, by replacing them with correct dead consonant forms.\n\n\nFor example, consider the two sequences \"tta nukta virama ra\" and \"tta nukta virama\"\nwithout the final ra. In Noto Sans Devanagari, the \"tta nukta virama\" sequence is\nfirst composed into `ttanuktadeva` by the `nukt` feature, leaving\n`ttanuktadeva viramadeva radeva` and `ttanuktadeva viramadeva` respectively.\n\n\nWhen the final ra is present, the `rkrf` feature creates a conjunct form\n`ttanuktaradeva`. But without the final ra, we are left with `ttanuktadeva viramadeva`.\nIn this case, the default positioning of the nukta underneath the tta is\nincorrect, as it needs to move to the left to accommodate the virama. A\nprecomposed glyph `ttanuktaprehalfdeva` is substituted in the `haln`\nfeature to tidy up this dead consonant sequence.\n",
+        "example": {
+            "font": "Noto Sans Devanagari",
+            "text": "\u091f\u093c\u094d\u0930 \u091f\u093c\u094d"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "cpct": {
         "title": "Centered CJK Punctuation",
         "description": "This feature is intended to center punctuation (typically the ideographic\ncomma \u3001 and ideographic full stop \u3002) in Chinese fonts. Where presented, it\nis often implemented as GPOS lookup 1 positioning rules to place these\nglyphs within the center of the em square.\n",
@@ -927,6 +946,18 @@ window.featuredb={
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
+    },
+    "locl": {
+        "title": "Localized Forms",
+        "registered": "Tiro Typeworks",
+        "required": "true",
+        "group": "Common",
+        "order": "0",
+        "description": "This feature allows for localization of glyph forms by making substitutions\nconditional on the script and language selected by the user. Typical uses\nof this feature include:\n\n\n* Substituting Cyrillic glyphs with Bulgarian and Serbian variants.\n\n* In Turkish, Azeri, Kazakh, Tatar and Crimean Tartar, substituting the `i` by\nan `idotaccent` glyph so that when uppercased through case conversion features\nsuch as `smcp`, the dot can be preserved.\n(See [this tutorial](https://glyphsapp.com/learn/localize-your-font-turkish).)\n\n* In Romanian and Moldovan, substituting the `scedilla` (U+015E) with `scommaaccent`.\n\n* Repositioning the ogonek to the center of the glyph in Navajo.\n\n* In Dutch, substituting the j in an `\u00edj` pair with `\u00edj\u0301` (see [thread](https://typedrawers.com/discussion/1294/how-do-you-implement-ijacute-and-ijacute).)\n\n* Substituting the Catalan \"punt volat\" for `ldot` ([tutorial](https://glyphsapp.com/learn/localize-your-font-catalan-punt-volat))\n\n* In a font which has multiple scripts with different spacing conventions,\n  such as Latin and Urdu, conditionally resizing the advance width of the\n  space character to meet the expectations of the script in use.\n",
+        "fea": "feature locl {\n  script latn;\n  language ROM;\n  sub Scedilla by Scommaaccent;\n  sub scedilla by scommaaccent;\n  language MOL;\n  sub Scedilla by Scommaaccent;\n  sub scedilla by scommaaccent;\n  language CAT;\n  sub l' periodcentered' l by ldot;\n  sub L' periodcentered' L by Ldot;\n} locl;\n",
+        "done": "true",
+        "popularity": "common",
+        "popularity_ix": 4
     },
     "dist": {
         "title": "Distances",

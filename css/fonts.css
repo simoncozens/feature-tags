@@ -90,13 +90,13 @@
 		    }
 		 
 			    @font-face {
-		        font-family: "Alegreya";
-		        src: url("fonts/Alegreya.ttf");
+		        font-family: "Noto Sans Devanagari";
+		        src: url("fonts/Noto Sans Devanagari.ttf");
 		    }
 		 
 			    @font-face {
-		        font-family: "Noto Sans Devanagari";
-		        src: url("fonts/Noto Sans Devanagari.ttf");
+		        font-family: "Alegreya";
+		        src: url("fonts/Alegreya.ttf");
 		    }
 		 
 			    @font-face {
