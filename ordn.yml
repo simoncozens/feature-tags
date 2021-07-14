@@ -1,0 +1,32 @@
+title: Ordinals
+registered: Adobe
+state: discretionary
+description: |
+  In some languages, alphabetic glyphs are used to abbreviate ordinal numerals.
+  For example, in Italian, the word for "second" is written 2º when referring
+  to a gramatically masculine noun and 2ª when referring to a gramatically
+  feminine noun. While this can be encoded with the Unicode FEMININE ORDINAL INDICATOR
+  (U+00AA) and MASCULINE ORDINAL INDICATOR (U+00BA) codepoints as in this
+  paragraph, it is more common to use the standard Latin `a` and `o` characters
+  and use a font feature to form the ordinal indicators.
+
+  Additionally, the numero sign (№, U+2116) is more commonly written with the
+  Latin sequence `No.`. This feature is applied to convert it to the numero
+  glyph.
+
+  Some fonts also use this feature to place other Latin glyphs in "ordinal
+  position".
+fea: |
+  feature ordn {
+    sub @numeral [A a] by ordfeminine;
+    sub @numeral [o o] by ordmasculine;
+
+    sub N o period by numero;
+  } ordn;
+example:
+  font: Alegreya Sans
+  text: No. 2a
+ui: |
+  In the OS X typography panel, this feature is accessed via "Vertical Position
+  > Ordinals".
+done: true

@@ -1,0 +1,39 @@
+titletitle: Petite Capitals
+registered: Tiro Typeworks / Emigre
+registered: Adobe
+state: discretionary
+automatic: true
+description: >
+  Substitutes lowercase characters for petite capitals. Petite capitals are
+  an additional set of capital letters found in some founds which are smaller
+  than the "small caps" set, designed to harmonize better with the lowercase
+  letters. (See, for example, [Mrs Eaves](https://fonts.adobe.com/fonts/mrs-eaves) and
+  [Filosophia](https://fonts.adobe.com/fonts/filosofia).)
+
+
+  Compare with `c2pc`, which substitutes uppercase letters for petite capitals.
+
+
+  Note that as this feature changes the case of the glyph, font engineers should
+  ensure that any language-specific localisations are taken into account during case
+  conversion - for example, when applying this feature to the letter `i` in
+  Turkish, the returned form should appear with a dot above. (This is often
+  achieved by replacing i with `idotless dotaccent` or similar in the `locl`
+  feature.)
+fea: >
+  feature pcap {
+    sub a by A.pc;
+    sub b by B.pc;
+    # ...
+  } pcap;
+example:
+  font: EB Garamond
+  text: This
+ui: |
+  In the OS X typography panel, this feature is accessed via "Lowercase ->
+  Petite Capitals."
+
+
+  In CSS, this feature can be set with `font-variant-caps: petite-caps;`
+done: true
+

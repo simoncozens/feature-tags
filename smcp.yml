@@ -1,0 +1,33 @@
+title: Small Capitals
+registered: Adobe
+state: discretionary
+automatic: true
+description: >
+  Substitutes lowercase characters for small capitals. Small capitals are often
+  used to set acronyms. Compare with `c2sc`, which substitutes uppercase
+  letters for small capitals.
+
+
+  Note that as this feature changes the case of the glyph, font engineers should
+  ensure that any language-specific localisations are taken into account during case
+  conversion - for example, when applying this feature to the letter `i` in
+  Turkish, the returned form should appear with a dot above. (This is often
+  achieved by replacing i with `idotless dotaccent` or similar in the `locl`
+  feature.)
+fea: >
+  feature smcp {
+    sub a by A.sc;
+    sub b by B.sc;
+    # ...
+  } smcp;
+example:
+  font: EB Garamond
+  text: This
+ui: |
+  In the OS X typography panel, this feature is accessed via "Lowercase ->
+  Small Capitals." In Adobe applications, this feature is accessed via "All
+  Small Caps" in the OpenType panel (although this also turns on `c2sc`).
+
+
+  In CSS, this feature can be set with `font-variant-caps: small-caps;`
+done: true
