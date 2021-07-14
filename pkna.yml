@@ -1,0 +1,27 @@
+title: Proportional Kana
+registered: Adobe
+state: discretionary
+description: |
+  Japanese characters are usually typeset on a fix-width em square grid. However,
+  for display purposes, it may be preferable to set the glyphs proportionally.
+  This feature either replaces the kana glyphs with alternate glyphs with reduced
+  sidebearings, or uses positioning rules to achieve the same effect. See also
+  `pwid`.
+fea: |
+  feature pkna {
+    sub ka-hira by ka-hira.pkna;
+    sub ki-hira by ki-hira.pkna;
+    # ...
+  } pkna;
+
+  # OR
+
+  feature pkna {
+    pos ka-hira <-75 0 -75 0>;
+    pos ki-hira <-15 0 -35 0>;
+    # ...
+  } pkna;
+example:
+  font: Feature Sans
+  text: かりかり
+done: true

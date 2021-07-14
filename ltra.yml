@@ -1,0 +1,11 @@
+title: Left-to-right alternate forms
+registered: Adobe
+group: Preprocessing
+order: 2
+description: |
+  This feature - by analogy with the `rtla` feature - is intended for
+  right-to-left scripts which can also be expressed in a left-to-right line
+  layout, but which require glyph transformations such as mirroring when
+  written left-to-right. As detailed in the `ltrm` feature, such scripts
+  are extremely rare, and no implementations have been found.
+done: true
