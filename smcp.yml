@@ -25,8 +25,7 @@ example:
   text: This
 ui: |
   In the OS X typography panel, this feature is accessed via "Lowercase ->
-  Small Capitals." In Adobe applications, this feature is accessed via "All
-  Small Caps" in the OpenType panel (although this also turns on `c2sc`).
+  Small Capitals."
 
 
   In CSS, this feature can be set with `font-variant-caps: small-caps;`
