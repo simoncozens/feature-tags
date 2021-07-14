@@ -319,6 +319,16 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "ltrm": {
+        "title": "Left-to-right mirrored forms",
+        "registered": "Adobe",
+        "group": "Preprocessing",
+        "order": "3",
+        "description": "This feature - by analogy with the `rtlm` feature - was intended for\nright-to-left scripts which can also be expressed in a left-to-right line\nlayout, but which require glyph transformations such as mirroring when\nwritten left-to-right.\n\n\nSuch scripts are exceptionally rare. Noto Sans Old Hungarian uses this\nfeature to horizontally mirror the glyphs when laying out Old Hungarian\nleft-to-right, although it is disputed that Old Hungarian was ever written\nleft-to-right. The Old South Arabian script is usually written RTL but\ncan also be laid out LTR; but Noto Sans Old South Arabian does not include\nmirroring substitutions. Oh well.\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "blwf": {
         "title": "Below-base Forms",
         "registered": "Microsoft",
@@ -719,6 +729,20 @@ window.featuredb={
         "done": "true",
         "popularity": "common",
         "popularity_ix": 4
+    },
+    "rand": {
+        "title": "Randomize",
+        "registered": "Adobe",
+        "state": "default",
+        "description": "The randomize feature, which is *currently only implemented in the Harfbuzz shaping engine*,\nallows font designers to randomly replace glyphs with variants from a selection,\nusing a GSUB3 alternate substitution. This can be useful for handwriting or\ndisplay style fonts. This feature is applied by default (at least in Harfbuzz),\nand there is no user interface to disabling it; use tastefully.\n\n\nNote that because of the limited implementation of this feature, it is still\nrecommended to use one of the other deterministic alternate selection strategies\ndescribed in the [OpenType Cookbook](http://opentypecookbook.com/common-techniques/#randomization)\nin a [`calt`](#calt) feature. Also note that to avoid problems with reflowing text,\nthe Harfbuzz shaping engine applies the same random seed to each shaping run.\nThis means that while the glyphs within a run are chosen (pseudo)randomly, the\nresults will be consistent each time the same text is shaped.\n",
+        "fea": "feature rand {\n  # But you probably want to use one of the OpenType Cookbook recipes\n  # in a calt feature instead\n  sub A from [A a.rand1 A.rand2 A.rand3];\n} rand;\n",
+        "example": {
+            "font": "Feature Sans",
+            "text": "AAAA"
+        },
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
     },
     "frac": {
         "title": "Fractions",
