@@ -1,0 +1,18 @@
+title: Left-to-right mirrored forms
+registered: Adobe
+group: Preprocessing
+order: 3
+description: |
+  This feature - by analogy with the `rtlm` feature - was intended for
+  right-to-left scripts which can also be expressed in a left-to-right line
+  layout, but which require glyph transformations such as mirroring when
+  written left-to-right.
+
+
+  Such scripts are exceptionally rare. Noto Sans Old Hungarian uses this
+  feature to horizontally mirror the glyphs when laying out Old Hungarian
+  left-to-right, although it is disputed that Old Hungarian was ever written
+  left-to-right. The Old South Arabian script is usually written RTL but
+  can also be laid out LTR; but Noto Sans Old South Arabian does not include
+  mirroring substitutions. Oh well.
+done: true
