@@ -1,0 +1,33 @@
+title: Required Variation Alternates
+group: Preprocessing
+order: 0
+registered: Microsoft
+state: required
+description: |
+  OpenType Font Variations provides for the ability for different features to
+  apply at different point of the variation space. For example, consider a
+  font with a weight axis - when the weight is greater than 600, the designer
+  wants the `dollar` glyph to be substituted for a simplified form to avoid
+  crowding the internal counterspace. This facility is called "feature variation",
+  and because it is implemented by substitution, it allows for different portions
+  of the variation space to represent the same character using different glyphs
+  and therefore different outlines; this in turn means that designers can implement
+  variations without being forced to make the outlines compatible between
+  dramatically different forms.
+
+
+  According to the OpenType specification, feature variation can be applied to
+  *any* feature. However, Microsoft registered the `rvrn` feature specifically
+  for processing feature variations early in the shaping process. This may not
+  turn out to be the best approach, as future rules now need to take into account
+  not just the original glyph but any substitutions; it may be better to perform
+  design-specific substitutions *after* all orthographic substitutions have between
+  completed.
+
+
+  Both Harfbuzz and CoreText process feature variations in features other than
+  the `rvrn` feature. I have not been able to ascertain whether or not the Microsoft
+  shapers process feature variation tables in other features. If they do - and
+  if font creation tools allow for creating feature variation tables in other
+  features - then this feature could be considered technically redundant.
+done: true
