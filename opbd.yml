@@ -1,0 +1,20 @@
+title: Optical Bounds
+registered: Adobe
+status: deprecated
+description: |
+  This feature was intended for implementing what TeX users call "character
+  protrusion" or "margin kerning": improving the fit of lines in a paragraph by
+  altering the apparent advance width or positioning of certain characters
+  based on their optical edges rather than bounding boxes.
+
+
+  Consider, for example, a serif letter D appearing at the beginning of a line.
+  By altering the positioning of the glyph, the serifs can be protruded outside
+  the margin so that the stem aligns with the left edge of the text, to give a
+  more visually "tight" justification.
+
+
+  This feature was originally intended to automatically "call" the `lfbd` and
+  `rtbd` features to achieve margin kerning; however, the OpenType feature
+  model did not develop as planned, and so this feature was never implemented.
+done: true
