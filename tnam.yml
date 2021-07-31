@@ -1,0 +1,9 @@
+title: Traditional Name Forms
+registered: Adobe
+status: discouraged
+description: |
+  This feature was intended for selecting traditional forms of kanji used in personal
+  names. No fonts implementing this feature have been identified and it is not
+  specified in the Adobe Japan1 glyph set; font developers should place any such
+  substitutions in the `trad` feature instead.
+done: true

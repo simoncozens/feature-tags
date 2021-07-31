@@ -1,0 +1,10 @@
+title: Simplified Forms
+registered: Adobe
+description: |
+  This feature was intended for converting Chinese or Japanese glyphs to simplified forms.
+  No fonts implementing this feature have been identified and it is not
+  specified in the Adobe Japan1 glyph set. As with the `hngl` feature,
+  character semantics should be selected using the input method environment,
+  rather than the font, and hence this feature is discouraged.
+status: discouraged
+done: true

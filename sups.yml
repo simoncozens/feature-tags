@@ -1,0 +1,14 @@
+title: Superscript
+registered: Microsoft/Adobe
+state: discretionary
+automatic: true
+description: |
+  This feature replaces glyphs with superscript forms, typically for use as footnote
+  references.
+example:
+  font: Alegreya
+  text: 2 HI. a,b,c
+ui:
+  In the OS X typography panel, this feature is accessed via "Vertical Position >
+  Superiors/Superscripts".
+done: true

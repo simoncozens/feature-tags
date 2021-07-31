@@ -1,0 +1,22 @@
+title: Swash
+registered: Microsoft/Adobe
+state: discretionary
+automatic: true
+description: |
+  This feature is used to replace glyphs with swash forms - typically, but not
+  exclusively, swash capitals. Although the OpenType standard suggests that
+  multiple swash alternates may be selected by providing a GSUB3 (`sub ... from ...`)
+  rule for this feature, in reality most implementations expect a single swash
+  alternate, and users may have difficulty accessing glyphs other than the first
+  alternate. For this reason, we recommend using GSUB1 (`sub @chars by @chars.swsh`)
+  rules for this feature.
+
+
+  See also the `cswh` feature for contextual swash forms.
+example:
+  font: Playball
+  text: Fake It
+ui:
+  In the OS X typography panel, this feature is accessed via "Contextual
+  Alternates > Swash Alternates".
+done: true
