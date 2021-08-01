@@ -6,9 +6,8 @@ description: |
    protrusion (see `opbd`); the idea being that it would be applied to the final
    character on a line to alter the bounds of that character allowing it to
    protrude into the right margin. However, this would require an interaction
-   between the line breaking engine and the shaping engine which has never been
-   implemented in any text layout software. (Despite some claims to the
-   contrary, XeTeX [does not implement this feature](https://tug.org/pipermail/xetex/2009-February/012037.html).)
+   between the line breaking engine and the shaping engine which has only once
+   been implemented, in the LuaTeX layout system.
 
 
    This feature should therefore be regarded as prematurely specified and
