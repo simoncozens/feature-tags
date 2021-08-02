@@ -1,0 +1,39 @@
+title: Stylistic Set 1 - Stylistic Set 20
+registered: Tiro Typeworks
+state: discretionary
+automatic: true
+description: |
+  These features - ranging from `ss01` to `ss20` - allow for stylistic variations
+  of *sets* of characters to vary in a common way. This is distinct from the
+  `cv01`-`cv99` features which allow characters to vary arbitrarily with no
+  implication of any common variations across a range of glyphs.
+
+
+  For example, in the font Cormorant, stylistic set 01 changes the terminals
+  of capital letters; stylistic set 02 opens the counters of glyphs with
+  counters; stylistic set 03 replaces double-storey glyphs (`g`, `a`) with
+  single-storey forms, and so on.
+
+
+  When this feature is coded manually, stylistic sets may be given
+  identifying names to be displayed in the user interface. See the
+  [Adobe feature file specification](http://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html#8.c)
+  for the format of these names.
+
+
+  These features are an extension to (and repacement for) the `salt` feature,
+  which only provides access to a single stylistic set.
+fea: |
+  feature ss01 {
+    featureNames {
+      name "Alternate terminals";
+    }
+    sub A by A.ss01;
+    sub B by A.ss01;
+  } ss01;
+example:
+  font: Cormorant
+  text: QUACK
+done: true
+ui:
+  In the OS X typography panel, this feature is accessed via "Alternative Stylistic Sets".

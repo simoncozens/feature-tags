@@ -1,0 +1,16 @@
+title: Stylistic Alternates
+registered: Adobe
+state: discretionary
+status: discouraged
+automatic: true
+description: |
+  Prior to the introduction of multiple stylistic sets (see the `ss01` feature),
+  this feature was used to select alternate aesthetic forms of glyphs which do
+  not correspond to the descriptions of other features. Currently, this feature
+  is generally implemented by font editors either by replicating the rules of `ss01`
+  or by combining *all* stylistic alternate substitutions.
+
+
+  Stylistic sets (`ss01`...`ss20`) should be used in current fonts in preference
+  to this feature, as UI support for the `salt` feature is not always available.
+done: true
