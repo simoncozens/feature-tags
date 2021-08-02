@@ -1,0 +1,16 @@
+title: Proportional Figures
+registered: Microsoft/Adobe
+automatic: true
+description: |
+  This feature replaces tabular (fixed-width) figures by proportional variants.
+  See also the `onum`, `lnum` and `tnum` features. Note that where the default
+  form is proportional, this feature has no effect, although some font editors
+  provide rules for this feature in any case.
+fea: |
+  feature pnum {
+    sub one.tf by one;
+    sub two.tf by two;
+    sub three.tf by three;
+    #...
+  } pnum;
+done: true
