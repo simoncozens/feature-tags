@@ -60,6 +60,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Cormorant";
+		        src: url("fonts/Cormorant.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Noto Sans Khmer";
 		        src: url("fonts/Noto Sans Khmer.ttf");
 		    }
@@ -75,6 +80,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "El Messiri";
+		        src: url("fonts/El Messiri.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Reggae One";
 		        src: url("fonts/Reggae One.ttf");
 		    }
@@ -87,6 +97,11 @@
 			    @font-face {
 		        font-family: "Baskervville";
 		        src: url("fonts/Baskervville.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Reem Kufi";
+		        src: url("fonts/Reem Kufi.ttf");
 		    }
 		 
 			    @font-face {

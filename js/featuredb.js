@@ -54,6 +54,17 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "pnum": {
+        "title": "Proportional Figures",
+        "registered": "Microsoft/Adobe",
+        "automatic": "true",
+        "description": "This feature replaces tabular (fixed-width) figures by proportional variants.\nSee also the [`onum`](#onum), [`lnum`](#lnum) and [`tnum`](#tnum) features. Note that where the default\nform is proportional, this feature has no effect, although some font editors\nprovide rules for this feature in any case.\n",
+        "fea": "feature pnum {\n  sub one.tf by one;\n  sub two.tf by two;\n  sub three.tf by three;\n  #...\n} pnum;\n",
+        "done": "true",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Number Spacing >\nProportional Numbers\".\n\n\nIn CSS, this feature can be accessed through the `font-variant-numeric: proportional-nums` property.\n",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
     "mark": {
         "title": "Mark Positioning",
         "registered": "Microsoft",
@@ -206,7 +217,7 @@ window.featuredb={
         "registered": "Microsoft",
         "state": "discretionary",
         "automatic": "true",
-        "description": "These features - ranging from `cv01` to `cv99` - allow for stylistic variations\nof individual characters.\n\nThey are similar to the Stylistic Set (`ss01`--`ss20`) features, but (as their)\nname implies, stylistic sets are intended to allow a *set* of glyphs to\nvary in a common way (for example, straightening the \"leg\" of glyphs such as\n`hnm`, or overlining `MCXLVI`  characters to form Roman numerals).\nCharacter variant features, on the other hand, do not imply any common\nvariations across a range of glyphs.\n\n\nWhen this feature is coded manually, character variant features may be given\nidentifying names to be displayed in the user interface. See the\n[Adobe feature file specification](http://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html#8.d)\nfor the format of these names.\n",
+        "description": "These features - ranging from `cv01` to `cv99` - allow for stylistic variations\nof individual characters.\n\nThey are similar to the Stylistic Set ([`ss01`](#ss01)--`ss20`) features, but (as their)\nname implies, stylistic sets are intended to allow a *set* of glyphs to\nvary in a common way (for example, straightening the \"leg\" of glyphs such as\n`hnm`, or overlining `MCXLVI`  characters to form Roman numerals).\nCharacter variant features, on the other hand, do not imply any common\nvariations across a range of glyphs.\n\n\nWhen this feature is coded manually, character variant features may be given\nidentifying names to be displayed in the user interface. See the\n[Adobe feature file specification](http://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html#8.d)\nfor the format of these names.\n",
         "example": {
             "font": "Source Code Pro",
             "text": "Java"
@@ -266,6 +277,22 @@ window.featuredb={
         "done": "true",
         "popularity": "extremely rare",
         "popularity_ix": 1
+    },
+    "ss01": {
+        "title": "Stylistic Set 1 - Stylistic Set 20",
+        "registered": "Tiro Typeworks",
+        "state": "discretionary",
+        "automatic": "true",
+        "description": "These features - ranging from `ss01` to `ss20` - allow for stylistic variations\nof *sets* of characters to vary in a common way. This is distinct from the\n[`cv01`](#cv01)-`cv99` features which allow characters to vary arbitrarily with no\nimplication of any common variations across a range of glyphs.\n\n\nFor example, in the font Cormorant, stylistic set 01 changes the terminals\nof capital letters; stylistic set 02 opens the counters of glyphs with\ncounters; stylistic set 03 replaces double-storey glyphs (`g`, `a`) with\nsingle-storey forms, and so on.\n\n\nWhen this feature is coded manually, stylistic sets may be given\nidentifying names to be displayed in the user interface. See the\n[Adobe feature file specification](http://adobe-type-tools.github.io/afdko/OpenTypeFeatureFileSpecification.html#8.c)\nfor the format of these names.\n\n\nThese features are an extension to (and repacement for) the [`salt`](#salt) feature,\nwhich only provides access to a single stylistic set.\n",
+        "fea": "feature ss01 {\n  featureNames {\n    name \"Alternate terminals\";\n  }\n  sub A by A.ss01;\n  sub B by A.ss01;\n} ss01;\n",
+        "example": {
+            "font": "Cormorant",
+            "text": "QUACK"
+        },
+        "done": "true",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Alternative Stylistic Sets\".",
+        "popularity": "normal",
+        "popularity_ix": 3
     },
     "titl": {
         "title": "Titling",
@@ -533,6 +560,30 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "rlig": {
+        "group": "typographic",
+        "state": "required",
+        "script": {
+            "arab": {
+                "order": "1"
+            },
+            "syrc": {
+                "order": "1"
+            }
+        },
+        "required": "true",
+        "title": "Required Ligatures",
+        "registered": "Microsoft",
+        "description": "This feature is intended for required ligatures (ligatures which should not\nbe subject to user control). Note that in the Arabic shaper it is processed\nearly in the typographic presentation phase; in other shapers, it is processed\nalong with the common feature group.\n",
+        "fea": "feature rlig {\n  lookupflag IgnoreMarks RightToLeft;\n  sub lam-ar.init alef-ar.fina by lam_alef-ar;\n  sub lam-ar.medi alef-ar.fina by lam_alef-ar.fina;\n  sub lam-ar.init alefHamzaabove-ar.fina by lam_alefHamzaabove-ar;\n  sub lam-ar.medi alefHamzaabove-ar.fina by lam_alefHamzaabove-ar.fina;\n  sub lam-ar.init alefHamzabelow-ar.fina by lam_alefHamzabelow-ar;\n  sub lam-ar.medi alefHamzabelow-ar.fina by lam_alefHamzabelow-ar.fina;\n  sub lam-ar.init alefMadda-ar.fina by lam_alefMadda-ar;\n  sub lam-ar.medi alefMadda-ar.fina by lam_alefMadda-ar.fina;\n  sub lam-ar.init alefWasla-ar.fina by lam_alefWasla-ar;\n  sub lam-ar.medi alefWasla-ar.fina by lam_alefWasla-ar.fina;\n} rlig;\n",
+        "example": {
+            "font": "El Messiri",
+            "text": "\u0644\u0627"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "smpl": {
         "title": "Simplified Forms",
         "registered": "Adobe",
@@ -651,7 +702,7 @@ window.featuredb={
         "registered": "Adobe",
         "state": "discretionary",
         "description": "This feature is used for additional typographic ligatures which are selectable\nby the end-user.\n",
-        "ui": "In the OS X typography panel, this feature is accessed via \"Ligatures -> Rare\nLigatures.\" (Not to be confused with the `rlig` feature, which is for required\nligatures...) In Adobe applications, this feature is\naccessed via \"Discretionary Ligatures\" in the OpenType panel.\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Ligatures -> Rare\nLigatures.\" (Not to be confused with the `rlig` feature, which is for required\nligatures...) In Adobe applications, this feature is\naccessed via \"Discretionary Ligatures\" in the OpenType panel.\n\n\nIn CSS, this feature can be accessed through the [`font-variant-ligatures`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures) property.\n",
         "fea": "sub dlig {\n  sub t h by t_h;\n  sub p p by p_p;\n} dlig;\n",
         "example": {
             "font": "Allura",
@@ -705,13 +756,13 @@ window.featuredb={
         "state": "discretionary",
         "title": "Lining Figures",
         "registered": "Adobe",
-        "description": "This feature substitutes digits for lining forms. Lining figures are\ndesigned to fit in all-capital settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for lining forms, but also any alternate\nnon-lining forms (such as oldstyle figures) for lining forms. Where\nlining forms are the default, implementing a substitution from oldstyle\nfigures to lining figures is not typographically necessary but will cause\nthe UI of layout programs to display lining figures as an option.\n\nSee also [`onum`](#onum), `pnum`, `tnum`.\n",
+        "description": "This feature substitutes digits for lining forms. Lining figures are\ndesigned to fit in all-capital settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for lining forms, but also any alternate\nnon-lining forms (such as oldstyle figures) for lining forms. Where\nlining forms are the default, implementing a substitution from oldstyle\nfigures to lining figures is not typographically necessary but will cause\nthe UI of layout programs to display lining figures as an option.\n\nSee also [`onum`](#onum), [`pnum`](#pnum), [`tnum`](#tnum).\n",
         "fea": "feature lnum {\n  sub one by one.lf;\n  sub two by two.lf;\n  # ...\n} lnum;\n",
         "example": {
             "font": "Baskervville",
             "text": "ABC1234"
         },
-        "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nLining Figures\". In Adobe applications, selecting \"Tabular lining\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional lining\" will apply this feature and the `pnum` feature.\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nLining Figures\". In Adobe applications, selecting \"Tabular lining\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional lining\" will apply this feature and the `pnum` feature.\n\n\nIn CSS, this feature can be accessed through the `font-variant-numeric: lining-nums` property.\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -797,6 +848,21 @@ window.featuredb={
         "popularity": "non-existent",
         "popularity_ix": 0
     },
+    "tnum": {
+        "title": "Tabular Figures",
+        "registered": "Microsoft/Adobe",
+        "automatic": "true",
+        "description": "This feature replaces proportional figures by tabular (fixed-width) variants.\nSee also the [`onum`](#onum), [`lnum`](#lnum) and [`pnum`](#pnum) features. Note that where the default\nform is tabular, this feature has no effect, although some font editors\nprovide rules for this feature in any case.\n",
+        "fea": "feature tnum {\n  sub one by one.tf;\n  sub two by two.tf;\n  sub three by three.tf;\n  #...\n} tnum;\n",
+        "done": "true",
+        "example": {
+            "font": "Work Sans",
+            "text": "|1|2|3|4|"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Number Spacing >\nMonospaced Numbers\".\n\n\nIn CSS, this feature can be accessed through the `font-variant-numeric: tabular-nums` property.\n",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
     "fina": {
         "title": "Terminal Forms",
         "registered": "Microsoft/Adobe",
@@ -820,6 +886,30 @@ window.featuredb={
         },
         "automatic": "true",
         "fea": "feature fina {\n  lookupflag RightToLeft IgnoreMarks;\n  sub alef-ar by alef-ar.fina;\n  sub beh-ar by beh-ar.fina;\n  # ...\n}\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "rclt": {
+        "group": "typographic",
+        "state": "required",
+        "script": {
+            "arab": {
+                "order": "2"
+            },
+            "syrc": {
+                "order": "2"
+            }
+        },
+        "required": "true",
+        "title": "Required Contextual Alternates",
+        "registered": "Microsoft",
+        "description": "This feature is intended for required contextual alternates (contextual\nalternates which should not be subject to user control). Note that in the\nArabic shaper it is processed early in the typographic presentation phase;\nin other shapers, it is processed along with the common feature group.\n\n\nIn the example, Reem Kufi uses the `rclt` feature to swap repeated *beh*\nglyphs for glyphs with raised teeth.\n",
+        "fea": "feature rclt {\n  lookupflag IgnoreMarks;\n    sub [behDotless-ar.init behDotless-ar.medi]\n         behDotless-ar.medi'\n        [behDotless-ar.medi behDotless-ar.fina]\n     by  behDotless-ar.medi.high;\n    sub [seen-ar.init seen-ar.medi]\n         behDotless-ar.medi'\n     by  behDotless-ar.medi.high;\n    sub  behDotless-ar.init\n         behDotless-ar.medi'\n         noonghunna-ar.fina\n     by  behDotless-ar.medi.high;\n} rclt;\n",
+        "example": {
+            "font": "Reem Kufi",
+            "text": "\u0628\u0628\u0628\u0628\u0628"
+        },
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -918,7 +1008,7 @@ window.featuredb={
             }
         },
         "registered": "Microsoft",
-        "description": "This feature is used by the Arabic shaping as the final phase of the typographic\nshaping group. It was intended for substitutions which combine marks and bases\ninto precomposed forms as an alternative to using positioning rules in the [`mark`](#mark)\nfeature; however, it is possible to use *substitution* rules in the [`mark`](#mark)\nfeature, making the `mset` feature redundant.\n\nIt was used in Microsoft's Windows 95 Arabic fonts, and practically no other font.\nNew fonts should use [`mark`](#mark), [`ccmp`](#ccmp), `rlig` or other features instead.\n",
+        "description": "This feature is used by the Arabic shaping as the final phase of the typographic\nshaping group. It was intended for substitutions which combine marks and bases\ninto precomposed forms as an alternative to using positioning rules in the [`mark`](#mark)\nfeature; however, it is possible to use *substitution* rules in the [`mark`](#mark)\nfeature, making the `mset` feature redundant.\n\nIt was used in Microsoft's Windows 95 Arabic fonts, and practically no other font.\nNew fonts should use [`mark`](#mark), [`ccmp`](#ccmp), [`rlig`](#rlig) or other features instead.\n",
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
@@ -1028,7 +1118,7 @@ window.featuredb={
         "title": "Access All Alternates",
         "registered": "Adobe",
         "done": "true",
-        "description": "Allows the end user to access glyphs which are either not available, or not\neasily available, via other feature applications. The expectation is that this\nfeature will allow substituting a glyph with all possible \"alternative\" forms\nof the glyph provided in the font: for example, for the glyph `a`, it will\nprovide a substitution to small capital forms, swash alternates, superior forms,\nand so on. This is normally achieved through one-from-many (GSUB3) substitutions,\nbut where only a single alternate is provided, the use of a one-to-one (GSUB1)\nsubstitution may be appropriate.\n\n\nA layout application will not apply this feature in the ordinary course of layout,\nbut may use it to implement a \"glyph picker\" interface allowing the end user\nto choose the desired substitution, or to cycle through the alternates available\nfor a glyph. Because of way that the layout application will apply this feature,\nit is undefined what would happen to lookup types other than GSUB1 and GSUB3 if\nplaced inside an `aalt` feature.\n\n\n*Note*: AFDKO feature syntax offers special handling of the `aalt` feature.\nWithin the context an `aalt` feature block, the `feature` keyword can be used\nto reference the lookups of other features, arrange any GSUB1 or GSUB3 rules\nwithin those lookups by glyph, and combine them into one-from-many rules.\nThis allows the engineer to more easily generate an `aalt` feature by\ncombining the effects of other features.\n\n\nFor example, given a feature [`smcp`](#smcp) which contains the rule `sub b by B.sc;` and a\nfeature `salt` which contains the rule `sub b by b.alt;`, the effect of\n\n\n```fea\nfeature aalt {\n  feature salt;\n  feature smcp;\n} aalt;\n```\n\nwould be to create the rule `sub b from [b.alt B.sc];`.\n",
+        "description": "Allows the end user to access glyphs which are either not available, or not\neasily available, via other feature applications. The expectation is that this\nfeature will allow substituting a glyph with all possible \"alternative\" forms\nof the glyph provided in the font: for example, for the glyph `a`, it will\nprovide a substitution to small capital forms, swash alternates, superior forms,\nand so on. This is normally achieved through one-from-many (GSUB3) substitutions,\nbut where only a single alternate is provided, the use of a one-to-one (GSUB1)\nsubstitution may be appropriate.\n\n\nA layout application will not apply this feature in the ordinary course of layout,\nbut may use it to implement a \"glyph picker\" interface allowing the end user\nto choose the desired substitution, or to cycle through the alternates available\nfor a glyph. Because of way that the layout application will apply this feature,\nit is undefined what would happen to lookup types other than GSUB1 and GSUB3 if\nplaced inside an `aalt` feature.\n\n\n*Note*: AFDKO feature syntax offers special handling of the `aalt` feature.\nWithin the context an `aalt` feature block, the `feature` keyword can be used\nto reference the lookups of other features, arrange any GSUB1 or GSUB3 rules\nwithin those lookups by glyph, and combine them into one-from-many rules.\nThis allows the engineer to more easily generate an `aalt` feature by\ncombining the effects of other features.\n\n\nFor example, given a feature [`smcp`](#smcp) which contains the rule `sub b by B.sc;` and a\nfeature [`salt`](#salt) which contains the rule `sub b by b.alt;`, the effect of\n\n\n```fea\nfeature aalt {\n  feature salt;\n  feature smcp;\n} aalt;\n```\n\nwould be to create the rule `sub b from [b.alt B.sc];`.\n",
         "fea": "feature aalt {\n  feature salt;\n  feature smcp;\n  feature swsh;\n  sub quoteleft by quoteleft.fr;\n  sub quoteright by quoteright.fr;\n} aalt;\n",
         "automatic": "true",
         "state": "discretionary",
@@ -1047,7 +1137,7 @@ window.featuredb={
             }
         },
         "done": "true",
-        "description": "This feature has two distinct uses.\n\n\nIt was originally intended for ligature forms which are contextual in nature,\nfor example, for Latin script fonts, and typically made up of GSUB lookup 8 rules.\nHowever, these rules may also be placed in other discretionary ligature\nfeatures, such as `rlig` or [`liga`](#liga), and these should be used instead. As such\nthis use is relatively rare.\n\n\nSeparately, in the Khmer complex shaper, this is a mandatory feature used\nfor \"ligatures that are desired for typographical correctness\". It is\ntherefore used widely in Khmer fonts for general typographic shaping.\n",
+        "description": "This feature has two distinct uses.\n\n\nIt was originally intended for ligature forms which are contextual in nature,\nfor example, for Latin script fonts, and typically made up of GSUB lookup 8 rules.\nHowever, these rules may also be placed in other discretionary ligature\nfeatures, such as [`rlig`](#rlig) or [`liga`](#liga), and these should be used instead. As such\nthis use is relatively rare.\n\n\nSeparately, in the Khmer complex shaper, this is a mandatory feature used\nfor \"ligatures that are desired for typographical correctness\". It is\ntherefore used widely in Khmer fonts for general typographic shaping.\n",
         "fea": "feature clig {\n  sub kho-khmer.conjunct aaSign-khmer by kho-khmer.conjunct.aa;\n  sub kho-khmer.conjunct auSign-khmer by kho-khmer.conjunct.au;\n  # ...\n  sub nyo-khmer' @conjuncts by nyo-khmer.alt;\n  sub nyo-khmer.alt nyo-khmer.conjunct' by nyo-khmer.conjunct.alt;\n  # ...\n}\n",
         "popularity": "rare",
         "popularity_ix": 2
@@ -1279,13 +1369,13 @@ window.featuredb={
         "state": "discretionary",
         "title": "Oldstyle Figures",
         "registered": "Adobe",
-        "description": "This feature substitutes digits for oldstyle forms. Oldstyle figures are\ndesigned to fit in mixed case text settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for oldstyle forms, but also any alternate\nlining forms (such as lining figures) for oldstyle forms. Where\noldstyle forms are the default, implementing a substitution from lining\nfigures to oldstyle figures is not typographically necessary but will cause\nthe UI of layout programs to display oldstyle figures as an option.\n\nSee also `onum`, `pnum`, `tnum`.\n",
+        "description": "This feature substitutes digits for oldstyle forms. Oldstyle figures are\ndesigned to fit in mixed case text settings.\n\nIn theory, this feature should not just substitute the default form\nof figures (e.g. `one`, `two`) for oldstyle forms, but also any alternate\nlining forms (such as lining figures) for oldstyle forms. Where\noldstyle forms are the default, implementing a substitution from lining\nfigures to oldstyle figures is not typographically necessary but will cause\nthe UI of layout programs to display oldstyle figures as an option.\n\nSee also `onum`, [`pnum`](#pnum), [`tnum`](#tnum).\n",
         "fea": "feature lnum {\n  sub one by one.osf;\n  sub two by two.osf;\n  # ...\n} lnum;\n",
         "example": {
             "font": "Cardo",
             "text": "ABC1234"
         },
-        "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nOld-Style Figures\". In Adobe applications, selecting \"Tabular oldstyle\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional oldstyle\" will apply this feature and the `pnum` feature.\n",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Number Case >\nOld-Style Figures\". In Adobe applications, selecting \"Tabular oldstyle\" from the\nOpenType panel will apply this feature and the `tnum` feature, while selecting\n\"Proportional oldstyle\" will apply this feature and the `pnum` feature.\n\n\nIn CSS, this feature can be accessed through the `font-variant-numeric: oldstyle-nums` property.\n",
         "done": "true",
         "popularity": "normal",
         "popularity_ix": 3
@@ -1448,6 +1538,17 @@ window.featuredb={
         "status": "deprecated",
         "registered": "Adobe",
         "description": "This deprecated feature replaces numeric glyphs with denominator forms. See also [`numr`](#numr).\n\nNote that, despite the description of this feature in the OpenType specification,\nthe application of the [`frac`](#frac) feature is independent of this feature. It was\noriginally intended that applying the [`frac`](#frac) feature would \"trigger\" the\napplication of the [`numr`](#numr) feature for glyphs before the division slash and\nthe `dnom` feature for glyphs after it. This behavior was never implemented in\nOpenType shaping, and instead contextual rules are used within the [`frac`](#frac) feature\nto choose appropriate glyphs for numerator and denominator.\n\nNew fonts should use the [`frac`](#frac) feature in preference to this feature.\n",
+        "done": "true",
+        "popularity": "normal",
+        "popularity_ix": 3
+    },
+    "salt": {
+        "title": "Stylistic Alternates",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "status": "discouraged",
+        "automatic": "true",
+        "description": "Prior to the introduction of multiple stylistic sets (see the [`ss01`](#ss01) feature),\nthis feature was used to select alternate aesthetic forms of glyphs which do\nnot correspond to the descriptions of other features. Currently, this feature\nis generally implemented by font editors either by replicating the rules of [`ss01`](#ss01)\nor by combining *all* stylistic alternate substitutions.\n\n\nStylistic sets ([`ss01`](#ss01)...`ss20`) should be used in current fonts in preference\nto this feature, as UI support for the `salt` feature is not always available.\n",
         "done": "true",
         "popularity": "normal",
         "popularity_ix": 3
