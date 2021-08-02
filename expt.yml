@@ -5,11 +5,13 @@ description: |
   are considered more "typographical". This includes the use of JIS78 forms
   (see `jp78`), but also a wide range of other substitutions.
 
+
   The expected substitutions of the `expt` feature are defined in terms of the
   [Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.
   Engineers creating Japanese fonts according to that glyphset should read the
   information at the Adobe-Japan1 repository, and use the latest version of the
   feature code provided there to implement this feature.
+
 
   (Thanks to Ken Lunde for the information about implementing this feature.)
 done: true
