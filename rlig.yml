@@ -1,0 +1,34 @@
+group: typographic
+state: required
+script:
+  arab:
+    order: 1
+  syrc:
+    order: 1
+required: true
+title: Required Ligatures
+registered: Microsoft
+description: |
+  This feature is intended for required ligatures (ligatures which should not
+  be subject to user control). Note that in the Arabic shaper it is processed
+  early in the typographic presentation phase; in other shapers, it is processed
+  along with the common feature group.
+fea: |
+  feature rlig {
+    lookupflag IgnoreMarks RightToLeft;
+    sub lam-ar.init alef-ar.fina by lam_alef-ar;
+    sub lam-ar.medi alef-ar.fina by lam_alef-ar.fina;
+    sub lam-ar.init alefHamzaabove-ar.fina by lam_alefHamzaabove-ar;
+    sub lam-ar.medi alefHamzaabove-ar.fina by lam_alefHamzaabove-ar.fina;
+    sub lam-ar.init alefHamzabelow-ar.fina by lam_alefHamzabelow-ar;
+    sub lam-ar.medi alefHamzabelow-ar.fina by lam_alefHamzabelow-ar.fina;
+    sub lam-ar.init alefMadda-ar.fina by lam_alefMadda-ar;
+    sub lam-ar.medi alefMadda-ar.fina by lam_alefMadda-ar.fina;
+    sub lam-ar.init alefWasla-ar.fina by lam_alefWasla-ar;
+    sub lam-ar.medi alefWasla-ar.fina by lam_alefWasla-ar.fina;
+  } rlig;
+example:
+  font: El Messiri
+  text: لا
+done: true
+

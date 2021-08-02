@@ -1,0 +1,39 @@
+group: typographic
+state: required
+script:
+  arab:
+    order: 2
+  syrc:
+    order: 2
+required: true
+title: Required Contextual Alternates
+registered: Microsoft
+description: |
+  This feature is intended for required contextual alternates (contextual
+  alternates which should not be subject to user control). Note that in the
+  Arabic shaper it is processed early in the typographic presentation phase;
+  in other shapers, it is processed along with the common feature group.
+
+
+  In the example, Reem Kufi uses the `rclt` feature to swap repeated *beh*
+  glyphs for glyphs with raised teeth.
+fea: |
+  feature rclt {
+    lookupflag IgnoreMarks;
+      sub [behDotless-ar.init behDotless-ar.medi]
+           behDotless-ar.medi'
+          [behDotless-ar.medi behDotless-ar.fina]
+       by  behDotless-ar.medi.high;
+      sub [seen-ar.init seen-ar.medi]
+           behDotless-ar.medi'
+       by  behDotless-ar.medi.high;
+      sub  behDotless-ar.init
+           behDotless-ar.medi'
+           noonghunna-ar.fina
+       by  behDotless-ar.medi.high;
+  } rclt;
+example:
+  font: Reem Kufi
+  text: ببببب
+done: true
+
