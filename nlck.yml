@@ -1,0 +1,18 @@
+title: NLC Kanji Forms
+registered: Adobe
+description: |
+  In 2000, the Japanese National Language Council (now the Japanese language
+  division of the Agency for Cultural Affairs) prescribed new glyph forms for
+  Japanese kanji. In particular, the shape of the "father" and "long stride"
+  (*innyo*) radicals changed to remove a small stroke.
+
+
+  The expected substitutions of the `nlck` feature are defined in terms of the
+  [Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.
+  Engineers creating Japanese fonts according to that glyphset should read the
+  information at the Adobe-Japan1 repository, and use the latest version of the
+  feature code provided there to implement this feature.
+example:
+  text: 咬廻挺爺
+  font: Shippori Mincho
+done: true

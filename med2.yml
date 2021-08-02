@@ -1,0 +1,21 @@
+title: 'Medial Forms #2'
+registered: Microsoft
+group: topographical
+state: required
+script:
+  syrc:
+    order: 3
+description: |
+    This feature is used by the Arabic complex shaper when processing the Syriac
+    script. The Syriac letter alaph (U+0710) is not normally a joining character
+    but can join to the right in the middle of a word if the preceding character
+    is right-joining.
+example:
+  font: Noto Sans Syriac
+  text: ܒܐܬܪܐ
+fea: |
+  feature fin2 {
+    lookupflag RightToLeft IgnoreMarks;
+    sub uni0710 by uni0710.Medi2;
+    } fin2;
+done: true
