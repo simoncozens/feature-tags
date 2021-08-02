@@ -9,6 +9,9 @@ ui: |
   Ligatures." (Not to be confused with the `rlig` feature, which is for required
   ligatures...) In Adobe applications, this feature is
   accessed via "Discretionary Ligatures" in the OpenType panel.
+
+
+  In CSS, this feature can be accessed through the [`font-variant-ligatures`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures) property.
 fea: |
   sub dlig {
     sub t h by t_h;

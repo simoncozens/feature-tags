@@ -14,3 +14,9 @@ fea: |
     #...
   } pnum;
 done: true
+ui: |
+  In the OS X typography panel, this feature is accessed via "Number Spacing >
+  Proportional Numbers".
+
+
+  In CSS, this feature can be accessed through the `font-variant-numeric: proportional-nums` property.

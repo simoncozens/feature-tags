@@ -28,4 +28,7 @@ ui: |
   Old-Style Figures". In Adobe applications, selecting "Tabular oldstyle" from the
   OpenType panel will apply this feature and the `tnum` feature, while selecting
   "Proportional oldstyle" will apply this feature and the `pnum` feature.
+
+
+  In CSS, this feature can be accessed through the `font-variant-numeric: oldstyle-nums` property.
 done: true

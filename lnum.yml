@@ -28,4 +28,7 @@ ui: |
   Lining Figures". In Adobe applications, selecting "Tabular lining" from the
   OpenType panel will apply this feature and the `tnum` feature, while selecting
   "Proportional lining" will apply this feature and the `pnum` feature.
+
+
+  In CSS, this feature can be accessed through the `font-variant-numeric: lining-nums` property.
 done: true

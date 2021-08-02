@@ -17,3 +17,9 @@ done: true
 example:
   font: Work Sans
   text: "|1|2|3|4|"
+ui: |
+  In the OS X typography panel, this feature is accessed via "Number Spacing >
+  Monospaced Numbers".
+
+
+  In CSS, this feature can be accessed through the `font-variant-numeric: tabular-nums` property.
