@@ -1,0 +1,19 @@
+title: Right-to-left alternates
+registered: Adobe
+required: true
+group: Preprocessing
+order: 2
+description: |
+  This feature is applied to right-to-left texts as part of the glyph preprocessing
+  stage. It is intended for substituting variants which are appropriate for
+  right-to-left text, but which are not mirrored substitutions. (Mirrored forms
+  of glyphs should be handled by the `rtlm` feature.)
+
+
+  No examples of this feature being used as described have been found; Noto
+  Sans Tifinagh uses the feature to mirror glyphs when Tifinagh is being set
+  right-to-left (e.g. when used to write Tuareg).
+done: true
+example:
+  font: Noto Sans Tifinagh
+  text: ⵎⵉⴷⴷⵏ

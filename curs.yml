@@ -1,7 +1,7 @@
 automatic: true
 title: Cursive Positioning
 registered: Microsoft
-state: default
+state: required
 group: positioning
 description: |
   This feature is used to position glyphs with cursive connections.

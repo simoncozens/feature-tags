@@ -1,0 +1,23 @@
+title: Right-to-left mirrored forms
+registered: Adobe
+group: Preprocessing
+order: 3
+required: true
+description: |
+  When a bidirectional text is being laid out, any characters which have the
+  `Bidi_Mirrored` Unicode property and whose directionality is resolved to RTL
+  will be replaced by their mirrored equivalents. This mirroring is specified
+  by the [Unicode Bidirectional Algorithm](https://unicode.org/reports/tr9/#L4),
+  and is performed by the layout engine prior to shaping.
+
+
+  However, a font may contain mirrored glyphs for characters which do *not* have
+  the `Bidi_Mirrored` property (and thus are not handled by the Unicode bidirectional
+  algorithm), but which are required to be mirrored when displayed in right-to-left settings.
+  For example, mathematical characters such as the square root sign (√) and
+  intergral sign (∫) do not have mirrored forms encoded in Unicode, but should be
+  mirrored in right-to-left text.
+done: true
+example:
+  font: Noto Sans Math
+  text: ∫√x
