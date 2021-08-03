@@ -1,0 +1,24 @@
+title: Math script style alternates
+registered: Microsoft
+script:
+  math:
+example:
+  math: "<msup> <mi>x</mi> <msup> <mi> x </mi> <mi>x</mi> </msup> </msup>"
+description: |
+  This feature is used by the math layout engine to select glyph variants
+  used in subscripts and superscripts. When the engine lays out a glyph as
+  a superscript or subscript, it will first determine the script level: 1
+  for first-level sub-/superscripts and 2 for higher levels. It will then
+  supply the script level as a parameter to a GSUB3 alternate substitution
+  rule in this feature to obtain the correct glyph variant.
+
+
+  The glyph variant will then be scaled by the math layout engine based on
+  the factor specified in the MATH table (`MATH.MathConstants.scriptPercentScaleDown`
+  for first-level sub-/superscripts and `MATH.MathConstants.scriptScriptPercentScaleDown`
+  for higher level scripts). As the scaling will be performed by the layout
+  engine, the form of the glyphs substituted in this feature should not be
+  scaled or repositioned. For example, the STIX Math Two font shown in the
+  example uses slightly bolder script alternates so that the glyph weights
+  appear consistent when scaled down.
+done: true
