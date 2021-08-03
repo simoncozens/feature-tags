@@ -18,5 +18,4 @@ fea: |
 example:
   math:
     <mover accent="true"><mi> i </mi> <mo> &#x0005E; </mo> </mover>
-done:
-  true
+done: true
