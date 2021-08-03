@@ -1,0 +1,41 @@
+title: Traditional Forms
+registered: Adobe
+description: |
+  The expected forms of Japanese kanji have evolved and simplified over time. However,
+  in particular situations - often in the display of personal names - older,
+  "traditional" forms (*kyujitai*) are still preferred. This feature allows a user to enter
+  text as normal (i.e. with the Unicode codepoint for a more common, simplified
+  form) but have it substituted typographically for the traditional glyph. For
+  example, to typeset the name Sakae as 榮 (a variant found in south west Japan),
+  the user would enter the reading さかえ in their input method environment, and
+  have it converted to 栄, the usual kanji for this word. Applying the `trad`
+  feature would replace 栄 with 榮.
+
+
+  Note that where traditional forms have their own Unicode codepoints, using these
+  codepoints directly is preferred, to avoid ambiguity and to preserve the distinction
+  in the source text. In some cases (for example, the traditional form of 朗),
+  *kyujitai* were not separately encoded in Unicode due to Han unification, and
+  so the `trad` feature is necessary to access these glyphs.
+
+
+  The expected substitutions of the `trad` feature are defined in terms of the
+  [Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.
+  Engineers creating Japanese fonts according to that glyphset should read the
+  information at the Adobe-Japan1 repository, and use the latest version of the
+  feature code provided there to implement this feature.
+fea: |
+  feature trad {
+    sub uni4E9C by uni4E9E;
+    sub uni60AA by uni60E1;
+    sub uni9BF5 by uni9C3A;
+    sub uni5727 by uni58D3;
+    sub uni56F2 by uni570D;
+    sub uni7AC3 by uni7AC3.jp78;
+    sub uni6717 by uni6717.trad;
+    # ...
+  } trad;
+example:
+  text: 朗栄圧
+  font: Kiwi Maru
+done: true

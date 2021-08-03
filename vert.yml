@@ -1,0 +1,34 @@
+title: Vertical Alternates
+registered: Microsoft/Adobe
+required: true
+group: Typographic
+description: |
+  This feature is applied automatically by the shaping engine at the end of
+  required processing and before discretionary processing when the script
+  direction is set to vertical; it replaces the horizontal positioning and
+  typographic presentation group (`calt`/`clig`/`curs`/`dist`/`kern`/`liga`/`rclt`).
+
+
+  It should be used to replace any glyphs with forms which are more appropriate
+  to vertical presentation. For example, punctuation such as ellipses and parenthesis
+  should be replaced with rotated forms, Japanese small kana should be positioned in the
+  upper right quadrant of the em square, and Japanese ligature forms (U+32FF-33FF) should
+  be replaced with versions which preserve reading order when read vertically.
+
+
+  Note that, aside from supporting CJK vertical presentation, this feature
+  should also be used for typographic presentation rules for fonts supporting
+  other vertical writing systems, such as Mongolian.
+fea: |
+  feature vert {
+    sub ellipsis by uniFE19;
+    sub twodotenleader by twodotenleader.vert;
+    sub uniFF08 by uniFE35;
+    sub uniFF09 by uniFE36;
+
+    sub uni32FF by uni32FF.vert;
+    # ...
+  } vert;
+example:
+  font: Reggae One
+  text: （㌀）
