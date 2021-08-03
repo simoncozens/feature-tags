@@ -1,0 +1,22 @@
+title: Ruby Notation Forms
+registered: Adobe
+description: |
+  In Japanese typesetting, words written in kanji may be superscripted by
+  the kana transliteration of the words to aid with reading. (In vertical
+  settings, the transliteration is placed to the right.) These subscripted
+  kana, called *furigana* or ruby, are scaled down to a reduced size relative
+  to the main text. Scaling and positioning is applied by the typesetting
+  engine, but the font may wish to provide alternate forms of the kana
+  when they are being used in a ruby context - for example, slightly bolder
+  forms such that they will maintain the correct weight when scaled down to
+  ruby size, or different forms that are more legible when displayed at a
+  smaller size.
+fea: |
+  feature ruby {
+    sub ka-hira by ka-hira.ruby;
+    sub sa-hira by sa-hira.ruby;
+    # ...
+  } ruby;
+done: true
+ui: |
+  In the OS X typography panel, this feature is accessed via "Ruby Glyphs".
