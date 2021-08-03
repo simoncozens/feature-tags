@@ -1,0 +1,13 @@
+state: discretionary
+title: Vertical Contextual Half-width Spacing
+registered: Adobe/W3C
+description: |
+  This feature is the vertical equivalent of `chws`; it is intended to improve
+  the appearance of text set with software which does *not* implement the full
+  JLREQ spacing rules, but does implement vertical typesetting.
+
+  This feature is relatively new as of 2021, no implementations have been
+  identified, and to be honest, any layout engine which bothers to support
+  vertical typesetting correctly is probably also going to implement JLREQ
+  spacing as well.
+done: true
