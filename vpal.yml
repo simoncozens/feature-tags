@@ -1,0 +1,15 @@
+title: Proportional Alternate Vertical Metrics
+registered: Adobe
+description: |
+  This feature is the vertical equivalent of the `palt` feature; it uses
+  positioning rules to convert full-em glyphs into proportional glyphs
+  by aftering their position and Y-advance.
+fea: |
+  feature vpal {
+    pos uniFF41 <0 -186 0 -373>;
+    pos uniFF42 <0 -148 0 -346>;
+    pos uniFF43 <0 -220 0 -441>;
+    pos uniFF44 <0 -176 0 -353>;
+    # ...
+  } vpal;
+done: true

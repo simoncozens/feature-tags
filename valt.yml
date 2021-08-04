@@ -1,0 +1,15 @@
+title: Alternate Vertical Metrics
+registered: Adobe
+status: discouraged
+description: |
+  The intention behind this feature was to reposition full-width glyphs
+  (e.g. U+FF01-U+FF60) so that they would be visually
+  centered inside the em-square in vertical typesetting context.
+
+
+  However, a more appropriate way to achieve this visual repositioning is to
+  supply alternate metrics for these glyphs in the `vmtx` and `VORG` tables.
+  As such, this feature has only been implemented extremely rarely, and,
+  despite the description in the OpenType standard, Harfbuzz does not apply
+  it by default in vertical layout.
+done: true

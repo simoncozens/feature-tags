@@ -7,7 +7,7 @@ description: |
   glyphs with proportional equivalents, it re-spaces the glyphs using positioning
   rules.
 fea: |
-  feature pwid {
+  feature palt {
     pos uniFF41 <-186 0 -373 0>;
     pos uniFF42 <-148 0 -346 0>;
     pos uniFF43 <-220 0 -441 0>;
