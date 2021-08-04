@@ -83,6 +83,13 @@ var featureTemplate = Handlebars.compile(`
 			<span class="tiro">T</span>
 		</div>
 		{{/ifIncludes}}
+
+		{{#ifIncludes feature.registered "W3C"}}
+		<div class="tooltip" data-text="This feature was registered by the W3C.">
+			<span class="w3c">W</span>
+		</div>
+		{{/ifIncludes}}
+
 		{{{ feature.html_description }}}
 
 		{{#if feature.example}}

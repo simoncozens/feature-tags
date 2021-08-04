@@ -112,6 +112,12 @@ details div {
 	width: 20px;
 	height: 20px;
 }
+.w3c {
+	content: url("w3c.svg");
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
 
 .tiro {
 	content: url("tiro.svg");
