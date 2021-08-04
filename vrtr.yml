@@ -1,0 +1,16 @@
+title: Vertical Alternates for Rotation
+registered: Adobe/Microsoft/W3C
+description: |
+  This feature is intended to select alternate glyphs to be used in vertical
+  typesetting. When the `writing-mode` CSS property is set to `vertical-lr`
+  or `vertical-rl`, certain glyphs are rotated 90 degrees clockwise by the
+  rendering engine.
+
+  However, prior to rotation, the font may wish to substitute glyphs which
+  are designed for vertical settings. These glyphs will still be rotated by
+  the rendering engine, but will be visually distinct from the original forms.
+
+
+  This feature is relatively new as of 2021, and no implementations have been
+  identified.
+done: true

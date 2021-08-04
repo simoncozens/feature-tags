@@ -19,6 +19,11 @@ description: |
   Note that, aside from supporting CJK vertical presentation, this feature
   should also be used for typographic presentation rules for fonts supporting
   other vertical writing systems, such as Mongolian.
+
+
+  Not also that if the `vrt2` feature is present, this feature will be used instead
+  by Microsoft shaping engines. Indeed, Windows 2000 and NT4.1 *require* the use
+  of a `vrt2` feature for CFF-outline fonts.
 fea: |
   feature vert {
     sub ellipsis by uniFE19;

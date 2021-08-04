@@ -1,0 +1,17 @@
+title: Slashed Zero
+registered: Adobe
+description: |
+  This feature allows the user to change between the default form of zero
+  (without a slash) to a form with a slash through the counter.
+automatic: true
+fea: |
+  feature zero {
+    sub zero by zero.zero;
+  }
+example:
+  font: Work Sans
+  text: 2021
+ui: |
+  In the OS X typography panel, this feature is accessed via "Typographic
+  Extras > Slashed Zero".
+done: true
