@@ -2,7 +2,7 @@ title: Right-to-left mirrored forms
 registered: Adobe
 group: Preprocessing
 order: 3
-required: true
+state: required
 description: |
   When a bidirectional text is being laid out, any characters which have the
   `Bidi_Mirrored` Unicode property and whose directionality is resolved to RTL

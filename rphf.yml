@@ -1,0 +1,26 @@
+title: Reph Form
+registered: Microsoft
+group: orthographic
+script:
+  INDIC:
+    order: 8
+  USE:
+    order: 0
+  mym2:
+    order: 0
+state: required
+description: |
+  This feature replaces consonant+virama with the reph form of the consonant.
+  In Devanagari, non-final ra+virama should be substituted by reph. The context
+  of application is restricted to a syllabic cluster.
+
+
+  Note that in the Universal Shaping Engine, this feature is also used as a
+  "signal" to the shaping engine for reordering purposes: after this feature
+  has been processed, any glyphs substituted in by this feature are considered
+  to have USE category `R`.
+fea: |
+  feature rphf {
+    sub ra-deva halant-deva by reph-deva;
+  } rphf;
+done: true

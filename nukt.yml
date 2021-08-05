@@ -1,0 +1,30 @@
+group: Preprocessing
+state: required
+script:
+  INDIC:
+    order: 1
+  USE:
+    order: 0
+title: Nukta Forms
+description: |
+  This feature is used to replace `consonant + nukta` with a precombined nukta
+  form glyph in Indic and USE scripts. It is called during the preprocessing
+  group - after initial reordering in Indic scripts, but before processing in the
+  USE.
+
+
+  While nukta marks may be positioned using the normal mark positioning functionality
+  (`mark`), the font designer may choose to create specific precomposed nukta glyphs,
+  either for ease of positioning or to facilitate later lookups.
+fea: |
+  feature nukt {
+    sub ka-deva   nukta-deva by ka-deva.nukt;
+    sub kha-deva  nukta-deva by kha-deva.nukt;
+    sub ga-deva   nukta-deva by ga-deva.nukt;
+    sub ja-deva   nukta-deva by ja-deva.nukt;
+    sub dda-deva  nukta-deva by dda-deva.nukt;
+    sub ddha-deva nukta-deva by ddha-deva.nukt;
+    sub pha-deva  nukta-deva by pha-deva.nukt;
+    sub ra-deva   nukta-deva by ra-deva.nukt;
+  } nukt;
+done: true

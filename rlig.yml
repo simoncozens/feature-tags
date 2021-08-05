@@ -5,7 +5,7 @@ script:
     order: 1
   syrc:
     order: 1
-required: true
+state: required
 title: Required Ligatures
 registered: Microsoft
 description: |

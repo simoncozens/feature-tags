@@ -1,6 +1,6 @@
 title: Vertical Alternates
 registered: Microsoft/Adobe
-required: true
+state: required
 group: Typographic
 description: |
   This feature is applied automatically by the shaping engine at the end of

@@ -6,7 +6,7 @@ script:
     order: 8
   USE:
     order: 0
-required: true
+state: required
 description: |
   This feature is intended to replace consonant + below-base (vattu) sequences
   with ligature forms for fonts supporting the legacy (v1) shaping engine.
@@ -24,6 +24,10 @@ description: |
   substitute the whole `<consonant> <virama> <ra>` sequence for a ligature in one rule.
   Fonts which wish to support both v1 and v2 shapers should provide both `rkrf`
   (in the `dev2` script) and `blwf`/`vatu` (in `deva` script).
+
+
+  As an orthographic feature, the scope of application of this feature is
+  scoped to each syllabic cluster.
 
 
   Note that this feature is also used as a "signal" to the shaping engine for reordering

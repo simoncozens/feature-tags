@@ -1,6 +1,6 @@
 title: Right-to-left alternates
 registered: Adobe
-required: true
+state: required
 group: Preprocessing
 order: 2
 description: |

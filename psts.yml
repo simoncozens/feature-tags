@@ -1,0 +1,28 @@
+title: Post-base Substitutions
+registered: Microsoft
+state: required
+group: Typographic
+script:
+  INDIC:
+    order: 0
+  khmr:
+    order: 0
+  USE:
+    order: 0
+  mym2:
+    order: 0
+description: |
+  This feature is intended to replace base + post-base sequences with a ligature
+  glyph. It can also be used to perform any contextual post-base substitution
+  required (for example, in Devanagari or Bengali, replacing the ii-matra (ी)
+  with appropriate width glyphs to point to the stem of the consonant).
+fea: |
+  feature psts {
+    sub ka-javanese cakra by ka_cakra;
+    sub ta-javanese cakra by ta_cakra;
+    # ...
+  } psts;
+example:
+  font: Noto Sans Javanese
+  text: ꦏꦿꦛꦿ
+done: true

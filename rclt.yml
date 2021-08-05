@@ -5,7 +5,7 @@ script:
     order: 2
   syrc:
     order: 2
-required: true
+state: required
 title: Required Contextual Alternates
 registered: Microsoft
 description: |

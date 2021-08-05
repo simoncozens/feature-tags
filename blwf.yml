@@ -18,6 +18,14 @@ description: |
 
   This is intended to be used for halant conjuncts, where consonant-virama-consonant
   sequences cause the second consonant to be displayed below the first.
+
+
+  Note that in the Indic shaper, this feature is used as a "signal" to the shaping engine for reordering
+  purposes: that is, if a virama-consonant pair would be substituted by this feature,
+  then that consonant is placed in the below-base position when the syllable is reordered.
+
+
+  See also `blws` which applies to the whole run, rather than per-cluster.
 fea: >
   feature blwf {
     sub virama-myanmar @consonant by @conjunct_consonant;

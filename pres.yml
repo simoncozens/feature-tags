@@ -1,0 +1,38 @@
+title: Pre-base Substitutions
+registered: Microsoft
+state: required
+group: Typographic
+script:
+  INDIC:
+    order: 0
+  khmr:
+    order: 0
+  USE:
+    order: 0
+  mym2:
+    order: 0
+description: |
+  This feature is used in Indic, Khmer, Myanmar and USE scripts to form pre-base
+  conjunct ligatures. For example, in Devanagari or Gujarati, the sequence
+  `ka + virama + consonant` is first substituted by the half form `k + consonant`
+  in the `half` feature, but then is further ligated to a conjunct form in this
+  feature.
+
+
+  The feature may also be used for other presentational adjustments
+  concerning pre-base forms, such as selecting the correct width of the i-matra.
+fea: |
+  feature pres {
+      sub k-deva ka-deva by kka-deva;
+      sub k-deva kha-deva by kkha-deva;
+      # ...
+      sub g-deva ga-deva by gga-deva;
+      # ...
+      sub iMatra-deva' @width1 by iMatra-deva.1;
+      sub iMatra-deva' @width2 by iMatra-deva.2;
+      # ...
+  } pres;
+example:
+  font: Hind
+  text: त्ति
+done: true

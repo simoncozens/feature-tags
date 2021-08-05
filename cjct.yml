@@ -11,7 +11,8 @@ description: |
     This feature is applied to Indic scripts and scripts using the Universal
     Shaping Engine as the final feature in the orthographic unit shaping phase,
     before final reordering. It was intended for use in creating consonant
-    conjunct groups. (Consonant + Virama + Consonant.)
+    conjunct groups. (Consonant + Virama + Consonant.)  The context of application
+    is restricted to a syllabic cluster.
 
 
     The difference between this feature and `blwf` is that the `blwf` feature
