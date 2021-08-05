@@ -23,7 +23,8 @@ description: |
 
   Not also that if the `vrt2` feature is present, this feature will be used instead
   by Microsoft shaping engines. Indeed, Windows 2000 and NT4.1 *require* the use
-  of a `vrt2` feature for CFF-outline fonts.
+  of a `vrt2` feature for CFF-outline fonts. However, Harfbuzz and Adobe shapers
+  use `vert` exclusively. See discussion in `vrt2`.
 fea: |
   feature vert {
     sub ellipsis by uniFE19;

@@ -3,6 +3,6 @@ registered: Adobe
 description: |
   This feature is the equivalent to kerning (see `kern`) for vertical layout, with
   the exception of the fact that this is *not* necessarily applied by default.
-  Harfbuzz does not apply it by default in vertical settings, and font designers
-  should consider using the `vert` feature instead for maxium compatibility.
+  Harfbuzz and Adobe shapers do not apply it by default in vertical settings,
+  and font designers should consider using the `vert` feature instead for maxium compatibility.
 done: true

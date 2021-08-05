@@ -1,0 +1,17 @@
+title: Vertical Alternates and Rotation
+status: discouraged
+registered: Adobe
+description: |
+  This feature was intended as a replacement for the `vert` feature. The idea
+  was that this feature would contain rules for vertical alternates as per `vert`
+  and also rules which replace Latin glyphs by rotated forms; this would mean
+  that the layout process for vertical text would be greatly simplified:
+  the layout engine could simply apply the `vrt2` feature to both CJK and
+  Latin text, and not need to rotate any glyphs.
+
+
+  However, this model of layout [was not widely accepted](https://lists.freedesktop.org/archives/harfbuzz/2013-August/003490.html),
+  and the older `vert` feature continues to be the most compatible approach to
+  vertical typesetting. For that reason, the use of this feature is *discouraged*
+  in favour of `vert`.
+done: true
