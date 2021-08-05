@@ -7,10 +7,12 @@ script:
     order: 7
   syrc:
     order: 7
+  INDIC:
+    order: 0
   USE:
     order: 2
 description: |
-  This feature is used by the Arabic and USE complex shapers as part of topographic
+  This feature is used by the Arabic, Indic, and USE complex shapers as part of topographic
   shaping. It is *not* appropriate for general start-of-word detection, but is
   designed to replace joining characters with initial forms. This means characters
   which have the Unicode joining type `Right_Joining` or `Dual_Joining` in a
@@ -18,6 +20,10 @@ description: |
   or `Dual_Joining` in a left-to-right script. These joining type properties
   can be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)
   in the Unicode Character Database.
+
+
+  In the Indic shaper, the feature is expected to apply in word-initial context
+  as identified by the shaping engine.
 example:
   font: Aref Ruqaa
   text: جر
