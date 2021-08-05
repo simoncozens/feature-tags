@@ -72,10 +72,18 @@ with open("css2/fonts.css", "w") as f:
 		 """ % (font,font))
 		if font == "Recursive":
 			reg = "https://github.com/google/fonts/raw/main/ofl/recursive/Recursive%5BCASL%2CCRSV%2CMONO%2Cslnt%2Cwght%5D.ttf"
+		elif font == "Lohit Bengali":
+			reg = "https://github.com/google/fonts/raw/main/ofl/lohitbengali/Lohit-Bengali.ttf"
 		elif font == "Noto Sans Khmer":
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosanskhmer/NotoSansKhmer%5Bwdth%2Cwght%5D.ttf"
 		elif font == "Noto Sans Devanagari":
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosansdevanagari/NotoSansDevanagari-Regular.ttf"
+		elif font == "Noto Sans Math":
+			reg = "https://github.com/google/fonts/raw/main/ofl/notosansmath/NotoSansMath-Regular.ttf"
+		elif font == "Noto Sans Tifinagh":
+			reg = "https://github.com/google/fonts/raw/main/ofl/notosanstifinagh/NotoSansTifinagh-Regular.ttf"
+		elif font == "Noto Sans Javanese":
+			reg = "https://github.com/google/fonts/raw/main/ofl/notosansjavanese/NotoSansJavanese-Regular.ttf"
 		elif font == "Noto Sans Syriac":
 			reg = "https://github.com/google/fonts/raw/main/ofl/notosanssyriac/NotoSansSyriac-Regular.ttf"
 		elif font == "Allura":
