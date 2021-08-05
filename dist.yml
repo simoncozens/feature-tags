@@ -1,7 +1,7 @@
 title: Distances
 registered: Microsoft
 state: required
-group: positioning
+group: Positioning
 description: |-
   This feature provides positional adjustments between glyphs. It is largely
   equivalent to the `kern` feature, but should be considered as "required"

@@ -2,6 +2,7 @@ title: Kerning
 registered: Microsoft/Adobe
 automatic: true
 state: default
+group: Positioning
 description: |
   This feature is one of the two facilities for kerning within OpenType.
   The original TrueType `kern` *table* in the font implements simple,
