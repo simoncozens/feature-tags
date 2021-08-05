@@ -43,6 +43,44 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "pres": {
+        "title": "Pre-base Substitutions",
+        "registered": "Microsoft",
+        "state": "required",
+        "group": "Typographic",
+        "script": {
+            "INDIC": {
+                "order": "0"
+            },
+            "khmr": {
+                "order": "0"
+            },
+            "USE": {
+                "order": "0"
+            },
+            "mym2": {
+                "order": "0"
+            }
+        },
+        "description": "This feature is used in Indic, Khmer, Myanmar and USE scripts to form pre-base\nconjunct ligatures. For example, in Devanagari or Gujarati, the sequence\n`ka + virama + consonant` is first substituted by the half form `k + consonant`\nin the [`half`](#half) feature, but then is further ligated to a conjunct form in this\nfeature.\n\n\nThe feature may also be used for other presentational adjustments\nconcerning pre-base forms, such as selecting the correct width of the i-matra.\n",
+        "fea": "feature pres {\n    sub k-deva ka-deva by kka-deva;\n    sub k-deva kha-deva by kkha-deva;\n    # ...\n    sub g-deva ga-deva by gga-deva;\n    # ...\n    sub iMatra-deva' @width1 by iMatra-deva.1;\n    sub iMatra-deva' @width2 by iMatra-deva.2;\n    # ...\n} pres;\n",
+        "example": {
+            "font": "Hind",
+            "text": "\u0924\u094d\u0924\u093f"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "valt": {
+        "title": "Alternate Vertical Metrics",
+        "registered": "Adobe",
+        "status": "discouraged",
+        "description": "The intention behind this feature was to reposition full-width glyphs\n(e.g. U+FF01-U+FF60) so that they would be visually\ncentered inside the em-square in vertical typesetting context.\n\n\nHowever, a more appropriate way to achieve this visual repositioning is to\nsupply alternate metrics for these glyphs in the `vmtx` and `VORG` tables.\nAs such, this feature has only been implemented extremely rarely, and,\ndespite the description in the OpenType standard, Harfbuzz does not apply\nit by default in vertical layout.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "rvrn": {
         "title": "Required Variation Alternates",
         "group": "Preprocessing",
@@ -50,6 +88,31 @@ window.featuredb={
         "registered": "Microsoft",
         "state": "required",
         "description": "OpenType Font Variations provides for the ability for different features to\napply at different point of the variation space. For example, consider a\nfont with a weight axis - when the weight is greater than 600, the designer\nwants the `dollar` glyph to be substituted for a simplified form to avoid\ncrowding the internal counterspace. This facility is called \"feature variation\",\nand because it is implemented by substitution, it allows for different portions\nof the variation space to represent the same character using different glyphs\nand therefore different outlines; this in turn means that designers can implement\nvariations without being forced to make the outlines compatible between\ndramatically different forms.\n\n\nAccording to the OpenType specification, feature variation can be applied to\n*any* feature. However, Microsoft registered the `rvrn` feature specifically\nfor processing feature variations early in the shaping process. This may not\nturn out to be the best approach, as future rules now need to take into account\nnot just the original glyph but any substitutions; it may be better to perform\ndesign-specific substitutions *after* all orthographic substitutions have between\ncompleted.\n\n\nBoth Harfbuzz and CoreText process feature variations in features other than\nthe `rvrn` feature. I have not been able to ascertain whether or not the Microsoft\nshapers process feature variation tables in other features. If they do - and\nif font creation tools allow for creating feature variation tables in other\nfeatures - then this feature could be considered technically redundant.\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "pref": {
+        "title": "Pre-base Forms",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "script": {
+            "INDIC": {
+                "order": "2"
+            },
+            "USE": {
+                "order": "2"
+            },
+            "mym2": {
+                "order": "1"
+            },
+            "khmer": {
+                "order": "0"
+            }
+        },
+        "state": "required",
+        "description": "This feature is intended to form pre-base ligatures. In the Indic shaper, its\napplication is scoped to\nthe virama-consonant pair ordered before the base consonant. It is most often\nused in Khmer fonts to replace the `coeng ro` sequence with a pre-base form\nof the ra (see also [`cfar`](#cfar)), or as a generic orthographic feature in Myanmar (Burmese).\n\n\nNote that in the Indic shaper, this feature is also used as a \"signal\" to the shaping engine for reordering\npurposes: that is, if a virama-consonant pair would be substituted by this feature,\nthen that consonant is placed in the *post*-base position when the syllable is reordered.\n(Note: not the pre-base position, as one might expect!)\n",
+        "fea": "feature pref {\n  sub coeng-khmer ro-khmer by coeng-ro;\n\n  # This could alternately be in cfar\n  sub coeng-ro @consonant @subjoined by coeng-ro.longer;\n}\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -103,6 +166,28 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "rphf": {
+        "title": "Reph Form",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "script": {
+            "INDIC": {
+                "order": "8"
+            },
+            "USE": {
+                "order": "0"
+            },
+            "mym2": {
+                "order": "0"
+            }
+        },
+        "state": "required",
+        "description": "This feature replaces consonant+virama with the reph form of the consonant.\nIn Devanagari, non-final ra+virama should be substituted by reph. The context\nof application is restricted to a syllabic cluster.\n\n\nNote that in the Universal Shaping Engine, this feature is also used as a\n\"signal\" to the shaping engine for reordering purposes: after this feature\nhas been processed, any glyphs substituted in by this feature are considered\nto have USE category `R`.\n",
+        "fea": "feature rphf {\n  sub ra-deva halant-deva by reph-deva;\n} rphf;\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "hojo": {
         "title": "Hojo Kanji Forms (JIS X 0212-1990 Kanji Forms)",
         "registered": "Adobe",
@@ -116,6 +201,15 @@ window.featuredb={
         "ui": "In the Mac OS X typography panel, this feature is accessed via the \"character\nshape\" radio buttons.\n\nIn Adobe InDesign with CJK functionality, this feature can be accessed via\nthe \"Alternate Glyphs\" dropdown in the Advanced Character Formats panel of\nthe character style options dialog.\n",
         "popularity": "extremely rare",
         "popularity_ix": 1
+    },
+    "vpal": {
+        "title": "Proportional Alternate Vertical Metrics",
+        "registered": "Adobe",
+        "description": "This feature is the vertical equivalent of the [`palt`](#palt) feature; it uses\npositioning rules to convert full-em glyphs into proportional glyphs\nby aftering their position and Y-advance.\n",
+        "fea": "feature vpal {\n  pos uniFF41 <0 -186 0 -373>;\n  pos uniFF42 <0 -148 0 -346>;\n  pos uniFF43 <0 -220 0 -441>;\n  pos uniFF44 <0 -176 0 -353>;\n  # ...\n} vpal;\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
     },
     "twid": {
         "title": "Third Widths",
@@ -159,6 +253,25 @@ window.featuredb={
             "font": "Hind",
             "text": "\u0930\u0943"
         },
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "vatu": {
+        "title": "Vattu Variants",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "script": {
+            "INDIC": {
+                "order": "8"
+            },
+            "USE": {
+                "order": "0"
+            }
+        },
+        "state": "required",
+        "description": "This feature is intended to replace consonant + below-base (vattu) sequences\nwith ligature forms for fonts supporting the legacy (v1) shaping engine.\n\n\nFor example, in Devanagari, the `<virama> <ra>` sequence is normally replaced\nby a below-base Ra by the [`blwf`](#blwf) feature. However, \"for certain consonants,\nthe mark RAsub may graphically combine with the consonant to form a conjunct\nligature form.\" (Unicode Standard, [section 12.1](https://www.unicode.org/versions/Unicode13.0.0/ch12.pdf), \"Rendering Rules\", R7.)\nThis combination is performed by the `vatu` feature in the v1 shaping engine\n(e.g. `deva` script).\n\n\nFor fonts using the new shaper (`dev2`), the [`rkrf`](#rkrf) feature is used instead to\nsubstitute the whole `<consonant> <virama> <ra>` sequence for a ligature in one rule.\nFonts which wish to support both v1 and v2 shapers should provide both [`rkrf`](#rkrf)\n(in the `dev2` script) and [`blwf`](#blwf)/`vatu` (in `deva` script).\n\n\nAs an orthographic feature, the scope of application of this feature is\nscoped to each syllabic cluster.\n\n\nNote that this feature is also used as a \"signal\" to the shaping engine for reordering\npurposes: that is, if a virama-consonant pair would be substituted by this feature,\nthen that consonant is placed in the below-base position when the syllable is reordered.\n",
+        "fea": "feature vatu {\n  script deva;\n  sub Ka.dv Vattu.dv by KaRa.dv;\n  sub Kha.dv Vattu.dv by KhaRa.dv;\n  sub Ga.dv Vattu.dv by GaRa.dv;\n  # ...\n} vatu;\n",
+        "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -387,7 +500,7 @@ window.featuredb={
         "registered": "Microsoft/Adobe",
         "automatic": "true",
         "state": "default",
-        "description": "This feature is one of the two facilities for kerning within OpenType.\nThe original TrueType `kern` *table* in the font implements simple,\nnon-contextual pair-based and class-based kerning, and a pair-based (format 0)\n`kern` table was historically required for kerning to function in applications\nsuch as Microsoft PowerPoint.\n\n\nHowever, modern fonts tend to implement kerning through the use of\nthis feature instead (see [discussion](https://typedrawers.com/discussion/comment/15218)).\nThe standard implementation is to use GPOS 2 pair positioning rules to adjustment\nthe X advance of the first glyph in the pair, although note that when\ngenerating a `kern` feature for right-to-left text, the adjustment is\ngenerally made to both advance *and* placement:\n\n```\npos period parentheses <-30 0 -30 0>;\n```\n\n\nSee also the `vkrn` feature for kerning in vertical settings. Kerning may\nbe disabled based on user preference; for mandatory adjustments, use the\n[`dist`](#dist) feature instead.\n",
+        "description": "This feature is one of the two facilities for kerning within OpenType.\nThe original TrueType `kern` *table* in the font implements simple,\nnon-contextual pair-based and class-based kerning, and a pair-based (format 0)\n`kern` table was historically required for kerning to function in applications\nsuch as Microsoft PowerPoint.\n\n\nHowever, modern fonts tend to implement kerning through the use of\nthis feature instead (see [discussion](https://typedrawers.com/discussion/comment/15218)).\nThe standard implementation is to use GPOS 2 pair positioning rules to adjustment\nthe X advance of the first glyph in the pair, although note that when\ngenerating a `kern` feature for right-to-left text, the adjustment is\ngenerally made to both advance *and* placement:\n\n```\npos period parentheses <-30 0 -30 0>;\n```\n\n\nSee also the [`vkrn`](#vkrn) feature for kerning in vertical settings. Kerning may\nbe disabled based on user preference; for mandatory adjustments, use the\n[`dist`](#dist) feature instead.\n",
         "example": {
             "font": "Vollkorn",
             "text": "AVATAR"
@@ -396,6 +509,21 @@ window.featuredb={
         "done": "true",
         "popularity": "very common",
         "popularity_ix": 5
+    },
+    "vert": {
+        "title": "Vertical Alternates",
+        "registered": "Microsoft/Adobe",
+        "state": "required",
+        "group": "Typographic",
+        "description": "This feature is applied automatically by the shaping engine at the end of\nrequired processing and before discretionary processing when the script\ndirection is set to vertical; it replaces the horizontal positioning and\ntypographic presentation group ([`calt`](#calt)/[`clig`](#clig)/[`curs`](#curs)/[`dist`](#dist)/[`kern`](#kern)/[`liga`](#liga)/[`rclt`](#rclt)).\n\n\nIt should be used to replace any glyphs with forms which are more appropriate\nto vertical presentation. For example, punctuation such as ellipses and parenthesis\nshould be replaced with rotated forms, Japanese small kana should be positioned in the\nupper right quadrant of the em square, and Japanese ligature forms (U+32FF-33FF) should\nbe replaced with versions which preserve reading order when read vertically.\n\n\nNote that, aside from supporting CJK vertical presentation, this feature\nshould also be used for typographic presentation rules for fonts supporting\nother vertical writing systems, such as Mongolian.\n\n\nNot also that if the [`vrt2`](#vrt2) feature is present, this feature will be used instead\nby Microsoft shaping engines. Indeed, Windows 2000 and NT4.1 *require* the use\nof a [`vrt2`](#vrt2) feature for CFF-outline fonts. However, Harfbuzz and Adobe shapers\nuse `vert` exclusively. See discussion in [`vrt2`](#vrt2).\n",
+        "fea": "feature vert {\n  sub ellipsis by uniFE19;\n  sub twodotenleader by twodotenleader.vert;\n  sub uniFF08 by uniFE35;\n  sub uniFF09 by uniFE36;\n\n  sub uni32FF by uni32FF.vert;\n  # ...\n} vert;\n",
+        "example": {
+            "font": "Reggae One",
+            "text": "\uff08\u3300\uff09"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
     },
     "jp78": {
         "title": "JIS78 Forms",
@@ -416,7 +544,7 @@ window.featuredb={
         "registered": "Adobe",
         "group": "Preprocessing",
         "order": "3",
-        "description": "This feature - by analogy with the `rtlm` feature - was intended for\nright-to-left scripts which can also be expressed in a left-to-right line\nlayout, but which require glyph transformations such as mirroring when\nwritten left-to-right.\n\n\nSuch scripts are exceptionally rare. Noto Sans Old Hungarian uses this\nfeature to horizontally mirror the glyphs when laying out Old Hungarian\nleft-to-right, although it is disputed that Old Hungarian was ever written\nleft-to-right. The Old South Arabian script is usually written RTL but\ncan also be laid out LTR; but Noto Sans Old South Arabian does not include\nmirroring substitutions. Oh well.\n",
+        "description": "This feature - by analogy with the [`rtlm`](#rtlm) feature - was intended for\nright-to-left scripts which can also be expressed in a left-to-right line\nlayout, but which require glyph transformations such as mirroring when\nwritten left-to-right.\n\n\nSuch scripts are exceptionally rare. Noto Sans Old Hungarian uses this\nfeature to horizontally mirror the glyphs when laying out Old Hungarian\nleft-to-right, although it is disputed that Old Hungarian was ever written\nleft-to-right. The Old South Arabian script is usually written RTL but\ncan also be laid out LTR; but Noto Sans Old South Arabian does not include\nmirroring substitutions. Oh well.\n",
         "done": "true",
         "popularity": "extremely rare",
         "popularity_ix": 1
@@ -439,7 +567,7 @@ window.featuredb={
                 "order": "3"
             }
         },
-        "description": "Replaces below-base forms with special forms. This feature is applied by\nIndic, Khmer, Myanmar and USE complex shapers as part of the orthographic unit\nshaping phase. The context of application is restricted to a syllabic cluster.\n\n\nThis is intended to be used for halant conjuncts, where consonant-virama-consonant\nsequences cause the second consonant to be displayed below the first.\n",
+        "description": "Replaces below-base forms with special forms. This feature is applied by\nIndic, Khmer, Myanmar and USE complex shapers as part of the orthographic unit\nshaping phase. The context of application is restricted to a syllabic cluster.\n\n\nThis is intended to be used for halant conjuncts, where consonant-virama-consonant\nsequences cause the second consonant to be displayed below the first.\n\n\nNote that in the Indic shaper, this feature is used as a \"signal\" to the shaping engine for reordering\npurposes: that is, if a virama-consonant pair would be substituted by this feature,\nthen that consonant is placed in the below-base position when the syllable is reordered.\n\n\nSee also [`blws`](#blws) which applies to the whole run, rather than per-cluster.\n",
         "fea": "feature blwf {\n  sub virama-myanmar @consonant by @conjunct_consonant;\n} blwf;\n",
         "state": "required",
         "done": "true",
@@ -483,7 +611,7 @@ window.featuredb={
         "title": "Traditional Name Forms",
         "registered": "Adobe",
         "status": "discouraged",
-        "description": "This feature was intended for selecting traditional forms of kanji used in personal\nnames. No fonts implementing this feature have been identified and it is not\nspecified in the Adobe Japan1 glyph set; font developers should place any such\nsubstitutions in the `trad` feature instead.\n",
+        "description": "This feature was intended for selecting traditional forms of kanji used in personal\nnames. No fonts implementing this feature have been identified and it is not\nspecified in the Adobe Japan1 glyph set; font developers should place any such\nsubstitutions in the [`trad`](#trad) feature instead.\n",
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
@@ -501,6 +629,18 @@ window.featuredb={
         },
         "ui": "In the OS X typography panel, this feature is accessed via \"Text spacing > Full Width\".",
         "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "vhal": {
+        "title": "Alternate Vertical Half Widths",
+        "automatic": "true",
+        "state": "discretionary",
+        "registered": "Adobe",
+        "description": "This feature is similar to the [`halt`](#halt) feature, in that it re-spaces full-width\nglyphs to fit on a half-em, but `vhal` is used in vertical typesetting,\nre-spacing heights instead of widths.\n",
+        "fea": "feature vhal {\n  pos [degree.full minute.full quotedblright.full quoteright.full second.full uni3001 uni3002 uni3009 uni300B uni300D uni300F uni3011 uni3015 uni301F uniFF09 uniFF0C uniFF0E uniFF3D uniFF5D] <0 -500 0 0>;\n  pos [quotedblleft.full quoteleft.full uni3008 uni300A uni300C uni300E uni3010 uni3014 uni301D uniFF08 uniFF3B uniFF5B] <0 -500 0 -500>;\n  pos [uni30FB uniFF01 uniFF1A uniFF1B] <0 -250 0 -500>;\n} vhal;\n",
+        "done": "true",
+        "ui": "Unknown. Contributions welcome.",
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -550,7 +690,7 @@ window.featuredb={
         "state": "discretionary",
         "registered": "Adobe",
         "description": "This feature is similar to the [`pwid`](#pwid) feature, but instead of replaces full-width\nglyphs with proportional equivalents, it re-spaces the glyphs using positioning\nrules.\n",
-        "fea": "feature pwid {\n  pos uniFF41 <-186 0 -373 0>;\n  pos uniFF42 <-148 0 -346 0>;\n  pos uniFF43 <-220 0 -441 0>;\n  pos uniFF44 <-176 0 -353 0>;\n  # ...\n} palt;\n",
+        "fea": "feature palt {\n  pos uniFF41 <-186 0 -373 0>;\n  pos uniFF42 <-148 0 -346 0>;\n  pos uniFF43 <-220 0 -441 0>;\n  pos uniFF44 <-176 0 -353 0>;\n  # ...\n} palt;\n",
         "example": {
             "font": "Shippori Mincho",
             "text": "\u304b\uff41\uff42\uff43\u304b"
@@ -571,7 +711,6 @@ window.featuredb={
                 "order": "1"
             }
         },
-        "required": "true",
         "title": "Required Ligatures",
         "registered": "Microsoft",
         "description": "This feature is intended for required ligatures (ligatures which should not\nbe subject to user control). Note that in the Arabic shaper it is processed\nearly in the typographic presentation phase; in other shapers, it is processed\nalong with the common feature group.\n",
@@ -580,6 +719,14 @@ window.featuredb={
             "font": "El Messiri",
             "text": "\u0644\u0627"
         },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "vkrn": {
+        "title": "Vertical Kerning",
+        "registered": "Adobe",
+        "description": "This feature is the equivalent to kerning (see [`kern`](#kern)) for vertical layout, with\nthe exception of the fact that this is *not* necessarily applied by default.\nHarfbuzz and Adobe shapers do not apply it by default in vertical settings,\nand font designers should consider using the [`vert`](#vert) feature instead for maxium compatibility.\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -686,7 +833,7 @@ window.featuredb={
                 "order": "0"
             }
         },
-        "description": "This feature produces half forms of conjuncts. It is processed in the Indic\nand USE complex shapers as part of the orthographic shaping group.\n\n\nHalf forms are used in scripts such as Devanagari to display dead (unvoiced)\nconsonants after a virama in conjuncts which do not have a predetermined\nconjunct form. Half forms should be provided for all base consonants. These\nhalf forms can then be substituted into conjuncts later using the `pres`\nfeature. For example:\n\n```\nfeature half {\n  sub ka-deva halant-deva by k-deva;\n  ...\n} half;\nfeature pres {\n  sub k-deva sa-deva by ksa-deva;\n  ...\n} pres;\n```\n",
+        "description": "This feature produces half forms of conjuncts. It is processed in the Indic\nand USE complex shapers as part of the orthographic shaping group.\n\n\nHalf forms are used in scripts such as Devanagari to display dead (unvoiced)\nconsonants after a virama in conjuncts which do not have a predetermined\nconjunct form. Half forms should be provided for all base consonants. These\nhalf forms can then be substituted into conjuncts later using the [`pres`](#pres)\nfeature. For example:\n\n```\nfeature half {\n  sub ka-deva halant-deva by k-deva;\n  ...\n} half;\nfeature pres {\n  sub k-deva sa-deva by ksa-deva;\n  ...\n} pres;\n```\n",
         "example": {
             "font": "Hind",
             "text": "\u0917\u094d\u0924"
@@ -724,6 +871,21 @@ window.featuredb={
         },
         "done": "true",
         "ui": "In the OS X typography panel, this feature is accessed via \"Ligatures -> Historical\nLigatures.\"\n",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "rtlm": {
+        "title": "Right-to-left mirrored forms",
+        "registered": "Adobe",
+        "group": "Preprocessing",
+        "order": "3",
+        "state": "required",
+        "description": "When a bidirectional text is being laid out, any characters which have the\n`Bidi_Mirrored` Unicode property and whose directionality is resolved to RTL\nwill be replaced by their mirrored equivalents. This mirroring is specified\nby the [Unicode Bidirectional Algorithm](https://unicode.org/reports/tr9/#L4),\nand is performed by the layout engine prior to shaping.\n\n\nHowever, a font may contain mirrored glyphs for characters which do *not* have\nthe `Bidi_Mirrored` property (and thus are not handled by the Unicode bidirectional\nalgorithm), but which are required to be mirrored when displayed in right-to-left settings.\nFor example, mathematical characters such as the square root sign (\u221a) and\nintergral sign (\u222b) do not have mirrored forms encoded in Unicode, but should be\nmirrored in right-to-left text.\n",
+        "done": "true",
+        "example": {
+            "font": "Noto Sans Math",
+            "text": "\u222b\u221ax"
+        },
         "popularity": "rare",
         "popularity_ix": 2
     },
@@ -810,7 +972,7 @@ window.featuredb={
         "automatic": "true",
         "title": "Cursive Positioning",
         "registered": "Microsoft",
-        "state": "default",
+        "state": "required",
         "group": "positioning",
         "description": "This feature is used to position glyphs with cursive connections.\n\n\nCertain scripts, in particular Arabic, are \"connected\" scripts, where the\nstart of a character has its position adjusted relative to the end of the previous\ncharacter. In font editors, this is normally defined by setting \"exit\" and\n\"entry\" anchor points. These are then converted to GPOS 3 cursive positioning\nrules.\n\n\nWhile this feature is not mandatory for designers - some styles of Arabic\nare aligned along the baseline, and so glyphs do not need to be repositioned\n- it is applied by default if present, and is not specific to Arabic script.\nIt is not impossible, but exceptionally uncommon, to use this feature for\nconnected \"cursive\" Latin fonts, and is often unnecessary because of the\npresence of a fixed baseline in Latin.\n",
         "example": {
@@ -863,6 +1025,20 @@ window.featuredb={
         "popularity": "normal",
         "popularity_ix": 3
     },
+    "ornm": {
+        "title": "Ornaments",
+        "description": "This feature has two uses, both of which are used to select ornament glyphs\nfrom within the font's glyphset.\n\n\nIn the first use, all ornamental glyphs (fleurons, manicules, dingbats and\nso on) are made available through a GSUB3 alternate substitution from the\nbullet character (U+2022).\n\n\nIn the second use, ASCII characters are substituted for ornamental forms using\na GSUB1 substitution.\n",
+        "registered": "Adobe",
+        "state": "discretionary",
+        "fea": "feature ornm {\n  sub bullet from @ornaments;\n\n\n  sub less by arrowleft;\n  sub greater by arrowright;\n  sub plus by arrowup;\n  # ...\n} ornm;\n",
+        "example": {
+            "font": "Spectral",
+            "text": "+\u00d7=<>"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "fina": {
         "title": "Terminal Forms",
         "registered": "Microsoft/Adobe",
@@ -901,7 +1077,6 @@ window.featuredb={
                 "order": "2"
             }
         },
-        "required": "true",
         "title": "Required Contextual Alternates",
         "registered": "Microsoft",
         "description": "This feature is intended for required contextual alternates (contextual\nalternates which should not be subject to user control). Note that in the\nArabic shaper it is processed early in the typographic presentation phase;\nin other shapers, it is processed along with the common feature group.\n\n\nIn the example, Reem Kufi uses the `rclt` feature to swap repeated *beh*\nglyphs for glyphs with raised teeth.\n",
@@ -1055,6 +1230,30 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "vchw": {
+        "state": "discretionary",
+        "title": "Vertical Contextual Half-width Spacing",
+        "registered": "Adobe/W3C",
+        "description": "This feature is the vertical equivalent of [`chws`](#chws); it is intended to improve\nthe appearance of text set with software which does *not* implement the full\nJLREQ spacing rules, but does implement vertical typesetting.\n\nThis feature is relatively new as of 2021, no implementations have been\nidentified, and to be honest, any layout engine which bothers to support\nvertical typesetting correctly is probably also going to implement JLREQ\nspacing as well.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
+    "rtla": {
+        "title": "Right-to-left alternates",
+        "registered": "Adobe",
+        "state": "required",
+        "group": "Preprocessing",
+        "order": "2",
+        "description": "This feature is applied to right-to-left texts as part of the glyph preprocessing\nstage. It is intended for substituting variants which are appropriate for\nright-to-left text, but which are not mirrored substitutions. (Mirrored forms\nof glyphs should be handled by the [`rtlm`](#rtlm) feature.)\n\n\nNo examples of this feature being used as described have been found; Noto\nSans Tifinagh uses the feature to mirror glyphs when Tifinagh is being set\nright-to-left (e.g. when used to write Tuareg).\n",
+        "done": "true",
+        "example": {
+            "font": "Noto Sans Tifinagh",
+            "text": "\u2d4e\u2d49\u2d37\u2d37\u2d4f"
+        },
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "calt": {
         "title": "Contextual Alternates",
         "registered": "Adobe",
@@ -1081,7 +1280,7 @@ window.featuredb={
                 "order": "6"
             }
         },
-        "description": "This feature is applied by the Indic shaper during the typographic presentation\nphase, and is intended to \"clean up\" dead consonant sequences which have not\nbeen formed into conjuncts, by replacing them with correct dead consonant forms.\n\n\nFor example, consider the two sequences \"tta nukta virama ra\" and \"tta nukta virama\"\nwithout the final ra. In Noto Sans Devanagari, the \"tta nukta virama\" sequence is\nfirst composed into `ttanuktadeva` by the `nukt` feature, leaving\n`ttanuktadeva viramadeva radeva` and `ttanuktadeva viramadeva` respectively.\n\n\nWhen the final ra is present, the `rkrf` feature creates a conjunct form\n`ttanuktaradeva`. But without the final ra, we are left with `ttanuktadeva viramadeva`.\nIn this case, the default positioning of the nukta underneath the tta is\nincorrect, as it needs to move to the left to accommodate the virama. A\nprecomposed glyph `ttanuktaprehalfdeva` is substituted in the `haln`\nfeature to tidy up this dead consonant sequence.\n",
+        "description": "This feature is applied by the Indic shaper during the typographic presentation\nphase, and is intended to \"clean up\" dead consonant sequences which have not\nbeen formed into conjuncts, by replacing them with correct dead consonant forms.\n\n\nFor example, consider the two sequences \"tta nukta virama ra\" and \"tta nukta virama\"\nwithout the final ra. In Noto Sans Devanagari, the \"tta nukta virama\" sequence is\nfirst composed into `ttanuktadeva` by the [`nukt`](#nukt) feature, leaving\n`ttanuktadeva viramadeva radeva` and `ttanuktadeva viramadeva` respectively.\n\n\nWhen the final ra is present, the [`rkrf`](#rkrf) feature creates a conjunct form\n`ttanuktaradeva`. But without the final ra, we are left with `ttanuktadeva viramadeva`.\nIn this case, the default positioning of the nukta underneath the tta is\nincorrect, as it needs to move to the left to accommodate the virama. A\nprecomposed glyph `ttanuktaprehalfdeva` is substituted in the `haln`\nfeature to tidy up this dead consonant sequence.\n",
         "example": {
             "font": "Noto Sans Devanagari",
             "text": "\u091f\u093c\u094d\u0930 \u091f\u093c\u094d"
@@ -1157,6 +1356,21 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "zero": {
+        "title": "Slashed Zero",
+        "registered": "Adobe",
+        "description": "This feature allows the user to change between the default form of zero\n(without a slash) to a form with a slash through the counter.\n",
+        "automatic": "true",
+        "fea": "feature zero {\n  sub zero by zero.zero;\n}\n",
+        "example": {
+            "font": "Work Sans",
+            "text": "2021"
+        },
+        "ui": "In the OS X typography panel, this feature is accessed via \"Typographic\nExtras > Slashed Zero\".\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
     "opbd": {
         "title": "Optical Bounds",
         "registered": "Adobe",
@@ -1175,12 +1389,26 @@ window.featuredb={
         "popularity": "extremely rare",
         "popularity_ix": 1
     },
+    "ssty": {
+        "title": "Math script style alternates",
+        "registered": "Microsoft",
+        "script": {
+            "math": ""
+        },
+        "example": {
+            "math": "<msup> <mi>x</mi> <msup> <mi> x </mi> <mi>x</mi> </msup> </msup>"
+        },
+        "description": "This feature is used by the math layout engine to select glyph variants\nused in subscripts and superscripts. When the engine lays out a glyph as\na superscript or subscript, it will first determine the script level: 1\nfor first-level sub-/superscripts and 2 for higher levels. It will then\nsupply the script level as a parameter to a GSUB3 alternate substitution\nrule in this feature to obtain the correct glyph variant.\n\n\nThe glyph variant will then be scaled by the math layout engine based on\nthe factor specified in the MATH table (`MATH.MathConstants.scriptPercentScaleDown`\nfor first-level sub-/superscripts and `MATH.MathConstants.scriptScriptPercentScaleDown`\nfor higher level scripts). As the scaling will be performed by the layout\nengine, the form of the glyphs substituted in this feature should not be\nscaled or repositioned. For example, the STIX Math Two font shown in the\nexample uses slightly bolder script alternates so that the glyph weights\nappear consistent when scaled down.\n",
+        "done": "true",
+        "popularity": "extremely rare",
+        "popularity_ix": 1
+    },
     "ltra": {
         "title": "Left-to-right alternate forms",
         "registered": "Adobe",
         "group": "Preprocessing",
         "order": "2",
-        "description": "This feature - by analogy with the `rtla` feature - is intended for\nright-to-left scripts which can also be expressed in a left-to-right line\nlayout, but which require glyph transformations such as mirroring when\nwritten left-to-right. As detailed in the [`ltrm`](#ltrm) feature, such scripts\nare extremely rare, and no implementations have been found.\n",
+        "description": "This feature - by analogy with the [`rtla`](#rtla) feature - is intended for\nright-to-left scripts which can also be expressed in a left-to-right line\nlayout, but which require glyph transformations such as mirroring when\nwritten left-to-right. As detailed in the [`ltrm`](#ltrm) feature, such scripts\nare extremely rare, and no implementations have been found.\n",
         "done": "true",
         "popularity": "non-existent",
         "popularity_ix": 0
@@ -1230,6 +1458,23 @@ window.featuredb={
         "popularity": "rare",
         "popularity_ix": 2
     },
+    "vrt2": {
+        "title": "Vertical Alternates and Rotation",
+        "status": "discouraged",
+        "registered": "Adobe",
+        "description": "This feature was intended as a replacement for the [`vert`](#vert) feature. The idea\nwas that this feature would contain rules for vertical alternates as per [`vert`](#vert)\nand also rules which replace Latin glyphs by rotated forms; this would mean\nthat the layout process for vertical text would be greatly simplified:\nthe layout engine could simply apply the `vrt2` feature to both CJK and\nLatin text, and not need to rotate any glyphs.\n\n\nHowever, this model of layout [was not widely accepted](https://lists.freedesktop.org/archives/harfbuzz/2013-August/003490.html),\nand the older [`vert`](#vert) feature continues to be the most compatible approach to\nvertical typesetting. For that reason, the use of this feature is *discouraged*\nin favour of [`vert`](#vert).\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "vrtr": {
+        "title": "Vertical Alternates for Rotation",
+        "registered": "Adobe/Microsoft/W3C",
+        "description": "This feature is intended to select alternate glyphs to be used in vertical\ntypesetting. When the `writing-mode` CSS property is set to `vertical-lr`\nor `vertical-rl`, certain glyphs are rotated 90 degrees clockwise by the\nrendering engine.\n\nHowever, prior to rotation, the font may wish to substitute glyphs which\nare designed for vertical settings. These glyphs will still be rotated by\nthe rendering engine, but will be visually distinct from the original forms.\n\n\nThis feature is relatively new as of 2021, and no implementations have been\nidentified.\n",
+        "done": "true",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "medi": {
         "title": "Medial Forms",
         "registered": "Microsoft/Adobe",
@@ -1253,6 +1498,35 @@ window.featuredb={
         },
         "automatic": "true",
         "fea": "feature medi {\n  lookupflag RightToLeft IgnoreMarks;\n  sub beh-ar by beh-ar.medi;\n  sub jeem-ar by jeem-ar.medi;\n  # ...\n}\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "psts": {
+        "title": "Post-base Substitutions",
+        "registered": "Microsoft",
+        "state": "required",
+        "group": "Typographic",
+        "script": {
+            "INDIC": {
+                "order": "0"
+            },
+            "khmr": {
+                "order": "0"
+            },
+            "USE": {
+                "order": "0"
+            },
+            "mym2": {
+                "order": "0"
+            }
+        },
+        "description": "This feature is intended to replace base + post-base sequences with a ligature\nglyph. It can also be used to perform any contextual post-base substitution\nrequired (for example, in Devanagari or Bengali, replacing the ii-matra (\u0940)\nwith appropriate width glyphs to point to the stem of the consonant).\n",
+        "fea": "feature psts {\n  sub ka-javanese cakra by ka_cakra;\n  sub ta-javanese cakra by ta_cakra;\n  # ...\n} psts;\n",
+        "example": {
+            "font": "Noto Sans Javanese",
+            "text": "\ua98f\ua9bf\ua99b\ua9bf"
+        },
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -1282,6 +1556,35 @@ window.featuredb={
         "done": "true",
         "popularity": "common",
         "popularity_ix": 4
+    },
+    "pstf": {
+        "title": "Post-base Forms",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "script": {
+            "INDIC": {
+                "order": "6"
+            },
+            "USE": {
+                "order": "3"
+            },
+            "mym2": {
+                "order": "3"
+            },
+            "khmer": {
+                "order": "0"
+            }
+        },
+        "state": "required",
+        "description": "This feature is intended to replace glyphs by their post-base forms. For example,\nin Bengali and Gurmukhi, the ya consonant has a post-base form when followed\nby a virama.\n\nNote that in the Indic shaper, this feature is also used as a \"signal\" to the shaping engine for reordering\npurposes: that is, if a virama-consonant pair would be substituted by this feature,\nthen that consonant is placed in the post-base position when the syllable is reordered.\n",
+        "fea": "feature pstf {\n    sub viramabeng yabeng by yabeng_viramabeng.pstf;\n} pstf;\n",
+        "example": {
+            "font": "Lohit Bengali",
+            "text": "\u09ac\u09cd\u09af\u09cd"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
     },
     "dist": {
         "title": "Distances",
@@ -1344,6 +1647,24 @@ window.featuredb={
             "font": "EB Garamond",
             "text": "NASA and the FBI"
         },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "nukt": {
+        "group": "Preprocessing",
+        "state": "required",
+        "script": {
+            "INDIC": {
+                "order": "1"
+            },
+            "USE": {
+                "order": "0"
+            }
+        },
+        "title": "Nukta Forms",
+        "description": "This feature is used to replace `consonant + nukta` with a precombined nukta\nform glyph in Indic and USE scripts. It is called during the preprocessing\ngroup - after initial reordering in Indic scripts, but before processing in the\nUSE.\n\n\nWhile nukta marks may be positioned using the normal mark positioning functionality\n([`mark`](#mark)), the font designer may choose to create specific precomposed nukta glyphs,\neither for ease of positioning or to facilitate later lookups.\n",
+        "fea": "feature nukt {\n  sub ka-deva   nukta-deva by ka-deva.nukt;\n  sub kha-deva  nukta-deva by kha-deva.nukt;\n  sub ga-deva   nukta-deva by ga-deva.nukt;\n  sub ja-deva   nukta-deva by ja-deva.nukt;\n  sub dda-deva  nukta-deva by dda-deva.nukt;\n  sub ddha-deva nukta-deva by ddha-deva.nukt;\n  sub pha-deva  nukta-deva by pha-deva.nukt;\n  sub ra-deva   nukta-deva by ra-deva.nukt;\n} nukt;\n",
         "done": "true",
         "popularity": "rare",
         "popularity_ix": 2
@@ -1494,7 +1815,7 @@ window.featuredb={
         "group": "Orthographic",
         "registered": "Microsoft",
         "state": "required",
-        "description": "This feature is applied to Indic scripts and scripts using the Universal\nShaping Engine as the final feature in the orthographic unit shaping phase,\nbefore final reordering. It was intended for use in creating consonant\nconjunct groups. (Consonant + Virama + Consonant.)\n\n\nThe difference between this feature and [`blwf`](#blwf) is that the [`blwf`](#blwf) feature\nis intended for substituting the \"tail\" (virama + consonant) for a below-base\nform, while this feature is intended for substituting the entire sequence\nwith a ligature.\n",
+        "description": "This feature is applied to Indic scripts and scripts using the Universal\nShaping Engine as the final feature in the orthographic unit shaping phase,\nbefore final reordering. It was intended for use in creating consonant\nconjunct groups. (Consonant + Virama + Consonant.)  The context of application\nis restricted to a syllabic cluster.\n\n\nThe difference between this feature and [`blwf`](#blwf) is that the [`blwf`](#blwf) feature\nis intended for substituting the \"tail\" (virama + consonant) for a below-base\nform, while this feature is intended for substituting the entire sequence\nwith a ligature.\n",
         "fea": "feature cjct {\n    # Actual implementation will depend on conjunct glyphs provided in your font.\n    sub nga-deva virama-deva ga-deva by ngga-deva;\n    sub nga-deva virama-deva ma-deva by ngma-deva;\n    sub nga-deva virama-deva ya-deva by ngya-deva;\n    sub tta-deva virama-deva tta-deva by tttta-deva;\n    sub tta-deva virama-deva ya-deva by ttya-deva;\n    # ...\n} cjct;\n",
         "done": "true",
         "example": {
@@ -1531,6 +1852,16 @@ window.featuredb={
         "popularity": "non-existent",
         "popularity_ix": 0
     },
+    "ruby": {
+        "title": "Ruby Notation Forms",
+        "registered": "Adobe",
+        "description": "In Japanese typesetting, words written in kanji may be superscripted by\nthe kana transliteration of the words to aid with reading. (In vertical\nsettings, the transliteration is placed to the right.) These subscripted\nkana, called *furigana* or ruby, are scaled down to a reduced size relative\nto the main text. Scaling and positioning is applied by the typesetting\nengine, but the font may wish to provide alternate forms of the kana\nwhen they are being used in a ruby context - for example, slightly bolder\nforms such that they will maintain the correct weight when scaled down to\nruby size, or different forms that are more legible when displayed at a\nsmaller size.\n",
+        "fea": "feature ruby {\n  sub ka-hira by ka-hira.ruby;\n  sub sa-hira by sa-hira.ruby;\n  # ...\n} ruby;\n",
+        "done": "true",
+        "ui": "In the OS X typography panel, this feature is accessed via \"Ruby Glyphs\".\n",
+        "popularity": "non-existent",
+        "popularity_ix": 0
+    },
     "dnom": {
         "title": "Denominators",
         "automatic": "true",
@@ -1552,5 +1883,37 @@ window.featuredb={
         "done": "true",
         "popularity": "normal",
         "popularity_ix": 3
+    },
+    "rkrf": {
+        "title": "Rakar Forms",
+        "registered": "Microsoft",
+        "group": "orthographic",
+        "script": {
+            "INDIC": {
+                "order": "2"
+            },
+            "USE": {
+                "order": "3"
+            }
+        },
+        "state": "required",
+        "description": "This feature is used in the Indic and USE complex shapers to replace\nconsonant clusters involving \"ra\" with conjunct forms. For example, in Devanagari,\nthe sequence `ka virama ra` should be replaced by the conjunct form `kra`.\nWhile this substitution was previously achieved in the v1 shaper by the combination\nof the `bwlf` and [`vatu`](#vatu) features, the v2 shaper allows for a simpler way to\nsubstitute the entire sequence.\n\n\nThe [`half`](#half) feature is processed after this feature, so any conjuncts created\nin `rkrf` must also be included in the half-form rules in [`half`](#half).\n",
+        "fea": "sub rkrf {\n    sub ka-deva   virama-deva ra-deva by   kra-deva;\n    sub kha-deva  virama-deva ra-deva by  khra-deva;\n    sub ga-deva   virama-deva ra-deva by   gra-deva;\n    # ...\n} rkrf;\n",
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
+    },
+    "trad": {
+        "title": "Traditional Forms",
+        "registered": "Adobe",
+        "description": "The expected forms of Japanese kanji have evolved and simplified over time. However,\nin particular situations - often in the display of personal names - older,\n\"traditional\" forms (*kyujitai*) are still preferred. This feature allows a user to enter\ntext as normal (i.e. with the Unicode codepoint for a more common, simplified\nform) but have it substituted typographically for the traditional glyph. For\nexample, to typeset the name Sakae as \u69ae (a variant found in south west Japan),\nthe user would enter the reading \u3055\u304b\u3048 in their input method environment, and\nhave it converted to \u6804, the usual kanji for this word. Applying the `trad`\nfeature would replace \u6804 with \u69ae.\n\n\nNote that where traditional forms have their own Unicode codepoints, using these\ncodepoints directly is preferred, to avoid ambiguity and to preserve the distinction\nin the source text. In some cases (for example, the traditional form of \u6717),\n*kyujitai* were not separately encoded in Unicode due to Han unification, and\nso the `trad` feature is necessary to access these glyphs.\n\n\nThe expected substitutions of the `trad` feature are defined in terms of the\n[Adobe-Japan1](https://github.com/adobe-type-tools/Adobe-Japan1) glyphset.\nEngineers creating Japanese fonts according to that glyphset should read the\ninformation at the Adobe-Japan1 repository, and use the latest version of the\nfeature code provided there to implement this feature.\n",
+        "fea": "feature trad {\n  sub uni4E9C by uni4E9E;\n  sub uni60AA by uni60E1;\n  sub uni9BF5 by uni9C3A;\n  sub uni5727 by uni58D3;\n  sub uni56F2 by uni570D;\n  sub uni7AC3 by uni7AC3.jp78;\n  sub uni6717 by uni6717.trad;\n  # ...\n} trad;\n",
+        "example": {
+            "text": "\u6717\u6804\u5727",
+            "font": "Kiwi Maru"
+        },
+        "done": "true",
+        "popularity": "rare",
+        "popularity_ix": 2
     }
 }

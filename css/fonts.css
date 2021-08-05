@@ -10,13 +10,13 @@
 		    }
 		 
 			    @font-face {
-		        font-family: "Markazi Text";
-		        src: url("fonts/Markazi Text.ttf");
+		        font-family: "Hind";
+		        src: url("fonts/Hind.ttf");
 		    }
 		 
 			    @font-face {
-		        font-family: "Hind";
-		        src: url("fonts/Hind.ttf");
+		        font-family: "Markazi Text";
+		        src: url("fonts/Markazi Text.ttf");
 		    }
 		 
 			    @font-face {
@@ -75,6 +75,11 @@
 		    }
 		 
 			    @font-face {
+		        font-family: "Reggae One";
+		        src: url("fonts/Reggae One.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Shippori Mincho";
 		        src: url("fonts/Shippori Mincho.ttf");
 		    }
@@ -85,18 +90,23 @@
 		    }
 		 
 			    @font-face {
-		        font-family: "Reggae One";
-		        src: url("fonts/Reggae One.ttf");
-		    }
-		 
-			    @font-face {
 		        font-family: "Allura";
 		        src: url("fonts/Allura.ttf");
 		    }
 		 
 			    @font-face {
+		        font-family: "Noto Sans Math";
+		        src: url("fonts/Noto Sans Math.ttf");
+		    }
+		 
+			    @font-face {
 		        font-family: "Baskervville";
 		        src: url("fonts/Baskervville.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Spectral";
+		        src: url("fonts/Spectral.ttf");
 		    }
 		 
 			    @font-face {
@@ -107,6 +117,11 @@
 			    @font-face {
 		        font-family: "Recursive";
 		        src: url("fonts/Recursive.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Noto Sans Tifinagh";
+		        src: url("fonts/Noto Sans Tifinagh.ttf");
 		    }
 		 
 			    @font-face {
@@ -127,6 +142,16 @@
 			    @font-face {
 		        font-family: "Playball";
 		        src: url("fonts/Playball.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Noto Sans Javanese";
+		        src: url("fonts/Noto Sans Javanese.ttf");
+		    }
+		 
+			    @font-face {
+		        font-family: "Lohit Bengali";
+		        src: url("fonts/Lohit Bengali.ttf");
 		    }
 		 
 			    @font-face {
