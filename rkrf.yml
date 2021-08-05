@@ -1,0 +1,28 @@
+title: Rakar Forms
+registered: Microsoft
+group: orthographic
+script:
+  INDIC:
+    order: 2
+  USE:
+    order: 3
+state: required
+description: |
+  This feature is used in the Indic and USE complex shapers to replace
+  consonant clusters involving "ra" with conjunct forms. For example, in Devanagari,
+  the sequence `ka virama ra` should be replaced by the conjunct form `kra`.
+  While this substitution was previously achieved in the v1 shaper by the combination
+  of the `bwlf` and `vatu` features, the v2 shaper allows for a simpler way to
+  substitute the entire sequence.
+
+
+  The `half` feature is processed after this feature, so any conjuncts created
+  in `rkrf` must also be included in the half-form rules in `half`.
+fea: |
+  sub rkrf {
+      sub ka-deva   virama-deva ra-deva by   kra-deva;
+      sub kha-deva  virama-deva ra-deva by  khra-deva;
+      sub ga-deva   virama-deva ra-deva by   gra-deva;
+      # ...
+  } rkrf;
+done: true

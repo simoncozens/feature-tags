@@ -1,0 +1,33 @@
+title: Pre-base Forms
+registered: Microsoft
+group: orthographic
+script:
+  INDIC:
+    order: 2
+  USE:
+    order: 2
+  mym2:
+    order: 1
+  khmer:
+    order: 0
+state: required
+description: |
+  This feature is intended to form pre-base ligatures. In the Indic shaper, its
+  application is scoped to
+  the virama-consonant pair ordered before the base consonant. It is most often
+  used in Khmer fonts to replace the `coeng ro` sequence with a pre-base form
+  of the ra (see also `cfar`), or as a generic orthographic feature in Myanmar (Burmese).
+
+
+  Note that in the Indic shaper, this feature is also used as a "signal" to the shaping engine for reordering
+  purposes: that is, if a virama-consonant pair would be substituted by this feature,
+  then that consonant is placed in the *post*-base position when the syllable is reordered.
+  (Note: not the pre-base position, as one might expect!)
+fea: |
+  feature pref {
+    sub coeng-khmer ro-khmer by coeng-ro;
+
+    # This could alternately be in cfar
+    sub coeng-ro @consonant @subjoined by coeng-ro.longer;
+  }
+done: true

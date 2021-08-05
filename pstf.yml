@@ -1,0 +1,29 @@
+title: Post-base Forms
+registered: Microsoft
+group: orthographic
+script:
+  INDIC:
+    order: 6
+  USE:
+    order: 3
+  mym2:
+    order: 3
+  khmer:
+    order: 0
+state: required
+description: |
+  This feature is intended to replace glyphs by their post-base forms. For example,
+  in Bengali and Gurmukhi, the ya consonant has a post-base form when followed
+  by a virama.
+
+  Note that in the Indic shaper, this feature is also used as a "signal" to the shaping engine for reordering
+  purposes: that is, if a virama-consonant pair would be substituted by this feature,
+  then that consonant is placed in the post-base position when the syllable is reordered.
+fea: |
+  feature pstf {
+      sub viramabeng yabeng by yabeng_viramabeng.pstf;
+  } pstf;
+example:
+  font: Lohit Bengali
+  text: ব্য্
+done: true
