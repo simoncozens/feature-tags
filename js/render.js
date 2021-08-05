@@ -179,49 +179,145 @@ var featureTemplate = Handlebars.compile(`
 	</div>
 `);
 
+var phases = [
+	"Preprocessing",
+	"Orthographic",
+	"Topographical",
+	"Typographic",
+	"Positioning",
+	"Common",
+	"Discretionary",
+];
+
+function filterPhase(phasefilter) {
+	return (tag) => {
+		feat = window.featuredb[tag];
+		if (phasefilter == "Discretionary") {
+			return !feat.group;
+		} else {
+			return feat.group == phasefilter;
+		}
+	};
+}
+
 function renderAll() {
 	$("#features").empty();
 	console.log("Rendering");
 	var tagfilter = $("#tag-filter").val();
+	var phasefilter = $("#phase-filter").val();
+	var scriptfilter = $("#script-filter").val();
 	tags = Object.keys(window.featuredb);
 
 	tags.sort();
 
-	for (tag of tags) {
-		if (tagfilter && !tag.includes(tagfilter)) {
-			continue;
-		}
+	if (tagfilter) {
+		tags = tags.filter((x) => x.includes(tagfilter));
+	}
 
-		feat = window.featuredb[tag];
-		if (!feat.stars) {
-			feat.stars = `<span class="material-icons-outlined">star</span>`.repeat(
-				feat.popularity_ix
-			);
-		}
+	if (phasefilter) {
+		tags = tags.filter(filterPhase(phasefilter));
+	}
 
-		if (!feat.html_description) {
-			feat.html_description = marked(feat.description);
-		}
+	if (scriptfilter) {
+		tags = tags.filter((tag) => {
+			feat = window.featuredb[tag];
+			scripts = expandScript(Object.keys(feat.script || {}));
+			return scripts.length == 0 || scripts.includes(scriptfilter);
+		});
 
-		if (!feat.html_ui && feat.ui) {
-			feat.html_ui = marked(feat.ui);
-		}
+		var isindic = scripts_db[scriptfilter].indic;
+		var isuse = scripts_db[scriptfilter].use;
 
-		if (!feat.html_scripts) {
-			feat.html_scripts = scriptsFor(feat);
-		}
-
-		var featurediv = $(
-			featureTemplate({ tag: tag, feature: feat, safari: window.safari })
+		$("#features").append(
+			$(
+				`<div class="inorder"> Features are listed in the order of processing for this script</div>`
+			)
 		);
-		$("#features").append(featurediv);
+
+		tags.sort((a, b) => {
+			var feat1 = window.featuredb[a];
+			var feat2 = window.featuredb[b];
+
+			var phase1 = phases.indexOf(feat1.group);
+			var phase2 = phases.indexOf(feat2.group);
+			if (phase1 != phase2) {
+				return phase1 > phase2;
+			}
+
+			var script_order1;
+			var script_order2;
+			if (isindic) {
+				script_order1 = feat1.script["INDIC"].order;
+				script_order2 = feat2.script["INDIC"].order;
+			} else if (isuse) {
+				script_order1 = feat1.script["USE"].order;
+				script_order2 = feat2.script["USE"].order;
+			} else if (feat1.script && feat2.script) {
+				script_order1 = feat1.script[scriptfilter].order;
+				script_order2 = feat2.script[scriptfilter].order;
+			}
+			if (script_order1 != script_order2) {
+				return script_order1 > script_order2;
+			}
+			return a > b;
+		});
+	} else {
+		$("#features").append(
+			$(
+				`<div class="inorder"> Features are listed in alphabetical order. Select a script to list features in order of processing.</div>`
+			)
+		);
+	}
+	if (scriptfilter && !phasefilter) {
+		for (phase of phases) {
+			$("#features").append($(`<h2>${phase} Phase</h2>`));
+			var thesetags = tags.filter(filterPhase(phase));
+			for (tag of thesetags) {
+				renderOne(tag);
+			}
+		}
+	} else {
+		for (tag of tags) {
+			renderOne(tag);
+		}
 	}
 }
 
+function renderOne(tag) {
+	feat = window.featuredb[tag];
+
+	if (!feat.html_scripts) {
+		feat.html_scripts = scriptsFor(feat);
+	}
+
+	if (!feat.stars) {
+		feat.stars = `<span class="material-icons-outlined">star</span>`.repeat(
+			feat.popularity_ix
+		);
+	}
+
+	if (!feat.html_description) {
+		feat.html_description = marked(feat.description);
+	}
+
+	if (!feat.html_ui && feat.ui) {
+		feat.html_ui = marked(feat.ui);
+	}
+
+	var featurediv = $(
+		featureTemplate({ tag: tag, feature: feat, safari: window.safari })
+	);
+	$("#features").append(featurediv);
+}
+
 $(function () {
+	fillScriptsFilter();
 	renderAll();
 	console.log($("#tag-filter"));
-	$("#tag-filter").on("change keyup paste", function () {
-		renderAll();
-	});
+	$("#tag-filter,#script-filter, #phase-filter").on(
+		"change keyup paste",
+		function () {
+			renderAll();
+		}
+	);
 });

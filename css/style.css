@@ -23,6 +23,13 @@ details {
 	font-size: 1em;
 }
 
+.inorder {
+	border: 1px solid #ded;
+	padding: 10px 15px 10px 15px;
+	background: #eeffee;
+	margin-bottom: 20px;
+	border-radius: 15px;
+}
 details {
 	border: 1px solid #eee;
 	border-radius: 5px;

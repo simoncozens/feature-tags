@@ -204,3 +204,12 @@ function scriptsFor(feature) {
 	}
 	return out;
 }
+
+function fillScriptsFilter() {
+	for (var script of Object.keys(scripts_db)) {
+		var name = scripts_db[script].name;
+		let opt = $(`<option value="${script}">`);
+		opt.append(`${name} [${script}]`);
+		$("#script-filter").append(opt);
+	}
+}
