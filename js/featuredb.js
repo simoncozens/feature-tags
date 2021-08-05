@@ -1613,11 +1613,14 @@ window.featuredb={
             "syrc": {
                 "order": "7"
             },
+            "INDIC": {
+                "order": "0"
+            },
             "USE": {
                 "order": "2"
             }
         },
-        "description": "This feature is used by the Arabic and USE complex shapers as part of topographic\nshaping. It is *not* appropriate for general start-of-word detection, but is\ndesigned to replace joining characters with initial forms. This means characters\nwhich have the Unicode joining type `Right_Joining` or `Dual_Joining` in a\nright-to-left script, and characters which have the Unicode joining type `Left_Joining`\nor `Dual_Joining` in a left-to-right script. These joining type properties\ncan be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)\nin the Unicode Character Database.\n",
+        "description": "This feature is used by the Arabic, Indic, and USE complex shapers as part of topographic\nshaping. It is *not* appropriate for general start-of-word detection, but is\ndesigned to replace joining characters with initial forms. This means characters\nwhich have the Unicode joining type `Right_Joining` or `Dual_Joining` in a\nright-to-left script, and characters which have the Unicode joining type `Left_Joining`\nor `Dual_Joining` in a left-to-right script. These joining type properties\ncan be found in [`ArabicShaping.txt`](https://www.unicode.org/Public/UCD/latest/ucd/ArabicShaping.txt)\nin the Unicode Character Database.\n\n\nIn the Indic shaper, the feature is expected to apply in word-initial context\nas identified by the shaping engine.\n",
         "example": {
             "font": "Aref Ruqaa",
             "text": "\u062c\u0631"
