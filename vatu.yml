@@ -1,0 +1,40 @@
+title: Vattu Variants
+registered: Microsoft
+group: orthographic
+script:
+  INDIC:
+    order: 8
+  USE:
+    order: 0
+required: true
+description: |
+  This feature is intended to replace consonant + below-base (vattu) sequences
+  with ligature forms for fonts supporting the legacy (v1) shaping engine.
+
+
+  For example, in Devanagari, the `<virama> <ra>` sequence is normally replaced
+  by a below-base Ra by the `blwf` feature. However, "for certain consonants,
+  the mark RAsub may graphically combine with the consonant to form a conjunct
+  ligature form." (Unicode Standard, [section 12.1](https://www.unicode.org/versions/Unicode13.0.0/ch12.pdf), "Rendering Rules", R7.)
+  This combination is performed by the `vatu` feature in the v1 shaping engine
+  (e.g. `deva` script).
+
+
+  For fonts using the new shaper (`dev2`), the `rkrf` feature is used instead to
+  substitute the whole `<consonant> <virama> <ra>` sequence for a ligature in one rule.
+  Fonts which wish to support both v1 and v2 shapers should provide both `rkrf`
+  (in the `dev2` script) and `blwf`/`vatu` (in `deva` script).
+
+
+  Note that this feature is also used as a "signal" to the shaping engine for reordering
+  purposes: that is, if a virama-consonant pair would be substituted by this feature,
+  then that consonant is placed in the below-base position when the syllable is reordered.
+fea: |
+  feature vatu {
+    script deva;
+    sub Ka.dv Vattu.dv by KaRa.dv;
+    sub Kha.dv Vattu.dv by KhaRa.dv;
+    sub Ga.dv Vattu.dv by GaRa.dv;
+    # ...
+  } vatu;
+done: true
