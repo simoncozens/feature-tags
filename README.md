@@ -1,6 +1,6 @@
 # OpenType Feature Database
 
-Want to know what all of the OpenType features do? What order they're processed in? How to access them in client software? What code should go in each feature? The OpenType Feature Database has you covered!
+Want to know what all of the OpenType features do? What order they're processed in? How to access them in client software? What code should go in each feature? The [OpenType Feature Database](https://simoncozens.github.io/feature-tags) has you covered!
 
 The idea of the Feature Database is a kind of "user's guide" to go side-by-side with the more formal feature descriptions in the [OpenType spec](https://docs.microsoft.com/en-us/typography/opentype/spec/featuretags), giving more background and describing (and demonstrating) how the features are used in practice.
 
