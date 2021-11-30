@@ -297,11 +297,11 @@ function renderOne(tag) {
 	}
 
 	if (!feat.html_description) {
-		feat.html_description = marked(feat.description);
+		feat.html_description = marked.parse(feat.description);
 	}
 
 	if (!feat.html_ui && feat.ui) {
-		feat.html_ui = marked(feat.ui);
+		feat.html_ui = marked.parse(feat.ui);
 	}
 
 	var featurediv = $(
